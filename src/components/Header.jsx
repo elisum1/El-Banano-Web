@@ -44,7 +44,7 @@ const Header = () => {
       Menu
       <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-gray-800 transition-all duration-300 ease-in-out group-hover:w-1/4"></span>
     </a>
-    <a href="/inicio" className="relative transition hover:text-gray-800 py-2 group">
+    <a href="/" className="relative transition hover:text-gray-800 py-2 group">
       Inicio
       <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-gray-800 transition-all duration-300 ease-in-out group-hover:w-1/4"></span>
     </a>
@@ -98,7 +98,7 @@ const Header = () => {
         <nav className="md:hidden bg-white text-gray-700 ">
           <div className="flex flex-col items-center space-y-16 py-4 pt-36">
             <a href="/menu" className="transition hover:text-blue-800">MENU</a>
-            <a href="/inicio" className="transition hover:text-blue-800">INICIO</a>
+            <a href="/" className="transition hover:text-blue-800">INICIO</a>
             <a href="#rewards" className="transition hover:text-blue-800">SOBRE NOSOTROS</a>
             <a href="#values" className="transition hover:text-blue-800">CONTACTO</a>
             

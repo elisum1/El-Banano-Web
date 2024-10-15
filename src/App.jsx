@@ -22,12 +22,11 @@ function MainContent() {
     <div>
       {loading && <Loading />}  {/* Muestra el componente Loading cuando loading es true */}
       <Routes>
-        <Route path="/" element={<h1>Welcome to Restaurante El Banano!</h1>} />
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/inicio" element={<Inicio />} />
+        <Route path="/" element={<Inicio />} />
       </Routes>
     </div>
   );
