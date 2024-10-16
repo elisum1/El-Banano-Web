@@ -39,7 +39,7 @@ const Login = () => {
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-yellow-300 to-yellow-500">
       {/* Contenedor principal del formulario */}
       <div className="max-w-md w-full flex flex-col justify-center items-center bg-white p-8 rounded-xl shadow-2xl">
-        <img src="public/img/logo_el_banano-removebg-preview.png" alt="Logo" className="w-[50%] h-[40%] mb-6" />
+        <img src="/img/logo_el_banano-removebg-preview.png" alt="Logo" className="w-[50%] h-[40%] mb-6" />
         <h1 className="text-3xl font-bold text-gray-800 mb-8">Iniciar Sesión</h1>
 
         {/* Formulario de login */}

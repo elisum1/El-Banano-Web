@@ -7,7 +7,7 @@
 .playfair {
   font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
-  font-weight: 300;
+  font-weight: 900;
   font-style: normal;
 }
 
@@ -30,7 +30,7 @@
 .roboto {
   font-family: "Roboto Condensed", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -78,3 +78,30 @@
   border-right: 2px solid; /* Agrega el cursor de escritura */
   font-size: 2rem;
 }
+
+
+.animate-smoke {
+  background-image: url('/img/smoke-effect.png');
+  background-size: cover;
+  animation: moveSmoke 10s infinite linear;
+}
+
+@keyframes moveSmoke {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
