@@ -190,7 +190,7 @@ const Inicio = () => {
 
     </div>
       <video
-          src="public/img/¿Escuchaste esto Si, es el sonido de la gloria! digo, de un churrasco en la parrilla!.mp4"
+          src="/img/¿Escuchaste esto Si, es el sonido de la gloria! digo, de un churrasco en la parrilla!.mp4"
           className=" w-full h-full object-cover rounded-r-3xl"
           autoPlay
           loop
@@ -217,7 +217,7 @@ const Inicio = () => {
 
     </div>
       <video
-          src="public/img/Que esperas para visitar nuestra sede en el Rodadero y recordar todos estos lindos momentos.mp4"
+          src="/img/Que esperas para visitar nuestra sede en el Rodadero y recordar todos estos lindos momentos.mp4"
           className=" w-full h-full object-cover rounded-r-3xl"
           autoPlay
           loop
