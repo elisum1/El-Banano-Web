@@ -28,43 +28,44 @@ const RestaurantLandingPage = () => {
     return (
 
         <div className="h-[100vh] w-full bg-yellow-400">
-            <div className=" w-[64.2%] m-auto  h-[9%] flex items-center justify-center relative top-[15%] font-normal ">
-                 {/* Menú de Iconos */}
-            <nav className="flex justify-center space-x-8 p-4  w-full fixed top-[15%] z-10 bg-yellow-400  2xl:mb-0 text-2xl 2xl:text-4xl">
-                <div className="text-white cursor-pointer  hover:text-gray-800 transition duration-300 flex items-center gap-3">
-                    <FontAwesomeIcon icon={faDrumstickBite} /> {/* Ícono de Carnes */}
-                    <p className="text-[15px]">El Completo</p>
-                </div>
-                <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
-                    <FontAwesomeIcon icon={faFish} /> {/* Ícono de Pescados */}
-                <p className="text-[15px]">Del mar</p>
-                </div>
-                <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
-                    <FontAwesomeIcon icon={faCoffee} /> {/* Ícono de Bebidas */}
-                    <p className="text-[15px]">Bebidas</p>
-                </div>
-                <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
-                    <FontAwesomeIcon icon={faHamburger} /> {/* Ícono de Comida Rápida */}
-                    <p className="text-[15px]">Comida Rapidar</p>
-                </div>
-                <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
-                    <FontAwesomeIcon icon={faIceCream} /> {/* Ícono de Crepes */}
-                    <p className="text-[15px]">Entradas</p>
-                </div>
-                <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
-                    <FontAwesomeIcon icon={''} /> {/* Ícono de Pastas */}
-                    <p className="text-[15px]">Mixtos</p>
-                </div>
-                <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
-                    <FontAwesomeIcon icon={faLayerGroup} /> {/* Ícono de Lasagnas */}
-                    <p className="text-[15px]">Del mar</p>
-                </div>
-                <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
-                    <FontAwesomeIcon icon={faBacon} /> {/* Ícono de Entradas */}
-                    <p className="text-[15px]"></p>
-                </div>
-            </nav>
-        </div>
+            <div className="w-[64.2%] m-auto h-[9%] flex items-center justify-center relative top-[15%] font-normal">
+  {/* Menú de Iconos */}
+  <nav className="hidden md:flex justify-center space-x-8 p-4 w-full fixed top-[15%] z-10 bg-yellow-400 2xl:mb-0 text-2xl 2xl:text-4xl">
+    <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
+      <FontAwesomeIcon icon={faDrumstickBite} /> {/* Ícono de Carnes */}
+      <p className="text-[15px]">El Completo</p>
+    </div>
+    <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
+      <FontAwesomeIcon icon={faFish} /> {/* Ícono de Pescados */}
+      <p className="text-[15px]">Del mar</p>
+    </div>
+    <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
+      <FontAwesomeIcon icon={faCoffee} /> {/* Ícono de Bebidas */}
+      <p className="text-[15px]">Bebidas</p>
+    </div>
+    <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
+      <FontAwesomeIcon icon={faHamburger} /> {/* Ícono de Comida Rápida */}
+      <p className="text-[15px]">Comida Rápida</p>
+    </div>
+    <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
+      <FontAwesomeIcon icon={faIceCream} /> {/* Ícono de Entradas */}
+      <p className="text-[15px]">Entradas</p>
+    </div>
+    <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
+      <FontAwesomeIcon icon={''} /> {/* Ícono de Pastas */}
+      <p className="text-[15px]">Mixtos</p>
+    </div>
+    <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
+      <FontAwesomeIcon icon={faLayerGroup} /> {/* Ícono de Lasagnas */}
+      <p className="text-[15px]">Del mar</p>
+    </div>
+    <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
+      <FontAwesomeIcon icon={faBacon} /> {/* Ícono de Entradas */}
+      <p className="text-[15px]"></p>
+    </div>
+  </nav>
+</div>
+
 
         {/* Contenido principal */}
         <div className="relative flex flex-col items-center justify-center w-full h-[60%] pt-20">
@@ -97,7 +98,7 @@ const RestaurantLandingPage = () => {
                 </div>
             </div>
 
-            <div className="w-[12%] 2xl:w-[13%] h-[100%] flex flex-col items-center ">
+            <div className="w-[29%] lg:w-[13%] h-[140%]  lg:h-[100%] flex flex-col items-center ">
                 {/* Imagen del Título rotada con efecto de aparición */}
                 <img className="w-[100%]  -rotate-90 fade-in-image" src="/img/titulo-removebg-preview.png" alt="" />
             </div>
@@ -107,7 +108,7 @@ const RestaurantLandingPage = () => {
                 <img
                     src="/img/Captura_de_pantalla_2024-10-15_151047-removebg-preview.png"
                     alt="Picada de la Casa"
-                    className="object-contain h-auto w-[80%] border-none relative top-[20%] fade-in-image"
+                    className="object-contain h-[100%] lg:h-auto lg:w-[80%] w-[100%] border-none  relative top-[20%] fade-in-image"
                 />
             </div>
 

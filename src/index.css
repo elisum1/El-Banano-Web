@@ -104,4 +104,10 @@
   100% { opacity: 1; }
 }
 
+.anton-regular {
+  font-family: "Anton", sans-serif;
+  font-weight: 700;
+  font-style: bold;
+}
+
 

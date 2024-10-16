@@ -15,6 +15,79 @@ const Inicio = () => {
 
       </div>
 
+      <section className="h-auto w-full flex flex-col items-center">
+  <div className="h-auto w-full lg:w-[70%] m-auto grid grid-cols-1 lg:grid-cols-2 gap-8 p-4">
+    {/* Primer Bloque (Imagen 1) */}
+    <div className="w-full h-full relative">
+      <div className="w-full h-[300px] lg:h-[500px] mt-2 transition-transform transform hover:scale-105 duration-300 bg-yellow-400">
+        <img
+          src="/img/Captura_de_pantalla_2024-10-16_001350-removebg-preview.png"
+          className="h-full w-full object-cover opacity-105"
+          alt="Carnes Deliciosas"
+        />
+        {/* Título, Descripción y Botón */}
+        <div className="absolute top-4 left-4 text-white text-left">
+          <h2 className="text-3xl lg:text-5xl 2xl:text-7xl anton-regular">CARNES DELICIOSAS</h2>
+          <p className="text-sm lg:text-lg mt-2 raleway">DISFRUTA NUESTRAS MEJORES CARNES A LA PARRILLA</p>
+          <button className="bg-blue-800 text-white px-3 py-2 mt-4 rounded-lg hover:bg-blue-600 transition">Ordenar</button>
+        </div>
+      </div>
+    </div>
+
+    {/* Segundo Bloque (Imágenes 2 y 3) */}
+    <div className="w-full h-full ">
+      <div className="flex w-full h-[150px] lg:h-[250px] justify-center items-center gap-3">
+        {/* Imagen 2 */}
+        <div className="w-[50%] h-full relative transition-transform transform hover:scale-105 duration-300 bg-blue-800">
+          <img
+            src="/img/Pa_no_quedar_picado__pide_una_picada_de_la_casa____con_quien_la_compartirías-removebg-preview.png"
+            className="h-full w-full object-cover opacity-75"
+            alt="Picada de la Casa"
+          />
+          {/* Título, Descripción y Botón */}
+          <div className="absolute top-4 left-4 text-white text-left">
+            <h2 className="text-lg lg:text-3xl 2xl:text-5xl anton-regular">PICADAS</h2>
+            <p className="text-xs lg:text-sm mt-2 raleway">PERFECTA PARA COMPARTIR EN COMPAÑIA</p>
+            <button className="bg-blue-800 text-white px-2 py-1 lg:px-3 lg:py-2 mt-2 rounded-lg hover:bg-blue-600 transition">Ordenar</button>
+          </div>
+        </div>
+
+        {/* Imagen 3 */}
+        <div className="w-[50%] h-full relative transition-transform transform hover:scale-105 duration-300 bg-red-400">
+          <img
+            src="/img/platano-2-removebg-preview.png"
+            className="h-full w-full object-cover opacity-75"
+            alt="Plato Especial"
+          />
+          {/* Título, Descripción y Botón */}
+          <div className="absolute top-4 left-4 text-white text-left">
+            <h2 className="text-lg lg:text-3xl anton-regular">PLATO ESPECIAL</h2>
+            <p className="text-xs lg:text-sm mt-2 raleway">UN SABOR UNICO</p>
+            <button className="bg-blue-800 text-white px-2 py-1 lg:px-3 lg:py-2 mt-2 rounded-lg hover:bg-blue-600 transition">Ordenar</button>
+          </div>
+        </div>
+      </div>
+
+      {/* Cuarto bloque (Imagen adicional) */}
+      <div className="w-full h-[150px] lg:h-[250px] mt-2 transition-transform transform hover:scale-105 duration-300 relative bg-orange-500 flex justify-end">
+        <img
+          src="/img/Nuevo Paisa.png"
+          className="h-[80%] w-[30%] lg:w-[20%] object-cover opacity-75"
+          alt="Otra Opción"
+        />
+        {/* Título, Descripción y Botón */}
+        <div className="absolute top-4 left-4 text-white text-left">
+          <h2 className="text-lg lg:text-5xl anton-regular">ANTIOQUEÑOS</h2>
+          <p className="text-sm mt-2 raleway">UNA DELICIOSA OPCION ADICIONAL</p>
+          <button className="bg-blue-800 text-white px-2 py-1 lg:px-3 lg:py-2 mt-2 rounded-lg hover:bg-blue-600 transition">Ordenar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 
       <section id='menu' className="max-w-full mx-auto py-20 px-[5%] bg-gray-100 min-h-screen">
   <div className="flex justify-between items-center mb-6">
@@ -160,10 +233,6 @@ const Inicio = () => {
         <p className="font-bold mt-2">$31.900</p>
       </div>
     </div>
-   
-
-    {/* Duplicated grid item for demonstration */}
-    {/* Puedes añadir más items si necesitas */}
   </div>
 </section>
 

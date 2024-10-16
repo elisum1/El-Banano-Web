@@ -39,9 +39,9 @@ const Header = () => {
           <img
             src="/img/logo_el_banano-removebg-preview.png"
             alt="Pizzaro Logo"
-            className="h-[12vh] w-auto"
+            className="h-[10vh] 2xl:h-[12vh] w-auto"
           />
-          <img src="/img/El_banaon-removebg-preview.png" alt="" className='w-56' />
+          <img src="/img/El_banaon-removebg-preview.png" alt="" className='w-48 2xl:w-56' />
 
           <nav className="hidden md:flex text-white space-x-8 text-md 2xl:text-md">
             <a href="/" className="flex flex-col items-center hover:text-gray-800">
@@ -69,7 +69,7 @@ const Header = () => {
             </div>
             <button className="bg-green-500 px-4 py-2 rounded-full text-white flex items-center space-x-2 hover:bg-green-600">
               <i className="fa fa-shopping-cart"></i>
-              <span>Your Cart is Empty</span>
+              <span>Tu carrito esta vacio</span>
             </button>
           </div>
 
@@ -85,10 +85,21 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <nav className="md:hidden bg-red-600 text-white text-lg">
-          <div className="flex flex-col items-center space-y-4 py-6">
-            <a href="/pizza" className="hover:text-yellow-400">Pizza</a>
-            <a href="/burgers" className="hover:text-yellow-400">Burgers</a>
+        <nav className="md:hidden bg-yellow-300 text-white text-lg ">
+          <div className="flex flex-col items-center space-y-4 py-52 ">
+          <a href="/" className="flex flex-col items-center hover:text-gray-800">
+              <span>Inicio</span>
+            </a>
+            <a href="/menu" className="flex flex-col items-center hover:text-gray-800">
+              <span>Menu</span> 
+            </a>
+            <a href="/nosotros" className="flex flex-col items-center hover:text-gray-800">
+              <span>Sobre nosotros</span> 
+            </a>
+            <a href="/" className="flex flex-col items-center hover:text-gray-800">
+              <span>Contacto</span> 
+            </a>
+            {/* Add other category links similarly */}
             {/* Add other mobile links */}
           </div>
         </nav>
