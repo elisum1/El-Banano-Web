@@ -27,7 +27,7 @@ const Header = () => {
   return (
     <div>
       <header
-        className={`bg-yellow-400  flex w-full h-[15vh] 2xl:h-[15vh] items-center justify-around 2xl:justify-between px-[3%] 2xl:px-[18%] fixed z-50 transition-all duration-500 transform   ${
+        className={`bg-yellow-400  flex w-full h-[15vh] 2xl:h-[15vh] items-center justify-around 2xl:justify-between px-[8%] 2xl:px-[18%] fixed z-50 transition-all duration-500 transform   ${
           isScrolled ? 'top-0' : 'top-18'
         }`}
       >
