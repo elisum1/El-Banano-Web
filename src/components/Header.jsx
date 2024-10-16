@@ -50,10 +50,10 @@ const Header = () => {
             <a href="/menu" className="flex flex-col items-center hover:text-gray-800">
               <span>Menu</span> 
             </a>
-            <a href="/menu" className="flex flex-col items-center hover:text-gray-800">
+            <a href="/nosotros" className="flex flex-col items-center hover:text-gray-800">
               <span>Sobre nosotros</span> 
             </a>
-            <a href="/menu" className="flex flex-col items-center hover:text-gray-800">
+            <a href="/" className="flex flex-col items-center hover:text-gray-800">
               <span>Contacto</span> 
             </a>
             {/* Add other category links similarly */}
