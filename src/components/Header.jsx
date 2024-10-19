@@ -46,7 +46,7 @@ const Header = () => {
         }`}
       >
         {/* Logo Section */}
-        <div className='sm:w-full flex justify-between border-b-[0.5px] border-yellow-200/70 sm:p-2 p-6'>
+        <div className='w-full flex justify-between border-b-[0.5px] border-yellow-200/70 sm:p-2 p-6'>
           <div className='hidden sm:flex items-center space-x-4 transition-all'>
             <img
               src="/img/logo_el_banano-removebg-preview.png"
@@ -69,10 +69,13 @@ const Header = () => {
               </a>
             </nav>
           </div>
-          <div className='w-[100%]'>
-            <p className='font-gotham azul-text font-extrabold text-3xl sm:hidden'>
+          <div className='flex justify-around w-full sm:hidden'>
+            <p className='font-gotham azul-text font-extrabold text-3xl  w-[50%] '>
               DESDE 1986            
             </p>
+        <button className="2xl:hidden text-white w-2" onClick={toggleMenu}>
+          <i className={`fa ${isOpen ? 'fa-times' : 'fa-bars'} fa-2x`} aria-hidden="true"></i>
+        </button>
           </div>
 
           {/* Search Bar and Contact Info */}
@@ -91,9 +94,6 @@ const Header = () => {
         </div>
 
         {/* Mobile Menu Toggle Button */}
-        <button className="xl:hidden text-white w-2" onClick={toggleMenu}>
-          <i className={`fa ${isOpen ? 'fa-times' : 'fa-bars'} fa-2x`} aria-hidden="true"></i>
-        </button>
       </header>
 
       <div className="w-[64.2%] m-auto h-[9%] flex items-center justify-center relative top-[15%]">

@@ -17,9 +17,9 @@ const RestaurantLandingPage = () => {
 
         <div className="sm:h-[100vh] h-[60vh] w-full amarillo m-auto">
 
-<div className="w-[29%] lg:w-[50%] sm:h-[100%] h-[50%]  lg:h-[58.5%] sm:flex flex-col items-center justify-center m-auto  hidden">
+<div className="w-[70%] lg:w-[50%] sm:h-[60%] h-[50%]  2xl:h-[58.5%] lg:h-[56.5%] sm:flex flex-col items-center justify-center m-auto  hidden">
                 {/* Imagen del Título rotada con efecto de aparición */}
-                <p className="w-[100%] text-3xl sm:text-5xl 2xl:text-7xl font-bold font-gotham azul-text sm:text-center  "> EL ORIGINAL DESDE 1986</p>
+                <p className="w-[100%] text-3xl sm:text-4xl 2xl:text-7xl font-bold font-gotham azul-text sm:text-center  "> EL ORIGINAL DESDE 1986</p>
             </div>
             <div className="w-full h-[100%] sm:hidden  bottom-32 flex justify-center items-center"> 
                 <img src="/img/logo_el_banano-removebg-preview.png" className="w-[400px] h-[400px]" alt="" />
