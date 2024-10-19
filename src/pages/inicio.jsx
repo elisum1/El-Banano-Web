@@ -14,72 +14,71 @@ const Inicio = () => {
       <RestaurantLandingPage />
 
       </div>
-
-      <section className=" h-[60vh] 2xl:h-[80vh] w-full flex flex-col items-center">
-  <div className="h-auto w-full lg:w-[70%] m-auto grid grid-cols-1 lg:grid-cols-2 gap-8 p-4">
+      <section className="min-h-[60vh] 2xl:min-h-[80vh] w-full flex flex-col items-center">
+  <div className="h-auto w-full lg:w-[80%] xl:w-[70%] m-auto grid grid-cols-1 lg:grid-cols-2 gap-6 p-4">
     {/* Primer Bloque (Imagen 1) */}
     <div className="w-full h-full relative">
-      <div className="w-full h-[300px] lg:h-[500px] mt-2 transition-transform transform hover:scale-105 duration-300 amarillo rounded">
+      <div className="w-full h-[200px] sm:h-[300px] lg:h-[400px] xl:h-[500px] mt-2 transition-all  hover:scale-105 duration-300 amarillo rounded">
         <img
           src="/img/Captura_de_pantalla_2024-10-16_001350-removebg-preview.png"
-          className="h-full w-full object-cover opacity-105"
+          className="h-full w-full object-cover opacity-105 rounded"
           alt="Carnes Deliciosas"
         />
         {/* Título, Descripción y Botón */}
         <div className="absolute top-4 left-4 text-white text-left rounded">
-          <h2 className="text-3xl lg:text-5xl 2xl:text-7xl font-extrabold font-gotham">CARNES DELICIOSAS</h2>
-          <p className="text-sm lg:text-lg mt-2 font-gotham font-semibold">DISFRUTA NUESTRAS MEJORES CARNES A LA PARRILLA</p>
-          <button className="azul text-white px-3 py-2 mt-4 rounded-lg hover:bg-blue-600 transition">Ordenar</button>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold font-gotham">CARNES DELICIOSAS</h2>
+          <p className="text-xs sm:text-sm lg:text-lg mt-2 font-gotham font-semibold">DISFRUTA NUESTRAS MEJORES CARNES A LA PARRILLA</p>
+          <button className="azul text-white px-3 py-2 mt-3 rounded-lg hover:bg-blue-600 transition">Ordenar</button>
         </div>
       </div>
     </div>
 
     {/* Segundo Bloque (Imágenes 2 y 3) */}
-    <div className="w-full h-full ">
-      <div className="flex w-full h-[150px] lg:h-[250px] justify-center items-center gap-3">
+    <div className="w-full h-full flex flex-col gap-3">
+      <div className="flex w-full h-[120px] sm:h-[150px] lg:h-[200px] xl:h-[250px] justify-center items-center gap-3">
         {/* Imagen 2 */}
-        <div className="w-[50%] h-full relative transition-transform transform hover:scale-105 duration-300 azul rounded">
+        <div className="w-[50%] h-full relative transition-all hover:scale-105 duration-300 azul rounded">
           <img
             src="/img/Pa_no_quedar_picado__pide_una_picada_de_la_casa____con_quien_la_compartirías-removebg-preview.png"
-            className="h-full w-full object-cover opacity-75"
+            className="h-full w-full object-cover opacity-75 rounded"
             alt="Picada de la Casa"
           />
           {/* Título, Descripción y Botón */}
           <div className="absolute top-4 left-4 text-white text-left">
-            <h2 className="text-lg lg:text-3xl 2xl:text-5xl font-extrabold font-gotham">PICADAS</h2>
-            <p className="text-xs lg:text-sm mt-2 font-gotham font-semibold">PERFECTA PARA COMPARTIR EN COMPAÑIA</p>
-            <button className="azul text-white px-2 py-1 lg:px-3 lg:py-2 mt-2 rounded-lg hover:bg-blue-600 transition">Ordenar</button>
+            <h2 className="text-sm sm:text-lg lg:text-2xl xl:text-3xl font-extrabold font-gotham">PICADAS</h2>
+            <p className="text-xs sm:text-sm mt-1 lg:mt-2 font-gotham font-semibold">PERFECTA PARA COMPARTIR EN COMPAÑIA</p>
+            <button className="azul text-white px-2 py-1 lg:px-3 lg:py-2 mt-1 lg:mt-2 rounded-lg hover:bg-blue-600 transition">Ordenar</button>
           </div>
         </div>
 
         {/* Imagen 3 */}
-        <div className="w-[50%] h-full relative rounded transition-transform transform hover:scale-105 duration-300 bg-red-400 ">
+        <div className="w-[50%] h-full relative rounded transition-transform transform hover:scale-105 duration-300 bg-red-400">
           <img
             src="/img/platano-2-removebg-preview.png"
-            className="h-full w-full object-cover opacity-75"
+            className="h-full w-full object-cover opacity-75 rounded"
             alt="Plato Especial"
           />
           {/* Título, Descripción y Botón */}
           <div className="absolute top-4 left-4 text-white text-left">
-            <h2 className="text-lg lg:text-5xl font-extrabold font-gotham">PLATO ESPECIAL</h2>
-            <p className="text-xs lg:text-sm mt-2 font-gotham font-semibold">UN SABOR UNICO</p>
-            <button className="azul text-white px-2 py-1 lg:px-3 lg:py-2 mt-2 rounded-lg hover:bg-blue-600 transition">Ordenar</button>
+            <h2 className="text-sm sm:text-lg lg:text-2xl xl:text-3xl font-extrabold font-gotham">PLATO ESPECIAL</h2>
+            <p className="text-xs sm:text-sm mt-1 lg:mt-2 font-gotham font-semibold">UN SABOR UNICO</p>
+            <button className="azul text-white px-2 py-1 lg:px-3 lg:py-2 mt-1 lg:mt-2 rounded-lg hover:bg-blue-600 transition">Ordenar</button>
           </div>
         </div>
       </div>
 
       {/* Cuarto bloque (Imagen adicional) */}
-      <div className="w-full h-[150px] lg:h-[250px] mt-2 transition-transform transform hover:scale-105 duration-300 relative rojo flex justify-end">
+      <div className="w-full h-[120px] sm:h-[150px] lg:h-[200px] xl:h-[250px] mt-2 transition-transform transform hover:scale-105 duration-300 relative rojo flex justify-end">
         <img
           src="/img/Nuevo Paisa.png"
-          className="h-[80%] w-[30%] lg:w-[20%] object-cover opacity-75"
+          className="h-[70%] sm:h-[80%] w-[30%] lg:w-[20%] object-cover opacity-75 rounded"
           alt="Otra Opción"
         />
         {/* Título, Descripción y Botón */}
         <div className="absolute top-4 left-4 text-white text-left">
-          <h2 className="text-lg lg:text-5xl font-extrabold font-gotham">ANTIOQUEÑOS</h2>
-          <p className="text-sm mt-2 font-gotham font-semibold">UNA DELICIOSA OPCION ADICIONAL</p>
-          <button className="azul text-white px-2 py-1 lg:px-3 lg:py-2 mt-2 rounded-lg hover:bg-blue-600 transition">Ordenar</button>
+          <h2 className="text-sm sm:text-lg lg:text-2xl xl:text-3xl font-extrabold font-gotham">ANTIOQUEÑOS</h2>
+          <p className="text-xs sm:text-sm mt-1 lg:mt-2 font-gotham font-semibold">UNA DELICIOSA OPCION ADICIONAL</p>
+          <button className="azul text-white px-2 py-1 lg:px-3 lg:py-2 mt-1 lg:mt-2 rounded-lg hover:bg-blue-600 transition">Ordenar</button>
         </div>
       </div>
     </div>
@@ -275,60 +274,61 @@ const Inicio = () => {
 
 
 
-      <div className=" py-16 flex justify-center mt-[10%]">
+      <div className=" py-16 flex justify-center mt-[5%]">
 
-  {/* Contenedor de las promociones */}
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12 max-w-6xl w-full">
-    {/* Promociones */}
-    <div className="flex text-lef  h-[500px] justify-between w-full shadow-xl rounded-3xl">
-    <div className="flex flex-col w-full h-full text-center font-gotham rounded-3xl  ">
-    <div className=" mb-4 azul-text font-bold w-[80%] h-[100%] ml-2 mt-14 gap-8 flex flex-col rounded-3xl">
+ {/* Contenedor de las promociones */}
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12 max-w-6xl w-full">
+
+{/* Promoción 1 */}
+<div className="flex flex-col md:flex-row text-left h-auto md:h-[500px] justify-between w-full shadow-xl rounded-3xl">
+  {/* Video */}
+  <video
+    src="/img/¿Escuchaste esto Si, es el sonido de la gloria! digo, de un churrasco en la parrilla!.mp4"
+    className="w-full md:w-1/2 h-[300px] md:h-full object-cover rounded-t-3xl md:rounded-l-3xl md:rounded-r-none"
+    autoPlay
+    loop
+    muted
+  />
+  
+  {/* Texto y botón */}
+  <div className="flex flex-col w-full md:w-1/2 h-full text-center font-gotham rounded-b-3xl md:rounded-b-none md:rounded-r-3xl bg-white p-6">
+    <div className="mb-4 azul-text font-bold w-full h-full gap-8 flex flex-col justify-center items-center">
       <h3 className="text-3xl">
         SMOKED BRISKET IS BACK FOR A LIMITED TIME
       </h3>
       <p className="font-gotham font-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita voluptatem illo autem consequat.</p>
-
-      </div>
-      <button className="rojo text-white py-2 px-4 hover:bg-brown-700 transition w-full">
-        ORDER NOW
-      </button>
-
     </div>
-      <video
-          src="/img/¿Escuchaste esto Si, es el sonido de la gloria! digo, de un churrasco en la parrilla!.mp4"
-          className=" w-full h-full object-cover rounded-r-3xl"
-          autoPlay
-          loop
-          muted
-        />
-    </div>
+    <button className="rojo text-white py-2 px-4 hover:bg-brown-700 transition w-full">
+      ORDER NOW
+    </button>
+  </div>
+</div>
 
-    {/* Domicilios */}
-    <div className="flex   h-[500px] justify-between w-full rounded-r-3xl shadow-xl">
-    <div className="flex flex-col w-full h-full text-center font-gotham  rounded-r-3xl">
-      <div className=" mb-4 text-blue-900 font-bold w-[80%] h-[100%] ml-2 mt-14 gap-8 flex flex-col">
+{/* Promoción 2 */}
+<div className="flex flex-col md:flex-row text-left h-auto md:h-[500px] justify-between w-full shadow-xl rounded-3xl">
+  {/* Video */}
+  <video
+    src="/img/Que esperas para visitar nuestra sede en el Rodadero y recordar todos estos lindos momentos.mp4"
+    className="w-full md:w-1/2 h-[300px] md:h-full object-cover rounded-t-3xl md:rounded-l-3xl md:rounded-r-none"
+    autoPlay
+    loop
+    muted
+  />
+
+  {/* Texto y botón */}
+  <div className="flex flex-col w-full md:w-1/2 h-full text-center font-gotham rounded-b-3xl md:rounded-b-none md:rounded-r-3xl bg-white p-6">
+    <div className="mb-4 text-blue-900 font-bold w-full h-full gap-8 flex flex-col justify-center items-center">
       <h3 className="text-3xl">
         SMOKED BRISKET IS BACK FOR A LIMITED TIME
       </h3>
       <p className="font-gotham font-thin">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita voluptatem illo autem consequat.</p>
-
-      </div>
-      
-
-      
-      <button className="rojo text-white py-2 px-4 hover:bg-brown-700 transition w-full">
-        ORDER NOW
-      </button>
-
     </div>
-      <video
-          src="/img/Que esperas para visitar nuestra sede en el Rodadero y recordar todos estos lindos momentos.mp4"
-          className=" w-full h-full object-cover rounded-r-3xl"
-          autoPlay
-          loop
-          muted
-        />
-    </div>
+    <button className="rojo text-white py-2 px-4 hover:bg-brown-700 transition w-full">
+      ORDER NOW
+    </button>
+  </div>
+</div>
+
 
     {/* Sedes y Horarios */}
   </div>

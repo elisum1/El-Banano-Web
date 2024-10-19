@@ -91,7 +91,7 @@ const Header = () => {
         </div>
 
         {/* Mobile Menu Toggle Button */}
-        <button className="xl:hidden text-white" onClick={toggleMenu}>
+        <button className="xl:hidden text-white w-20" onClick={toggleMenu}>
           <i className={`fa ${isOpen ? 'fa-times' : 'fa-bars'} fa-2x`} aria-hidden="true"></i>
         </button>
       </header>
