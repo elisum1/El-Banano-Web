@@ -70,7 +70,7 @@ const Header = () => {
             </nav>
           </div>
           <div>
-            <p className='font-gotham azul-text font-extrabold text-4xl sm:hidden'>
+            <p className='font-gotham azul-text font-extrabold text-3xl sm:hidden'>
               DESDE 1986            
             </p>
           </div>
@@ -91,7 +91,7 @@ const Header = () => {
         </div>
 
         {/* Mobile Menu Toggle Button */}
-        <button className="xl:hidden text-white w-28" onClick={toggleMenu}>
+        <button className="xl:hidden text-white w-2" onClick={toggleMenu}>
           <i className={`fa ${isOpen ? 'fa-times' : 'fa-bars'} fa-2x`} aria-hidden="true"></i>
         </button>
       </header>
