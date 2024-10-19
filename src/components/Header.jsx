@@ -46,7 +46,7 @@ const Header = () => {
         }`}
       >
         {/* Logo Section */}
-        <div className='w-full flex justify-between border-b-[0.5px] border-yellow-200/70 sm:p-2 p-6'>
+        <div className='sm:w-full flex justify-between border-b-[0.5px] border-yellow-200/70 sm:p-2 p-6'>
           <div className='hidden sm:flex items-center space-x-4 transition-all'>
             <img
               src="/img/logo_el_banano-removebg-preview.png"
@@ -69,7 +69,7 @@ const Header = () => {
               </a>
             </nav>
           </div>
-          <div>
+          <div className='w-[100%]'>
             <p className='font-gotham azul-text font-extrabold text-3xl sm:hidden'>
               DESDE 1986            
             </p>
