@@ -19,21 +19,6 @@
 }
 
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-
 .animate-fadeIn {
   animation: fadeIn 2s forwards;
 }
@@ -42,13 +27,6 @@
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
-
-.anton-regular {
-  font-family: "Anton", sans-serif;
-  font-weight: 700;
-  font-style: bold;
-}
-
 
 
 @font-face {
