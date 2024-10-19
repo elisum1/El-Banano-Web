@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-    faFish, 
-    faCoffee, 
-    faHamburger, 
-    faIceCream, 
-    faDrumstickBite,
-    faLayerGroup, 
-    faBacon,
-    faHome,
-    faUtensils,
-    faAddressBook,
-    faInfoCircle,
-    faShoppingCart, // Corrige aquí
-} from '@fortawesome/free-solid-svg-icons';
+// import { 
+//     faFish, 
+//     faCoffee, 
+//     faHamburger, 
+//     faIceCream, 
+//     faDrumstickBite,
+//     faLayerGroup, 
+//     faBacon,
+//     faHome,
+//     faUtensils,
+//     faAddressBook,
+//     faInfoCircle,
+//     faShoppingCart, // Corrige aquí
+// } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -100,31 +100,31 @@ const Header = () => {
         {/* Menú de Iconos */}
         <nav className="hidden md:flex justify-center space-x-8 p-4 w-full fixed top-[15%] z-10 2xl:mb-0 text-2xl 2xl:text-4xl amarillo">
           <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
-            <FontAwesomeIcon icon={faDrumstickBite} />
+            {/* <FontAwesomeIcon icon={faDrumstickBite} /> */}
             <p className="text-[15px]">El Completo</p>
           </div>
           <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
-            <FontAwesomeIcon icon={faFish} />
-            <p className="text-[15px]">Del mar</p>
+            {/* <FontAwesomeIcon icon={faFish} /> */}
+            {/* <p className="text-[15px]">Del mar</p> */}
           </div>
           <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
-            <FontAwesomeIcon icon={faCoffee} />
-            <p className="text-[15px]">Bebidas</p>
+            {/* <FontAwesomeIcon icon={faCoffee} /> */}
+            {/* <p className="text-[15px]">Bebidas</p> */}
           </div>
           <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
-            <FontAwesomeIcon icon={faHamburger} />
+            {/* <FontAwesomeIcon icon={faHamburger} /> */}
             <p className="text-[15px]">Comida Rápida</p>
           </div>
           <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
-            <FontAwesomeIcon icon={faIceCream} />
+            {/* <FontAwesomeIcon icon={faIceCream} /> */}
             <p className="text-[15px]">Entradas</p>
           </div>
           <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
-            <FontAwesomeIcon icon={faLayerGroup} />
+            {/* <FontAwesomeIcon icon={faLayerGroup} /> */}
             <p className="text-[15px]">Del mar</p>
           </div>
           <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
-            <FontAwesomeIcon icon={faBacon} />
+            {/* <FontAwesomeIcon icon={faBacon} /> */}
             <p className="text-[15px]"></p>
           </div>
         </nav>
@@ -138,25 +138,25 @@ const Header = () => {
             className="azul p-3 rounded-full flex justify-center items-center text-white cursor-pointer hover:bg-blue-700 transition duration-300"
             onClick={() => scrollToSection('home')}
           >
-            <FontAwesomeIcon icon={faHome} className="w-6 h-6" />
+            {/* <FontAwesomeIcon icon={faHome} className="w-6 h-6" /> */}
           </div>
           <div 
             className="azul p-3 rounded-full flex justify-center items-center text-white cursor-pointer hover:bg-blue-700 transition duration-300"
             onClick={() => scrollToSection('menu')}
           >
-            <FontAwesomeIcon icon={faUtensils} className="w-6 h-6" />
+            {/* <FontAwesomeIcon icon={faUtensils} className="w-6 h-6" /> */}
           </div>
           <div 
             className="azul p-3 rounded-full flex justify-center items-center text-white cursor-pointer hover:bg-blue-700 transition duration-300"
             onClick={() => scrollToSection('contact')}
           >
-            <FontAwesomeIcon icon={faAddressBook} className="w-6 h-6" />
+            {/* <FontAwesomeIcon icon={faAddressBook} className="w-6 h-6" /> */}
           </div>
           <div 
             className="azul p-3 rounded-full flex justify-center items-center text-white cursor-pointer hover:bg-blue-700 transition duration-300"
             onClick={() => scrollToSection('about')}
           >
-            <FontAwesomeIcon icon={faInfoCircle} className="w-6 h-6" />
+            {/* <FontAwesomeIcon icon={faInfoCircle} className="w-6 h-6" /> */}
           </div>
         </div>
       </div>
