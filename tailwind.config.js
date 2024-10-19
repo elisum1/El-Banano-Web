@@ -8,7 +8,8 @@ export default {
     extend: {
 
       fontFamily: {
-        sans: ['Open Sans', 'sans-serif'], // Establece Open Sans como la fuente sans por defecto
+        gotham: ['Gotham', 'Gotham-Medium.eot'],
+        // sans: ['Open Sans', 'sans-serif'], // Establece Open Sans como la fuente sans por defecto
       },
       fontWeight: {
         thin: 100,

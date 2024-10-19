@@ -40,7 +40,7 @@ const Login = () => {
       {/* Contenedor principal del formulario */}
       <div className="max-w-md w-full flex flex-col justify-center items-center bg-white p-8 rounded-xl shadow-2xl">
         <img src="/img/logo_el_banano-removebg-preview.png" alt="Logo" className="w-[50%] h-[40%] mb-6" />
-        <h1 className="text-3xl font-bold text-gray-800 mb-8">Iniciar Sesión</h1>
+        <h1 className="text-3xl font-bold font-gotham text-gray-800 mb-8">Iniciar Sesión</h1>
 
         {/* Formulario de login */}
         <form className="w-full mb-6">
