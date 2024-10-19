@@ -83,7 +83,7 @@ const Header = () => {
                 <span className="text-white text-2xl 2xl:text-3xl font-extrabold">54 548 779 654</span>
               </div>
               <button className="rojo px-4 py-2 rounded-full text-white flex items-center space-x-2 hover:bg-red-500">
-                <FontAwesomeIcon icon={faShoppingCart} /> Usar el icono de carrito
+                <FontAwesomeIcon icon={faShoppingCart} /> 
                 <span>Tu carrito está vacío</span>
               </button>
             </div>
