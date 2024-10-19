@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Header from '../components/Header';
 import Products from '../components/Products';
@@ -6,6 +7,7 @@ import Products from '../components/Products';
 
 const MenuPage = () => {
   return (
+
     <div className=" min-h-screen font-roboto bg-slate-100 ">
       {/* Header */}
       {<Header />}

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import 'font-awesome/css/font-awesome.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
     faFish, 
