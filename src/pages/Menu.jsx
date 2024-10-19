@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import Products from '../components/Products';
-import Menu from '../components/Menu';
+
 
 
 const MenuPage = () => {
@@ -10,8 +10,8 @@ const MenuPage = () => {
       {/* Header */}
       {<Header />}
       {/* Menu */}
-      {<Menu />}
-      <div className=" flex  justify-center items-center w-full h-full ">
+   
+      <div className=" flex  justify-center items-center w-full h-full mt-48 ">
         
         
 
