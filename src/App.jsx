@@ -10,7 +10,7 @@ import Loading from './components/Loading';  // Importa el componente Loading
 // Crear un componente separado que use useLocation para manejar el loading
 function MainContent() {
   const [loading, setLoading] = useState(false);
-  const location = useLocation();  // useLocation ahora está en el contexto correcto
+  const location = useLocation();
 
   useEffect(() => {
     setLoading(true);
@@ -20,17 +20,19 @@ function MainContent() {
 
   return (
     <div>
-      {loading && <Loading />}  {/* Muestra el componente Loading cuando loading es true */}
+      {loading && <Loading />}
       <Routes>
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Inicio />} />
+        <Route path="*" element={<NotFound />} /> {/* Agregar una ruta de no encontrado */}
       </Routes>
     </div>
   );
 }
+
 
 function App() {
   return (
