@@ -3,51 +3,6 @@
 @tailwind utilities;
 
 
-
-
-.playfair {
-  font-family: "Playfair Display", serif;
-  font-optical-sizing: auto;
-  font-weight: 900;
-  font-style: normal;
-}
-
-.playfair2 {
-  font-family: "Playfair Display", serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: semibold;
-}
-
-
-.Gotham {
-  font-family: "Gotham", sans-serif,;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-style:initial;
-}
-.Gotham2 {
-  font-family: "Gotham", ;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: round;
-}
-
-
-.roboto {
-  font-family: "Roboto Condensed", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.roboto2 {
-  font-family: "Roboto Condensed", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-}
-
 @keyframes slideDown {
   0% {
     transform: translateY(-100%);
@@ -78,29 +33,6 @@
   to { width: 100% }
 }
 
-.animate-fade-in-down {
-  animation: fadeIn 1s ease-in-out forwards, typing 2s steps(30, end);
-  white-space: nowrap; /* Evita que el texto salte a otra línea */
-  overflow: hidden;
-  border-right: 2px solid; /* Agrega el cursor de escritura */
-  font-size: 2rem;
-}
-
-
-.animate-smoke {
-  background-image: url('/img/smoke-effect.png');
-  background-size: cover;
-  animation: moveSmoke 10s infinite linear;
-}
-
-@keyframes moveSmoke {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
-}
 
 .animate-fadeIn {
   animation: fadeIn 2s forwards;

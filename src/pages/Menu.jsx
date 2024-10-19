@@ -8,7 +8,7 @@ import Products from '../components/Products';
 const MenuPage = () => {
   return (
 
-    <div className=" min-h-screen font-roboto bg-slate-100 ">
+    <div className=" min-h-screen  bg-slate-100 ">
       {/* Header */}
       {<Header />}
       {/* Menu */}

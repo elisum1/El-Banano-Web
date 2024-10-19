@@ -8,7 +8,7 @@ const Inicio = () => {
 
   return (
 
-    <section id='home' className="min-h-screen raleway">
+    <section id='home' className="min-h-screen ">
       <Header />
       <div>
       <RestaurantLandingPage />
