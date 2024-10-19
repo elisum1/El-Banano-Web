@@ -27,7 +27,7 @@ function MainContent() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Inicio />} />
-        <Route path="*" element={<NotFound />} /> {/* Agregar una ruta de no encontrado */}
+        {/* <Route path="*" element={<NotFound />} /> Agregar una ruta de no encontrado */}
       </Routes>
     </div>
   );
