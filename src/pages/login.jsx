@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-// Importa los íconos desde react-icons
 import { FaGoogle, FaFacebook, FaTwitter } from 'react-icons/fa';
+import axios from 'axios'; // Importa axios para hacer peticiones HTTP
+// Importa auth y los providers de Firebase
 // import { auth, googleProvider, facebookProvider, githubProvider } from './firebase';
 
 const Login = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleGoogleLogin = async () => {
     try {
@@ -35,29 +39,55 @@ const Login = () => {
     }
   };
 
+  const login = async (e) => {
+    e.preventDefault(); // Evitar el envío del formulario por defecto
+    setError(''); // Limpiar mensajes de error
+
+    try {
+      const response = await axios.post('http://localhost:3001/auth/login', {
+        email,
+        password
+      });
+      const { token } = response.data; // Suponiendo que la respuesta incluye un token
+
+      // Aquí puedes almacenar el token en localStorage o en el contexto de la app
+      localStorage.setItem('token', token);
+      navigate('/'); // Redirigir al usuario
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+      setError('Credenciales incorrectas.'); // Manejar el error
+    }
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-yellow-300 to-yellow-500">
-      {/* Contenedor principal del formulario */}
       <div className="max-w-md w-full flex flex-col justify-center items-center bg-white p-8 rounded-xl shadow-2xl">
         <img src="/img/logo_el_banano-removebg-preview.png" alt="Logo" className="w-[50%] h-[40%] mb-6" />
         <h1 className="text-3xl font-bold font-gotham text-gray-800 mb-8">Iniciar Sesión</h1>
 
-        {/* Formulario de login */}
-        <form className="w-full mb-6">
+        {error && <p className="text-red-500">{error}</p>} {/* Mostrar mensajes de error */}
+
+        <form className="w-full mb-6" onSubmit={login}>
           <div className="mb-4">
             <input 
               type="email" 
               id="email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)} // Actualiza el estado
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" 
               placeholder="Correo Electrónico" 
+              required // Hacer que el campo sea requerido
             />
           </div>
           <div className="mb-6">
             <input 
               type="password" 
               id="password" 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)} // Actualiza el estado
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" 
               placeholder="Contraseña" 
+              required // Hacer que el campo sea requerido
             />
           </div>
           <button 
@@ -67,7 +97,6 @@ const Login = () => {
           </button>
         </form>
 
-        {/* Botones adicionales */}
         <div className="flex space-x-4 w-full mb-6">
           <a 
             href="/register" 
@@ -81,7 +110,6 @@ const Login = () => {
           </a>
         </div>
 
-        {/* Login con Google, Facebook y GitHub con íconos */}
         <div className="flex flex-col space-y-4 w-full">
           <button 
             onClick={handleGoogleLogin} 

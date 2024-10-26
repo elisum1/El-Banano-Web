@@ -6,6 +6,7 @@ import Register from './pages/register';
 import Nosotros from './pages/nosotros';
 import Inicio from './pages/inicio';
 import Loading from './components/Loading';  // Importa el componente Loading
+import Carrito from './pages/carrito';  
 
 // Crear un componente separado que use useLocation para manejar el loading
 function MainContent() {
@@ -22,6 +23,7 @@ function MainContent() {
     <div>
       {loading && <Loading />}
       <Routes>
+        <Route path="/carrito" element={<Carrito />} />
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/login" element={<Login />} />

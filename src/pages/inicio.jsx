@@ -18,10 +18,10 @@ const Inicio = () => {
   <div className="h-auto w-full lg:w-[80%] xl:w-[70%] m-auto grid grid-cols-1 lg:grid-cols-2 gap-6 p-4">
     {/* Primer Bloque (Imagen 1) */}
     <div className="w-full h-full relative">
-      <div className="w-full h-[200px] sm:h-[300px] lg:h-[400px] xl:h-[500px] mt-2 transition-all  hover:scale-105 duration-300 amarillo rounded">
+      <div className="w-full h-[200px] sm:h-[300px] lg:h-[400px] xl:h-[500px] mt-2 transition-all  hover:scale-105 duration-300 amarillo rounded flex justify-end">
         <img
-          src="/img/Captura_de_pantalla_2024-10-16_001350-removebg-preview.png"
-          className="h-full w-full object-cover opacity-105 rounded"
+          src="/img/Imagen_de_WhatsApp_2024-10-23_a_las_12.38.53_22b3ef23-removebg-preview(1).png"
+          className="h-full w-[70%] object-cove opacity-105 rounded opacity-85"
           alt="Carnes Deliciosas"
         />
         {/* Título, Descripción y Botón */}

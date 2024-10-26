@@ -18,6 +18,7 @@ import {
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -85,10 +86,11 @@ const Header = () => {
                 <span className="font-bold font-gotham ">Llama a la orden</span><br />
                 <span className="text-white text-2xl 2xl:text-3xl font-extrabold">54 548 779 654</span>
               </div>
-              <button className="rojo px-4 py-2 rounded-full text-white flex items-center space-x-2 hover:bg-red-500">
+              <a href='/carrito' className="rojo px-4 py-2 rounded-full text-white flex items-center space-x-2 hover:bg-red-500" onClick={'/carrito'}>
                 <FontAwesomeIcon icon={faShoppingCart} /> 
                 <span>Tu carrito está vacío</span>
-              </button>
+                
+              </a>
             </div>
           </div>
         </div>
@@ -99,31 +101,31 @@ const Header = () => {
       <div className="w-[64.2%] m-auto h-[9%] flex items-center justify-center relative top-[15%]">
         {/* Menú de Iconos */}
         <nav className="hidden md:flex justify-center space-x-8 p-4 w-full fixed top-[15%] z-10 2xl:mb-0 text-2xl 2xl:text-4xl amarillo">
-          <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
+          <div className="text-white cursor-pointer hover:text-blue-900 transition duration-300 flex items-center gap-3">
             <FontAwesomeIcon icon={faDrumstickBite} />
             <p className="text-[15px]">El Completo</p>
           </div>
-          <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
+          <div className="text-white cursor-pointer hover:text-blue-900 transition duration-300 flex items-center gap-3">
             <FontAwesomeIcon icon={faFish} />
             <p className="text-[15px]">Del mar</p>
           </div>
-          <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
+          <div className="text-white cursor-pointer hover:text-blue-900 transition duration-300 flex items-center gap-3">
             <FontAwesomeIcon icon={faCoffee} />
             <p className="text-[15px]">Bebidas</p>
           </div>
-          <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
+          <div className="text-white cursor-pointer hover:text-blue-900 transition duration-300 flex items-center gap-3">
             <FontAwesomeIcon icon={faHamburger} />
             <p className="text-[15px]">Comida Rápida</p>
           </div>
-          <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
+          <div className="text-white cursor-pointer hover:text-blue-900 transition duration-300 flex items-center gap-3">
             <FontAwesomeIcon icon={faIceCream} />
             <p className="text-[15px]">Entradas</p>
           </div>
-          <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
+          <div className="text-white cursor-pointer hover:text-blue-900 transition duration-300 flex items-center gap-3">
             <FontAwesomeIcon icon={faLayerGroup} />
             <p className="text-[15px]">Del mar</p>
           </div>
-          <div className="text-white cursor-pointer hover:text-gray-800 transition duration-300 flex items-center gap-3">
+          <div className="text-white cursor-pointer hover:text-blue-900 transition duration-300 flex items-center gap-3">
             <FontAwesomeIcon icon={faBacon} />
             <p className="text-[15px]"></p>
           </div>

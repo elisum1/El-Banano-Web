@@ -67,10 +67,24 @@ const Products = () => {
       description: "Chicharrón crujiente servido con dos acompañantes.",
     },
     {
-      name: "Chicharron con dos acompañantes",
-      price: "$28.500",
-      image: "/img/IMG_20231126_161005_627.jpg",
-      description: "Chicharrón crujiente servido con dos acompañantes.",
+      name: "Carne con dos acompañantes",
+      price: "$43.500",
+      image: "/img/El completo.jpg",
+      description: "Delicioso plato de carne con dos acompañantes a elegir.",
+    },
+    {
+      name: "Pechuga con dos acompañantes",
+      price: "$37.500",
+      image:
+        "/img/Screenshot 2024-10-08 at 10-21-11 Restaurante El Banano (@elbananorestaurante) • Fotos y vídeos de Instagram.png",
+      description: "Pechuga de pollo jugosa con la elección de dos acompañantes.",
+    },
+    {
+      name: "Churrasco con dos acompañantes",
+      price: "$47.500",
+      image:
+        "/img/Screenshot 2024-10-08 at 10-22-03 Restaurante El Banano (@elbananorestaurante) • Fotos y vídeos de Instagram.png",
+      description: "Churrasco tierno acompañado de dos opciones a tu gusto.",
     },
     {
       name: "Chicharron con dos acompañantes",
@@ -79,40 +93,24 @@ const Products = () => {
       description: "Chicharrón crujiente servido con dos acompañantes.",
     },
     {
-      name: "Chicharron con dos acompañantes",
-      price: "$28.500",
-      image: "/img/IMG_20231126_161005_627.jpg",
-      description: "Chicharrón crujiente servido con dos acompañantes.",
+      name: "Carne con dos acompañantes",
+      price: "$43.500",
+      image: "/img/El completo.jpg",
+      description: "Delicioso plato de carne con dos acompañantes a elegir.",
     },
     {
-      name: "Chicharron con dos acompañantes",
-      price: "$28.500",
-      image: "/img/IMG_20231126_161005_627.jpg",
-      description: "Chicharrón crujiente servido con dos acompañantes.",
+      name: "Pechuga con dos acompañantes",
+      price: "$37.500",
+      image:
+        "/img/Screenshot 2024-10-08 at 10-21-11 Restaurante El Banano (@elbananorestaurante) • Fotos y vídeos de Instagram.png",
+      description: "Pechuga de pollo jugosa con la elección de dos acompañantes.",
     },
     {
-      name: "Chicharron con dos acompañantes",
-      price: "$28.500",
-      image: "/img/IMG_20231126_161005_627.jpg",
-      description: "Chicharrón crujiente servido con dos acompañantes.",
-    },
-    {
-      name: "Chicharron con dos acompañantes",
-      price: "$28.500",
-      image: "/img/IMG_20231126_161005_627.jpg",
-      description: "Chicharrón crujiente servido con dos acompañantes.",
-    },
-    {
-      name: "Chicharron con dos acompañantes",
-      price: "$28.500",
-      image: "/img/IMG_20231126_161005_627.jpg",
-      description: "Chicharrón crujiente servido con dos acompañantes.",
-    },
-    {
-      name: "Chicharron con dos acompañantes",
-      price: "$28.500",
-      image: "/img/IMG_20231126_161005_627.jpg",
-      description: "Chicharrón crujiente servido con dos acompañantes.",
+      name: "Churrasco con dos acompañantes",
+      price: "$47.500",
+      image:
+        "/img/Screenshot 2024-10-08 at 10-22-03 Restaurante El Banano (@elbananorestaurante) • Fotos y vídeos de Instagram.png",
+      description: "Churrasco tierno acompañado de dos opciones a tu gusto.",
     },
     {
       name: "Chicharron con dos acompañantes",
@@ -135,27 +133,30 @@ const Products = () => {
   return (
     <section className="w-full rounded-lg mb-6 max-h-full">
       <h3 className="text-4xl font-bold m-8 jost text-center text-blue-700"></h3>
-      <div className="grid md:grid-cols-3 xl:grid-cols-4 gap-8 xl:w-[1300px] w-[900px] m-auto  ">
+      <div className="grid md:grid-cols-3 xl:grid-cols-4 gap-8 xl:w-[1300px] w-[900px] m-auto">
         {products.map((product, index) => (
           <div
             key={index}
-            className="rounded-lg shadow-lg bg-white border border-yellow-500 transition-transform duration-300 transform hover:scale-105 w-[100%] h-[100%]"
+            className="hover:shadow-lg hover:border-[1px] rounded-lg overflow-hidden flex flex-col border-gray-800 hover:scale-105 transition-all cursor-pointer"
+            onClick={() => openModal(product)}  
           >
-            <img
-              src={product.image}
-              alt={product.name}
-              className=" mb-6 w-full h-[60%] object-cover rounded-t-lg"
-            />
-            <h4 className="font-bold md:text-sm xl:text-lg mb-2 text-blue-400 text-center">{product.name}</h4>
-            <p className="text-gray-80 mb-4 ml-12 text-sm font-light roboto2">{product.description}</p>
-            <div className="w-full flex justify-center ">
-
-            <button
-              className="bg-blue-500 text-white py-1 xl:py-3 px-6 rounded-full hover:bg-blue-600 transition"
-              onClick={() => openModal(product)}
-            >
-              Agregar - {product.price}
-            </button>
+            <div className="bg-gray-100 flex justify-center items-center h-60">
+              <img
+                className="w-[80%] h-[70%] object-contain"
+                src={product.image}
+                alt={product.name}
+              />
+            </div>
+            <div className="hover:bg-yellow-400/90 transform transition-all h-48 flex flex-col justify-between azul-text">
+              <div className="w-full flex flex-col p-4">
+                <h3 className="font-bold text-lg font-gotham">{product.name}</h3>
+                <p>{product.description}</p>
+              </div>
+              <div className="rojo w-[100%] ">
+                <p className="font-bold text-white text-2xl font-gotham w-full py-2   text-center">
+                  {product.price}
+                </p>
+              </div>
             </div>
           </div>
         ))}
