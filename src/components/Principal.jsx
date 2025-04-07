@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom"; // Importamos useNavigate
 import { FaHome } from "react-icons/fa";
 import Header from "./Header";
-import MenuDigital from "./MenuDigital";
+import MenuDigital from "./menuDigital";
 
 const RestaurantLandingPage = () => {
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
