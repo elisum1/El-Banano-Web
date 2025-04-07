@@ -35,7 +35,7 @@ const Carrito = () => {
   const handleRemoveItem = (id) => {
     const filteredItems = cartItems.filter((item) => item.id !== id);
     setCartItems(filteredItems);
-  };
+  }; 
 
   // Calcular el total
   const getTotal = () => {

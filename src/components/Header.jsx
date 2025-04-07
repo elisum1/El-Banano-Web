@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect } from "react";
+import Footer from "../components/Footer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
     faFish, 
@@ -12,18 +13,18 @@ import {
     faUtensils,
     faAddressBook,
     faInfoCircle,
-    faShoppingCart, // Corrige aquí
+    faShoppingCart,
 } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   
-
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
+  
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -32,18 +33,18 @@ const Header = () => {
         setIsScrolled(false);
       }
     };
-
+  
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
+  
   return (
-    <div>
+    <section id='home' className="">
       <header
-        className={`amarillo flex w-full h-[15vh] 2xl:h-[15vh] items-center justify-around 2xl:justify-between px-[8%] 2xl:px-[18%] fixed z-50 transition-all duration-500 transform   ${
-          isScrolled ? 'top-0' : 'top-18'
+        className={`bg-transparent flex w-full h-[12vh] 2xl:h-[13vh] items-center justify-around 2xl:justify-between px-[8%] 2xl:px-[18%] fixed z-50 transition-all duration-500 transform   ${
+          isScrolled ? 'amarillo' : 'top-18'
         }`}
       >
         {/* Logo Section */}
@@ -59,7 +60,7 @@ const Header = () => {
               <a href="/" className="flex flex-col items-center hover:text-gray-800">
                 <span className=''>Inicio</span>
               </a>
-              <a href="/menu" className="flex flex-col items-center hover:text-gray-800">
+              <a href="/RestaurantLandingPage" className="flex flex-col items-center hover:text-gray-800">
                 <span>Menu</span> 
               </a>
               <a href="/nosotros" className="flex flex-col items-center hover:text-gray-800">
@@ -74,9 +75,9 @@ const Header = () => {
             <p className='font-gotham azul-text font-extrabold text-3xl  w-[50%] '>
               DESDE 1986            
             </p>
-        <button className="2xl:hidden text-white w-2" onClick={toggleMenu}>
-          <i className={`fa ${isOpen ? 'fa-times' : 'fa-bars'} fa-2x`} aria-hidden="true"></i>
-        </button>
+            <button className="2xl:hidden text-white w-2" onClick={toggleMenu}>
+              <i className={`fa ${isOpen ? 'fa-times' : 'fa-bars'} fa-2x`} aria-hidden="true"></i>
+            </button>
           </div>
 
           {/* Search Bar and Contact Info */}
@@ -89,18 +90,15 @@ const Header = () => {
               <a href='/carrito' className="rojo px-4 py-2 rounded-full text-white flex items-center space-x-2 hover:bg-red-500" onClick={'/carrito'}>
                 <FontAwesomeIcon icon={faShoppingCart} /> 
                 <span>Tu carrito está vacío</span>
-                
               </a>
             </div>
           </div>
         </div>
-
-        {/* Mobile Menu Toggle Button */}
       </header>
 
       <div className="w-[64.2%] m-auto h-[9%] flex items-center justify-center relative top-[15%]">
         {/* Menú de Iconos */}
-        <nav className="hidden md:flex justify-center space-x-8 p-4 w-full fixed top-[15%] z-10 2xl:mb-0 text-2xl 2xl:text-4xl amarillo">
+        <nav className="hidden md:flex justify-center space-x-8 p-4 w-full fixed top-[15%] z-10 2xl:mb-0 text-2xl 2xl:text-4xl bg-transparent">
           <div className="text-white cursor-pointer hover:text-blue-900 transition duration-300 flex items-center gap-3">
             <FontAwesomeIcon icon={faDrumstickBite} />
             <p className="text-[15px]">El Completo</p>
@@ -132,37 +130,6 @@ const Header = () => {
         </nav>
       </div>
 
-      {/* Contenido principal */}
-      <div className="relative flex flex-col items-center justify-center w-full h-[60%] pt-20">
-        {/* Íconos laterales de navegación con FontAwesome */}
-        <div className="fixed left-4 top-1/2 transform -translate-y-1/2 space-y-4">
-          <div 
-            className="azul p-3 rounded-full flex justify-center items-center text-white cursor-pointer hover:bg-blue-700 transition duration-300"
-            onClick={() => scrollToSection('home')}
-          >
-            <FontAwesomeIcon icon={faHome} className="w-6 h-6" />
-          </div>
-          <div 
-            className="azul p-3 rounded-full flex justify-center items-center text-white cursor-pointer hover:bg-blue-700 transition duration-300"
-            onClick={() => scrollToSection('menu')}
-          >
-            <FontAwesomeIcon icon={faUtensils} className="w-6 h-6" />
-          </div>
-          <div 
-            className="azul p-3 rounded-full flex justify-center items-center text-white cursor-pointer hover:bg-blue-700 transition duration-300"
-            onClick={() => scrollToSection('contact')}
-          >
-            <FontAwesomeIcon icon={faAddressBook} className="w-6 h-6" />
-          </div>
-          <div 
-            className="azul p-3 rounded-full flex justify-center items-center text-white cursor-pointer hover:bg-blue-700 transition duration-300"
-            onClick={() => scrollToSection('about')}
-          >
-            <FontAwesomeIcon icon={faInfoCircle} className="w-6 h-6" />
-          </div>
-        </div>
-      </div>
-
       {/* Mobile Navigation */}
       {isOpen && (
         <nav className="xl:hidden bg-yellow-300 text-white text-lg ">
@@ -174,7 +141,7 @@ const Header = () => {
           </div>
         </nav>
       )}
-    </div>
+    </section>
   );
 };
 

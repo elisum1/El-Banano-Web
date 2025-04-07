@@ -131,9 +131,9 @@ const Products = () => {
   ];
 
   return (
-    <section className="w-full rounded-lg mb-6 max-h-full">
+    <section className="w-[100%] rounded-lg mb-6 max-h-full flex items-center justify-center m-auto">
       <h3 className="text-4xl font-bold m-8 jost text-center text-blue-700"></h3>
-      <div className="grid md:grid-cols-3 xl:grid-cols-4 gap-8 xl:w-[1300px] w-[900px] m-auto">
+      <div className="grid md:grid-cols-3  xl:grid-cols-4 gap-8 xl:w-[1300px] m-auto">
         {products.map((product, index) => (
           <div
             key={index}

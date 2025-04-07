@@ -13,7 +13,7 @@ const MenuPage = () => {
       {<Header />}
       {/* Menu */}
    
-      <div className=" flex  justify-center items-center w-full h-full mt-48 ">
+      <div className=" flex  justify-center items-center w-full h-full mt-48 m-auto">
         
         
 
