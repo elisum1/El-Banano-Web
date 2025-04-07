@@ -135,7 +135,7 @@ const Header = () => {
         <nav className="xl:hidden bg-yellow-300 text-white text-lg ">
           <div className="flex flex-col items-center space-y-4 py-52 ">
             <a href="/" className="flex flex-col items-center hover:text-gray-800">Inicio</a>
-            <a href="/menu" className="flex flex-col items-center hover:text-gray-800">Menú</a>
+            <a href="/RestaurantLandingPage" className="flex flex-col items-center hover:text-gray-800">Menú</a>
             <a href="/nosotros" className="flex flex-col items-center hover:text-gray-800">Sobre nosotros</a>
             <a href="/contacto" className="flex flex-col items-center hover:text-gray-800">Contacto</a>
           </div>
