@@ -25,11 +25,11 @@ const MenuDigital = () => {
     {
       id: 'completo',
       title: "EL COMPLETO",
-      subtitle: "Mención de la calidad, energía y agua completa",
-      description: "Luces medio ambiente vegetales como de cerdo al carbón con arepa, maduro y gaseosa crema",
+      subtitle: "Armalo como quieras !!",
+      description: "Elije tu proteina con uno o dos acompañantes de tu gusto ",
       items: [
         { 
-          name: "Carne 20 gr.", 
+          name: "Carne 230 gr.", 
           price1: "$37.500", 
           price2: "$62.500",
           desc1: "Carne de res premium asada al carbón con guarniciones",
@@ -38,7 +38,7 @@ const MenuDigital = () => {
           img2: "/img/carne-2x.jpg"
         },
         { 
-          name: "Juntar 16 gr.", 
+          name: "Junior 140 gr.", 
           price1: "$37.500", 
           price2: "$62.500",
           desc1: "Mezcla especial de carnes con especias tradicionales",
@@ -46,6 +46,7 @@ const MenuDigital = () => {
           img1: "/img/juntar-1x.jpg",
           img2: "/img/juntar-2x.jpg"
         },
+        // Agrega más items según necesites
       ]
     },
   ];
@@ -165,33 +166,33 @@ const MenuDigital = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row relative bg-gray-50">
-      {/* Mitad amarilla */}
-      <div className="w-full md:w-1/2 bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500 flex flex-col items-center justify-center p-6 md:p-8 relative">
+    <div className="min-h-screen flex flex-col md:flex-row relative bg-gray-500">
+      {/* Sección amarilla - Modificada para móviles */}
+      <div className="w-full md:w-1/2 bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500 flex flex-col items-center justify-center p-12 md:p-8 relative h-[30vh] md:h-auto">
         {/* Botón de volver al inicio */}
         <motion.button 
           onClick={handleReturnToLanding}
-          className="absolute top-4 left-4 bg-white bg-opacity-80 hover:bg-opacity-100 p-3 rounded-full shadow-lg transition-all flex items-center"
+          className="absolute top-2 left-2 md:top-4 md:left-4 bg-white bg-opacity-80 hover:bg-opacity-100 p-2 md:p-3 rounded-full shadow-lg transition-all flex items-center"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <FaHome className="text-blue-900 text-xl mr-2" />
-          <span className="text-blue-900 font-semibold">Volver</span>
+          <FaHome className="text-blue-900 text-lg md:text-xl mr-1 md:mr-2" />
+          <span className="text-blue-900 font-semibold text-sm md:text-base">Volver</span>
         </motion.button>
 
         {/* Flechas de navegación entre componentes */}
         <button 
           onClick={() => navigateComponents('prev')}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-3 rounded-full shadow-md z-10 flex items-center"
+          className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-2 md:p-3 rounded-full shadow-md z-10 flex items-center"
         >
-          <FaArrowLeft className="text-blue-900 text-xl" />
+          <FaArrowLeft className="text-blue-900 text-lg md:text-xl" />
         </button>
         
         <button 
           onClick={() => navigateComponents('next')}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-3 rounded-full shadow-md z-10 flex items-center"
+          className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-2 md:p-3 rounded-full shadow-md z-10 flex items-center"
         >
-          <FaArrowRight className="text-blue-900 text-xl" />
+          <FaArrowRight className="text-blue-900 text-lg md:text-xl" />
         </button>
 
         <motion.div
@@ -203,20 +204,20 @@ const MenuDigital = () => {
           <img 
             src="/img/logo_el_banano-removebg-preview.png" 
             alt="El Banano Logo" 
-            className="w-40 h-40 md:w-48 md:h-48 mx-auto mb-6 object-contain"
+            className="w-32 h-32 md:w-48 md:h-48 mx-auto mb-3 md:mb-6 object-contain"
           />
           <motion.h1 
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-blue-900 mb-4"
+            className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-blue-900 mb-2 md:mb-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <span className="[text-shadow:_4px_4px_0_white,_-4px_-4px_0_white,_4px_-4px_0_white,_-4px_4px_0_white]">
+            <span className="[text-shadow:_3px_3px_0_white,_-3px_-3px_0_white,_3px_-3px_0_white,_-3px_3px_0_white] md:[text-shadow:_4px_4px_0_white]">
               {currentCategory.title}
             </span>
           </motion.h1>
           <motion.p 
-            className="text-lg md:text-xl text-blue-900"
+            className="text-base md:text-xl text-blue-900"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.6 }}
@@ -226,21 +227,21 @@ const MenuDigital = () => {
         </motion.div>
       </div>
 
-      {/* Mitad azul */}
-      <div className="w-full md:w-1/2 bg-gradient-to-br from-blue-900 to-blue-800 p-4 md:p-8 flex flex-col justify-center relative">
+      {/* Sección azul - Modificada para móviles */}
+      <div className="w-full md:w-1/2 bg-gradient-to-br from-blue-900 to-blue-800 p-3 md:p-8 flex flex-col justify-center relative">
         {/* Flechas de navegación entre items */}
         <button 
           onClick={() => navigateItems('prev')}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-3 rounded-full shadow-md z-10 flex items-center"
+          className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-2 md:p-3 rounded-full shadow-md z-10 flex items-center"
         >
-          <FaArrowLeft className="text-blue-900 text-xl" />
+          <FaArrowLeft className="text-blue-900 text-lg md:text-xl" />
         </button>
         
         <button 
           onClick={() => navigateItems('next')}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-3 rounded-full shadow-md z-10 flex items-center"
+          className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-2 md:p-3 rounded-full shadow-md z-10 flex items-center"
         >
-          <FaArrowRight className="text-blue-900 text-xl" />
+          <FaArrowRight className="text-blue-900 text-lg md:text-xl" />
         </button>
 
         <motion.div 
@@ -250,57 +251,57 @@ const MenuDigital = () => {
           transition={{ delay: 0.3, duration: 0.6 }}
         >
           {/* Encabezado */}
-          <div className="bg-blue-900 p-4 md:p-6 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-yellow-400 mb-2">
+          <div className="bg-blue-900 p-3 md:p-6 text-center">
+            <h2 className="text-xl md:text-3xl font-bold text-yellow-400 mb-1 md:mb-2">
               {currentCategory.title}
             </h2>
-            <p className="text-white text-sm md:text-base">{currentCategory.description}</p>
+            <p className="text-white text-xs md:text-base">{currentCategory.description}</p>
           </div>
 
-          {/* Contenedor de items con scroll */}
-          <div className="max-h-[60vh] overflow-y-auto p-4">
-            {currentItems.map((item, index) => (
+          {/* Contenedor de items con scroll - Mostrar solo 6 items inicialmente */}
+          <div className="max-h-[50vh] md:max-h-[60vh] overflow-y-auto p-2 md:p-4">
+            {currentItems.slice(0, 6).map((item, index) => (
               <motion.div 
                 key={index}
-                className="mb-6 last:mb-0 border-b border-yellow-100 pb-6"
+                className="mb-3 md:mb-6 last:mb-0 border-b border-yellow-100 pb-3 md:pb-6"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index }}
               >
-                <h3 className="text-lg md:text-xl font-bold text-blue-900 mb-3">{item.name}</h3>
+                <h3 className="text-base md:text-lg lg:text-xl font-bold text-blue-900 mb-2 md:mb-3">{item.name}</h3>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-2 md:gap-4">
                   {/* Versión 1x */}
                   <div 
-                    className="bg-yellow-50 p-3 rounded-lg cursor-pointer transition-all hover:shadow-md"
+                    className="bg-yellow-50 p-2 md:p-3 rounded-lg cursor-pointer transition-all hover:shadow-md"
                     onClick={() => openImageModal(item.img1, { ...item, price: item.price1, desc: item.desc1 }, index)}
                   >
                     <motion.img
                       src={item.img1}
                       alt={`${item.name} 1x`}
-                      className="w-full h-32 md:h-40 object-cover rounded-md mb-2"
+                      className="w-full h-24 md:h-32 lg:h-40 object-cover rounded-md mb-1 md:mb-2"
                       whileHover={{ scale: 1.02 }}
                     />
                     <div className="text-center">
-                      <span className="block text-red-600 font-bold">{item.price1}</span>
-                      <p className="text-sm text-gray-600 mt-1">{item.desc1}</p>
+                      <span className="block text-red-600 font-bold text-sm md:text-base">{item.price1}</span>
+                      <p className="text-xs md:text-sm text-gray-600 mt-1 line-clamp-2">{item.desc1}</p>
                     </div>
                   </div>
                   
                   {/* Versión 2x */}
                   <div 
-                    className="bg-yellow-50 p-3 rounded-lg cursor-pointer transition-all hover:shadow-md"
+                    className="bg-yellow-50 p-2 md:p-3 rounded-lg cursor-pointer transition-all hover:shadow-md"
                     onClick={() => openImageModal(item.img2, { ...item, price: item.price2, desc: item.desc2 }, index)}
                   >
                     <motion.img
                       src={item.img2}
                       alt={`${item.name} 2x`}
-                      className="w-full h-32 md:h-40 object-cover rounded-md mb-2"
+                      className="w-full h-24 md:h-32 lg:h-40 object-cover rounded-md mb-1 md:mb-2"
                       whileHover={{ scale: 1.02 }}
                     />
                     <div className="text-center">
-                      <span className="block text-red-600 font-bold">{item.price2}</span>
-                      <p className="text-sm text-gray-600 mt-1">{item.desc2}</p>
+                      <span className="block text-red-600 font-bold text-sm md:text-base">{item.price2}</span>
+                      <p className="text-xs md:text-sm text-gray-600 mt-1 line-clamp-2">{item.desc2}</p>
                     </div>
                   </div>
                 </div>
@@ -309,20 +310,20 @@ const MenuDigital = () => {
           </div>
 
           {/* Nota especial */}
-          <div className="bg-yellow-100 p-3 md:p-4 text-center border-t-2 border-yellow-300">
-            <p className="text-blue-900 font-bold italic text-sm md:text-base">¡Armalo como quieras!</p>
+          <div className="bg-yellow-100 p-2 md:p-4 text-center border-t-2 border-yellow-300">
+            <p className="text-blue-900 font-bold italic text-xs md:text-sm lg:text-base">¡Armalo como quieras!</p>
           </div>
         </motion.div>
 
         {/* Botón de acción */}
         <motion.div
-          className="mt-6 text-center"
+          className="mt-3 md:mt-6 text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
         >
           <motion.button
-            className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 md:px-8 md:py-3 rounded-full font-bold text-base md:text-lg shadow-lg transition-all flex items-center mx-auto"
+            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-full font-bold text-sm md:text-base shadow-lg transition-all flex items-center mx-auto"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -331,60 +332,80 @@ const MenuDigital = () => {
         </motion.div>
       </div>
 
-      {/* Modal para imagen ampliada */}
+      {/* Modal para imagen ampliada - Mejorado para responsivo */}
       <AnimatePresence>
         {selectedImage && (
           <motion.div 
-            className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-2 md:p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div className="absolute top-4 right-4">
+            <div className="absolute top-2 right-2 md:top-4 md:right-4">
               <button 
-                className="text-white text-3xl hover:text-yellow-400 transition-colors"
+                className="text-white text-2xl md:text-3xl hover:text-yellow-400 transition-colors"
                 onClick={closeImageModal}
               >
                 <FaTimes />
               </button>
             </div>
             
-            <div className="flex items-center w-full max-w-6xl">
+            <div className="flex flex-col md:flex-row items-center w-full max-w-6xl h-full md:h-auto">
+              {/* Flecha izquierda - Solo visible en desktop */}
               <button 
-                className="text-white text-3xl p-2 hover:text-yellow-400 transition-colors"
+                className="hidden md:block text-white text-3xl p-2 hover:text-yellow-400 transition-colors"
                 onClick={() => navigateItems('prev')}
               >
                 <FaArrowLeft />
               </button>
               
-              <motion.div 
-                className="flex-1 flex flex-col items-center"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                key={selectedImage}
-              >
-                <img 
-                  src={selectedImage} 
-                  alt="Ampliación" 
-                  className="max-w-full max-h-[70vh] object-contain rounded-lg"
-                />
+              <div className="flex-1 flex flex-col md:flex-row items-center h-full w-full">
+                <motion.div 
+                  className="w-full md:w-1/2 h-1/2 md:h-full flex items-center justify-center"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  key={selectedImage}
+                >
+                  <img 
+                    src={selectedImage} 
+                    alt="Ampliación" 
+                    className="max-w-full max-h-[40vh] md:max-h-[70vh] object-contain rounded-lg"
+                  />
+                </motion.div>
                 
                 {activeItem && (
-                  <div className="bg-white p-4 mt-4 rounded-lg shadow-lg w-full max-w-md">
-                    <h3 className="text-xl font-bold text-blue-900 text-center">{activeItem.name}</h3>
-                    <p className="text-red-600 font-bold text-lg my-2 text-center">{activeItem.price}</p>
-                    <p className="text-gray-700 text-center">{activeItem.desc}</p>
+                  <div className="w-full md:w-1/2 bg-white p-3 md:p-4 rounded-lg shadow-lg mt-2 md:mt-0 md:ml-4 h-1/2 md:h-auto overflow-y-auto">
+                    <h3 className="text-lg md:text-xl font-bold text-blue-900 text-center">{activeItem.name}</h3>
+                    <p className="text-red-600 font-bold text-base md:text-lg my-2 text-center">{activeItem.price}</p>
+                    <p className="text-gray-700 text-sm md:text-base text-center md:text-left">{activeItem.desc}</p>
                   </div>
                 )}
-              </motion.div>
+              </div>
               
+              {/* Flecha derecha - Solo visible en desktop */}
               <button 
-                className="text-white text-3xl p-2 hover:text-yellow-400 transition-colors"
+                className="hidden md:block text-white text-3xl p-2 hover:text-yellow-400 transition-colors"
                 onClick={() => navigateItems('next')}
               >
                 <FaArrowRight />
               </button>
+
+              {/* Flechas para móvil */}
+              <div className="flex md:hidden justify-between w-full mt-2">
+                <button 
+                  className="text-white text-2xl p-2 hover:text-yellow-400 transition-colors"
+                  onClick={() => navigateItems('prev')}
+                >
+                  <FaArrowLeft />
+                </button>
+                <button 
+                  className="text-white text-2xl p-2 hover:text-yellow-400 transition-colors"
+                  onClick={() => navigateItems('next')}
+                >
+                  <FaArrowRight />
+                </button>
+              </div>
             </div>
           </motion.div>
         )}

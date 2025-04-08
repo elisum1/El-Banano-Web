@@ -253,18 +253,18 @@ const Inicio = () => {
               </p>
               
               <div className="grid grid-cols-2 md:flex md:justify-center gap-4 md:gap-8 mt-12">
-                <div className="relative h-40 md:h-64 w-full overflow-hidden rounded-lg shadow-xl">
+                <div className="relative h-40 md:h-full w-full overflow-hidden rounded-lg shadow-xl">
                   <img 
-                    src="/img/banano-web-1.jpg" 
+                    src="public/img/caption.jpg" 
                     alt="Plato Banano Web"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                 </div>
                 
-                <div className="relative h-40 md:h-64 w-full overflow-hidden rounded-lg shadow-xl">
+                <div className="relative h-40 md:h-full w-full overflow-hidden rounded-lg shadow-xl">
                   <img 
-                    src="/img/banano-web-2.jpg" 
+                    src="/public/img/elbananoarrecife.jpeg" 
                     alt="Presentación Banano Web"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />

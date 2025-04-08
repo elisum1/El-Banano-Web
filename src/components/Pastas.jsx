@@ -47,10 +47,10 @@ const Pastas = ({ onReturn, onNavigate }) => {
   return (
     <div className="min-h-screen flex flex-col md:flex-row relative bg-gray-50">
       {/* Mitad blanca */}
-      <div className="w-full md:w-1/2 bg-white flex flex-col items-center justify-center p-6 md:p-8 relative">
+      <div className="w-full md:w-1/2 bg-white flex flex-col items-center justify-center h-[30vh] sm:h-[100vh] md:p-8 relative">
         <motion.button 
           onClick={onReturn}
-          className="absolute top-4 left-4 bg-gray-100 hover:bg-gray-200 p-3 rounded-full shadow-lg transition-all flex items-center"
+          className="absolute top-4 left-4 bg-gray-100 hover:bg-gray-200 p-2 rounded-full shadow-lg transition-all flex items-center"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -60,14 +60,14 @@ const Pastas = ({ onReturn, onNavigate }) => {
 
         <button 
           onClick={() => onNavigate('prev')}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-100 hover:bg-gray-200 p-3 rounded-full shadow-md z-10 flex items-center"
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-100 hover:bg-gray-200 p-2 rounded-full shadow-md z-10 flex items-center"
         >
           <FaArrowLeft className="text-red-600 text-xl" />
         </button>
         
         <button 
           onClick={() => onNavigate('next')}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-100 hover:bg-gray-200 p-3 rounded-full shadow-md z-10 flex items-center"
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-100 hover:bg-gray-200 p-2 rounded-full shadow-md z-10 flex items-center"
         >
           <FaArrowRight className="text-red-600 text-xl" />
         </button>
@@ -81,10 +81,10 @@ const Pastas = ({ onReturn, onNavigate }) => {
           <img 
             src="/img/logo_el_banano-removebg-preview.png" 
             alt="Logo" 
-            className="w-40 h-40 md:w-48 md:h-48 mx-auto mb-6 object-contain"
+            className="w-22 h-32 md:w-48 md:h-48 mx-auto mb-1 object-contain"
           />
           <motion.h1 
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-red-600 mb-4"
+            className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-red-600 "
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}

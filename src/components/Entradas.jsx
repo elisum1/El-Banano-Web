@@ -53,29 +53,29 @@ const Entradas = ({ onReturn, onNavigate }) => {
   return (
     <div className="min-h-screen flex flex-col md:flex-row relative bg-gray-50">
       {/* Mitad roja */}
-      <div className="w-full md:w-1/2 bg-gradient-to-br from-red-600 via-red-500 to-red-700 flex flex-col items-center justify-center p-6 md:p-8 relative">
+      <div className="w-full md:w-1/2 bg-gradient-to-br from-red-600 via-red-500 to-red-700 flex flex-col items-center justify-center p-6 md:p-8 relative h-[30vh] sm:h-[100vh] ">
         {/* Botón de volver al inicio */}
         <motion.button 
           onClick={onReturn}
-          className="absolute top-4 left-4 bg-white bg-opacity-80 hover:bg-opacity-100 p-3 rounded-full shadow-lg transition-all flex items-center"
+          className="absolute top-4 left-4 bg-white bg-opacity-80 hover:bg-opacity-100 p-2 rounded-full shadow-lg transition-all flex items-center"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <FaHome className="text-red-600 text-xl mr-2" />
+          <FaHome className="text-red-600 text-md mr-2" />
           <span className="text-red-600 font-semibold">Volver</span>
         </motion.button>
 
         {/* Flechas de navegación entre componentes */}
         <button 
           onClick={() => onNavigate('prev')}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-3 rounded-full shadow-md z-10 flex items-center"
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-2 rounded-full shadow-md z-10 flex items-center"
         >
           <FaArrowLeft className="text-red-600 text-xl" />
         </button>
         
         <button 
           onClick={() => onNavigate('next')}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-3 rounded-full shadow-md z-10 flex items-center"
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-2 rounded-full shadow-md z-10 flex items-center"
         >
           <FaArrowRight className="text-red-600 text-xl" />
         </button>
@@ -89,10 +89,10 @@ const Entradas = ({ onReturn, onNavigate }) => {
           <img 
             src="/img/logo_el_banano-removebg-preview.png" 
             alt="El Banano Logo" 
-            className="w-40 h-40 md:w-48 md:h-48 mx-auto mb-6 object-contain"
+            className="w-22 h-32 md:w-48 md:h-48 mx-auto  object-contain"
           />
           <motion.h1 
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4"
+            className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white "
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}

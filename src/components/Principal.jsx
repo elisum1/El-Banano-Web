@@ -53,7 +53,7 @@ const RestaurantLandingPage = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="relative h-[60vh] sm:h-[100vh] w-full overflow-hidden bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500"
+            className="relative h-[100vh] sm:h-[100vh] w-full overflow-hidden bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500"
           >
             {/* Fondo decorativo */}
             <div className="absolute inset-0 overflow-hidden z-1">

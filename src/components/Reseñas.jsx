@@ -36,7 +36,7 @@ const Reseñas = () => {
   };
 
   return (
-    <section className="relative bg-blue-300 py-8 md:py-16 overflow-hidden">
+    <section className="relative bg-blue-800 py-8 md:py-16 overflow-hidden">
       {/* Fondo decorativo */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-40 h-40 bg-yellow-200 rounded-full filter blur-xl"></div>
@@ -59,7 +59,7 @@ const Reseñas = () => {
         </div>
 
         {/* Título */}
-        <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-8">
           LO QUE DICEN NUESTROS CLIENTES
         </h2>
 
@@ -120,10 +120,10 @@ const Reseñas = () => {
 
         {/* Comunidad digital */}
         <div className="text-center mt-12">
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">
+          <h3 className="text-xl font-semibold text-white mb-4">
             ÚNETE A NUESTRA COMUNIDAD
           </h3>
-          <p className="text-gray-600 mb-6 max-w-md mx-auto text-sm md:text-base">
+          <p className="text-white mb-6 max-w-md mx-auto text-sm md:text-base">
             Descubre promociones exclusivas y comparte tu experiencia
           </p>
           
