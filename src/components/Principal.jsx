@@ -94,7 +94,7 @@ const RestaurantLandingPage = () => {
                 >
                   <motion.img
                     src="/img/logo_el_banano-removebg-preview.png"
-                    className="w-[35vh] h-[35vh] object-contain"
+                    className="w-[42vh] h-[42vh] object-contain"
                     alt="Logo"
                     whileHover={{ 
                       scale: 1.1,
@@ -106,17 +106,6 @@ const RestaurantLandingPage = () => {
                     DESDE 1986
                   </span>
                 </motion.div>
-                
-                <motion.h1 
-                  className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold tracking-tight leading-tight"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <span className="text-blue-900 [text-shadow:_4px_4px_0_white,_-4px_-4px_0_white,_4px_-4px_0_white,_-4px_4px_0_white]">
-                    EL BANANO
-                  </span>
-                </motion.h1>
                 
                 <motion.h2 
                   className="mt-4 text-3xl md:text-4xl lg:text-5xl font-medium italic"

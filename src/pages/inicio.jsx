@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Reseñas from "../components/Reseñas";
 import Galeria from "../components/Galeria";
 import Visitanos from "../components/Visitanos";
+import { motion } from "framer-motion";
 
 const Inicio = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -149,22 +150,84 @@ const Inicio = () => {
             className="h-[25vh] w-auto"
           />
         </div>
+       
+        <div className="hidden md:block absolute inset-0 overflow-hidden">
+  {/* Contenedor padre con fondo amarillo en el área no recortada */}
+  <div className="w-full h-full  bg-white  "> {/* Fondo amarillo en el 7% izquierdo */}
+    {/* Imagen desplazada y recortada (deja visible el 7% izquierdo del padre) */}
+    <div 
+      className="w-full h-full bg-cover bg-center relative"
+      style={{ 
+        backgroundImage: "url('/public/img/YEI04680.jpg')",
+        transform: "translateX(30%)",
+        clipPath: "inset(0 0 0 8%)"
+      }}
+    >
+      {/* Capa de opacidad (solo sobre la imagen) */}
+      <div className="absolute inset-0 bg-black bg-opacity-5"></div>
+    </div>
+  </div>
 
-        {/* Desktop */}
-        <div className="hidden md:block absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/img/YEI04687.jpg')" }}>
-          <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
-            <div className="text-center text-white px-4 flex flex-col md:flex-row items-center justify-center">
-              <h2 className="text-6xl md:text-8xl lg:text-9xl font-extrabold text-blue-950 mb-6 [text-shadow:_2px_2px_0_white,_-2px_-2px_0_white,_2px_-2px_0_white,_-2px_2px_0_white] z-0">
-                EL BANANO
-              </h2>
-              <img
-                src="/img/logo_el_banano-removebg-preview.png"
-                alt="El Banano Logo"
-                className="h-[15vh] md:h-[20vh] lg:h-[25vh] w-auto ml-0 md:ml-8"
-              />
-            </div>
-          </div>
-        </div>
+  {/* Título posicionado sobre el fondo amarillo (7% izquierdo) */}
+  <div className="absolute inset-0 flex items-center z-10">
+  {/* Contenedor izquierdo (30% amarillo) */}
+  <div className="w-[40%] h-full bg-yellow-500/9 flex flex-col items-end justify-center ">
+    <div className="max-w-[80%] mx-auto text-center">
+      {/* Badge "DESDE 1986" */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        className="mb-4"
+      >
+        <span className="inline-block px-4 py-2 bg-black text-yellow-400 text-sm font-semibold tracking-widest rounded-full border-2 border-yellow-400/50 mb-8">
+          DESDE 1986
+        </span>
+      </motion.div>
+
+      {/* Título principal */}
+      <motion.h1 
+        className="text-4xl md:text-5xl lg:text-[5.1rem] 2xl:text-[7.1rem] xl:text-[6.1rem] font-extrabold tracking-tight leading-tight my-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6 }}
+      >
+        <img src="/public/img/Logobanda.png" className="w-[60vh] h-[40%] mt-6" alt="" />
+      </motion.h1>
+
+      {/* Subtítulo en cursiva */}
+      <motion.p
+        className="italic text-red-500 text-lg md:text-xl lg:text-2xl my-4 [text-shadow:_1px_1px_0_white,_-1px_-1px_0_white,_1px_-1px_0_white,_-1px_1px_0_white]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8 }}
+      >
+       ! Sabores que enamoran !
+       </motion.p>
+
+    {/* Botón "Ver menú" - Versión minimalista roja */}
+<motion.div
+  initial={{ opacity: 0, y: 10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 1 }}
+  className="mt-6"
+>
+  <a 
+    href="/RestaurantLandingPage"
+    className="inline-block px-8 py-3 bg-red-600 text-white font-bold text-lg rounded-md
+             hover:bg-red-700 transition-all duration-200
+             border border-white border-opacity-30
+             shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]
+             hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)]
+             active:translate-y-0.5"
+  >
+    Ver menú
+  </a>
+</motion.div>
+    </div>
+  </div>
+</div>
+</div>
       </section>
 
       <section className="relative bg-gradient-to-b from-yellow-50 to-white py-24 overflow-hidden">
@@ -181,57 +244,73 @@ const Inicio = () => {
               Tres tradiciones culinarias que definen nuestra esencia
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 mb-28">
-            {[
-              {
-                title: "CARNES ASADAS",
-                description: "Cortes premium madurados y preparados al punto perfecto",
-                img: "/img/YEI04571.jpg",
-                color: "red"
-              },
-              {
-                title: "SABORES ANTIOQUEÑOS",
-                description: "Lo mejor de nuestra tradición paisa en cada bocado",
-                img: "/img/YEI04584.jpg",
-                color: "yellow"
-              },
-              {
-                title: "EL BANANO LEGENDARIO",
-                description: "Nuestra firma insignia, ahora mejor que nunca",
-                img: "/img/YEI04571.jpg",
-                color: "blue"
-              }
-            ].map((item, index) => (
-              <div 
-                key={index}
-                className="group relative h-80 md:h-[60vh] overflow-hidden shadow-lg md:shadow-2xl rounded-lg md:rounded-none"
-              >
-                <div className={`absolute inset-0 ${
-                  item.color === 'red' ? 'bg-gradient-to-t from-red-900/80 via-red-900/30 to-transparent' :
-                  item.color === 'yellow' ? 'bg-gradient-to-t from-yellow-900/80 via-yellow-900/30 to-transparent' :
-                  'bg-gradient-to-t from-blue-900/80 via-blue-900/30 to-transparent'
-                } z-10`}></div>
-                
-                <img 
-                  src={item.img} 
-                  alt={item.title}
-                  className="w-full h-full object-cover transform transition duration-700 group-hover:scale-110"
-                />
-                <div className="absolute bottom-0 left-0 z-20 p-6 md:p-8 pb-2">
-                  <h3 className="text-2xl md:text-3xl font-gotham font-bold text-white mb-2 md:mb-3">{item.title}</h3>
-                  <p className="text-white/90 mb-4 md:mb-5 text-sm md:text-base">{item.description}</p>
-                  <button className={`${
-                    item.color === 'red' ? 'bg-red-500 hover:bg-red-600' :
-                    item.color === 'yellow' ? 'bg-yellow-500 hover:bg-yellow-600' :
-                    'bg-blue-500 hover:bg-blue-600'
-                  } text-white px-4 md:px-6 py-2 rounded-lg font-gotham font-bold transition-all text-sm md:text-base`}>
-                    Ver menú
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+  {[
+    {
+      title: "El Completo",
+      description: "Cortes premium madurados y preparados al punto perfecto",
+      img: "public/img/YEI04584.jpg",
+      color: "blue"
+    },
+    {
+      title: "Los Antioqueños",
+      description: "Lo mejor de nuestra tradición paisa en cada bocado",
+      img: "public/img/YEI04659.jpg",
+      color: "red"
+    },
+    {
+      title: "Mazorcas y Salchipapas",
+      description: "Nuestra firma insignia, ahora mejor que nunca",
+      img: "/public/img/DSC06518.jpg",
+      color: "yellow"
+    }
+  ].map((item, index) => (
+    <div 
+      key={index}
+      className="group relative h-80 md:h-[60vh] overflow-hidden shadow-lg md:shadow-2xl rounded-lg md:rounded-none"
+    >
+      <div className={`absolute inset-0 ${
+        item.color === 'red' ? 'bg-gradient-to-t from-red-900/80 via-red-900/30 to-transparent' :
+        item.color === 'yellow' ? 'bg-gradient-to-t from-yellow-900/80 via-yellow-900/30 to-transparent' :
+        'bg-gradient-to-t from-blue-900/80 via-blue-900/30 to-transparent'
+      } z-10`}></div>
+      
+      <img 
+        src={item.img} 
+        alt={item.title}
+        className="w-full h-full object-cover transform transition duration-700 group-hover:scale-110"
+      />
+      <div className="absolute bottom-0 left-0 z-20 p-6 md:p-8 pb-2">
+        {/* Título con fuente Allura */}
+        <h3 
+          className="text-4xl md:text-7xl font-allura font-normal mb-2 md:mb-3 leading-none"
+          style={{
+            textShadow: `
+              2px 2px 0 white,
+              -2px -2px 0 white,
+              2px -2px 0 white,
+              -2px 2px 0 white
+            `,
+            color: item.color === 'red' ? '#ef4444' : 
+                  item.color === 'yellow' ? '#eab308' : 
+                  '#3b82f6'
+          }}
+        >
+          {item.title}
+        </h3>
+        
+        <p className="text-white/90 mb-4 md:mb-5 text-sm md:text-base">{item.description}</p>
+        <button className={`${
+          item.color === 'red' ? 'bg-red-500 hover:bg-red-600' :
+          item.color === 'yellow' ? 'bg-yellow-500 hover:bg-yellow-600' :
+          'bg-blue-500 hover:bg-blue-600'
+        } text-white px-4 md:px-6 py-2 rounded-lg font-gotham font-bold transition-all text-sm md:text-base`}>
+          Ver menú
+        </button>
+      </div>
+    </div>
+  ))}
+</div>
           
           <div className="max-w-7xl mx-auto bg-yellow-400 p-5 md:p-14 text-white relative overflow-hidden rounded-lg md:rounded-none mb-16">
             <div className="relative z-10">

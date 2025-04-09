@@ -9,6 +9,7 @@ export default {
 
       fontFamily: {
         gotham: ['Gotham', 'Gotham-Medium.eot'],
+        allura: ['Allura', 'cursive'],
         // sans: ['Open Sans', 'sans-serif'], // Establece Open Sans como la fuente sans por defecto
       },
       fontWeight: {

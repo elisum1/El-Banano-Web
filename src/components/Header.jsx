@@ -1,146 +1,119 @@
-import React, {useState, useEffect } from "react";
-import Footer from "../components/Footer";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-    faFish, 
-    faCoffee, 
-    faHamburger, 
-    faIceCream, 
-    faDrumstickBite,
-    faLayerGroup, 
-    faBacon,
-    faHome,
-    faUtensils,
-    faAddressBook,
-    faInfoCircle,
-    faShoppingCart,
-} from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
-  
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-  
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 0);
     };
-  
+
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
   return (
-    <section id='home' className="">
-      <header
-        className={`bg-transparent flex w-full h-[12vh] 2xl:h-[13vh] items-center justify-around 2xl:justify-between px-[8%] 2xl:px-[18%] fixed z-50 transition-all duration-500 transform   ${
-          isScrolled ? 'amarillo' : 'top-18'
-        }`}
-      >
-        {/* Logo Section */}
-        <div className='w-full flex justify-between border-b-[0.5px] border-yellow-200/70 sm:p-2 p-6'>
-          <div className='hidden sm:flex items-center space-x-4 transition-all'>
+    <section id='home'>
+      <header className={`w-full h-[12vh] 2xl:h-[13vh] fixed z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-blue-800 shadow-md' : 'bg-transparent'
+      }`}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+          {/* Logo Section - Clickable */}
+          <a href="/" className="flex items-center">
             <img
               src="/img/logo_el_banano-removebg-preview.png"
-              alt="Pizzaro Logo"
-              className="h-[14vh] 2xl:h-[15vh] w-[14vh] 2xl:w-[15vh]"
+              alt="El Banano Logo"
+              className="h-[10vh] sm:h-[12vh] w-auto"
             />
-            <h2 className='font-gotham font-extrabold azul-text text-4xl md:text-2xl 2xl:text-4xl'>EL BANANO</h2>
-            <nav className="hidden xl:flex text-white space-x-8 text-md 2xl:text-md font-gotham font-semibold">
-              <a href="/" className="flex flex-col items-center hover:text-gray-800">
-                <span className=''>Inicio</span>
-              </a>
-              <a href="/RestaurantLandingPage" className="flex flex-col items-center hover:text-gray-800">
-                <span>Menu</span> 
-              </a>
-              <a href="/nosotros" className="flex flex-col items-center hover:text-gray-800">
-                <span>Sobre nosotros</span> 
-              </a>
-              <a href="/" className="flex flex-col items-center hover:text-gray-800">
-                <span>Contacto</span> 
-              </a>
-            </nav>
-          </div>
-          <div className='flex justify-around w-full sm:hidden'>
-            <p className='font-gotham azul-text font-extrabold text-3xl  w-[50%] '>
-              DESDE 1986            
-            </p>
-            <button className="2xl:hidden text-white w-2" onClick={toggleMenu}>
-              <i className={`fa ${isOpen ? 'fa-times' : 'fa-bars'} fa-2x`} aria-hidden="true"></i>
-            </button>
+          </a>
+
+          {/* Desktop Navigation */}
+          <nav className={`hidden md:flex items-center space-x-6 lg:space-x-8 text-xl font-light ${
+            isScrolled ? 'text-white' : 'text-black'
+          }`}>
+            <a href="/" className="hover:text-yellow-500 transition-colors">Inicio</a>
+            <a href="/RestaurantLandingPage" className="hover:text-yellow-500 transition-colors">Menú</a>
+            <a href="/nosotros" className="hover:text-yellow-500 transition-colors">Sobre Nosotros</a>
+            <a href="/contacto" className="hover:text-yellow-500 transition-colors">Contacto</a>
+          </nav>
+
+          {/* Right Section - Phone and Cart */}
+          <div className="hidden md:flex items-center space-x-6">
+            <div className={`text-right ${isScrolled ? 'text-white' : 'text-white'}`}>
+              <span className="block text-sm font-light">Llama a la orden</span>
+              <span className="block text-xl font-bold">54 548 779 654</span>
+            </div>
+            <a href='/carrito' className={`flex items-center space-x-2 px-4 py-2 rounded-full ${
+              isScrolled ? 'bg-red-800 text-white' : 'bg-red-500 text-white'
+            } hover:bg-red-600 transition-colors`}>
+              <FontAwesomeIcon icon={faShoppingCart} />
+              <span className="hidden lg:inline">Tu carrito</span>
+            </a>
           </div>
 
-          {/* Search Bar and Contact Info */}
-          <div className="flex items-center space-x-6">
-            <div className="hidden xl:flex items-center space-x-4 text-white">
-              <div className="text-right">
-                <span className="font-bold font-gotham ">Llama a la orden</span><br />
-                <span className="text-white text-2xl 2xl:text-3xl font-extrabold">54 548 779 654</span>
-              </div>
-              <a href='/carrito' className="rojo px-4 py-2 rounded-full text-white flex items-center space-x-2 hover:bg-red-500" onClick={'/carrito'}>
-                <FontAwesomeIcon icon={faShoppingCart} /> 
-                <span>Tu carrito está vacío</span>
-              </a>
-            </div>
-          </div>
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden text-2xl focus:outline-none"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            <span className={`block w-6 h-0.5 mb-1.5 transition-all ${
+              isScrolled ? 'bg-blue-800' : 'bg-white'
+            } ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+            <span className={`block w-6 h-0.5 mb-1.5 transition-all ${
+              isScrolled ? 'bg-blue-800' : 'bg-white'
+            } ${isOpen ? 'opacity-0' : ''}`}></span>
+            <span className={`block w-6 h-0.5 transition-all ${
+              isScrolled ? 'bg-blue-800' : 'bg-white'
+            } ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+          </button>
         </div>
       </header>
 
-      <div className="w-[64.2%] m-auto h-[9%] flex items-center justify-center relative top-[15%]">
-        {/* Menú de Iconos */}
-        <nav className="hidden md:flex justify-center space-x-8 p-4 w-full fixed top-[15%] z-10 2xl:mb-0 text-2xl 2xl:text-4xl bg-transparent">
-          <div className="text-white cursor-pointer hover:text-blue-900 transition duration-300 flex items-center gap-3">
-            <FontAwesomeIcon icon={faDrumstickBite} />
-            <p className="text-[15px]">El Completo</p>
-          </div>
-          <div className="text-white cursor-pointer hover:text-blue-900 transition duration-300 flex items-center gap-3">
-            <FontAwesomeIcon icon={faFish} />
-            <p className="text-[15px]">Del mar</p>
-          </div>
-          <div className="text-white cursor-pointer hover:text-blue-900 transition duration-300 flex items-center gap-3">
-            <FontAwesomeIcon icon={faCoffee} />
-            <p className="text-[15px]">Bebidas</p>
-          </div>
-          <div className="text-white cursor-pointer hover:text-blue-900 transition duration-300 flex items-center gap-3">
-            <FontAwesomeIcon icon={faHamburger} />
-            <p className="text-[15px]">Comida Rápida</p>
-          </div>
-          <div className="text-white cursor-pointer hover:text-blue-900 transition duration-300 flex items-center gap-3">
-            <FontAwesomeIcon icon={faIceCream} />
-            <p className="text-[15px]">Entradas</p>
-          </div>
-          <div className="text-white cursor-pointer hover:text-blue-900 transition duration-300 flex items-center gap-3">
-            <FontAwesomeIcon icon={faLayerGroup} />
-            <p className="text-[15px]">Del mar</p>
-          </div>
-          <div className="text-white cursor-pointer hover:text-blue-900 transition duration-300 flex items-center gap-3">
-            <FontAwesomeIcon icon={faBacon} />
-            <p className="text-[15px]"></p>
+      {/* Mobile Navigation */}
+      <div className={`fixed top-[12vh] left-0 w-full bg-yellow-400 z-40 transition-all duration-300 overflow-hidden ${
+        isOpen ? 'max-h-screen' : 'max-h-0'
+      }`}>
+        <nav className="flex flex-col items-center space-y-6 py-8">
+          <a 
+            href="/" 
+            className="text-blue-800 text-xl font-semibold hover:text-white transition-colors"
+            onClick={() => setIsOpen(false)}
+          >
+            Inicio
+          </a>
+          <a 
+            href="/RestaurantLandingPage" 
+            className="text-blue-800 text-xl font-semibold hover:text-white transition-colors"
+            onClick={() => setIsOpen(false)}
+          >
+            Menú
+          </a>
+          <a 
+            href="/nosotros" 
+            className="text-blue-800 text-xl font-semibold hover:text-white transition-colors"
+            onClick={() => setIsOpen(false)}
+          >
+            Sobre Nosotros
+          </a>
+          <a 
+            href="/contacto" 
+            className="text-blue-800 text-xl font-semibold hover:text-white transition-colors"
+            onClick={() => setIsOpen(false)}
+          >
+            Contacto
+          </a>
+          <div className="pt-4 flex flex-col items-center">
+            <span className="text-blue-800 font-semibold">Llama a la orden</span>
+            <span className="text-blue-800 text-xl font-bold">54 548 779 654</span>
           </div>
         </nav>
       </div>
-
-      {/* Mobile Navigation */}
-      {isOpen && (
-        <nav className="xl:hidden bg-yellow-300 text-white text-lg ">
-          <div className="flex flex-col items-center space-y-4 py-52 ">
-            <a href="/" className="flex flex-col items-center hover:text-gray-800">Inicio</a>
-            <a href="/RestaurantLandingPage" className="flex flex-col items-center hover:text-gray-800">Menú</a>
-            <a href="/nosotros" className="flex flex-col items-center hover:text-gray-800">Sobre nosotros</a>
-            <a href="/contacto" className="flex flex-col items-center hover:text-gray-800">Contacto</a>
-          </div>
-        </nav>
-      )}
     </section>
   );
 };
