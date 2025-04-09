@@ -158,7 +158,7 @@ const Inicio = () => {
     <div 
       className="w-full h-full bg-cover bg-center relative"
       style={{ 
-        backgroundImage: "url('/public/img/YEI04680.jpg')",
+        backgroundImage: "url('/img/YEI04680.jpg')",
         transform: "translateX(30%)",
         clipPath: "inset(0 0 0 8%)"
       }}
@@ -192,7 +192,7 @@ const Inicio = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
       >
-        <img src="/public/img/Logobanda.png" className="w-[60vh] h-[40%] mt-6" alt="" />
+        <img src="/img/Logobanda.png" className="w-[60vh] h-[40%] mt-6" alt="" />
       </motion.h1>
 
       {/* Subtítulo en cursiva */}
@@ -249,19 +249,19 @@ const Inicio = () => {
     {
       title: "El Completo",
       description: "Cortes premium madurados y preparados al punto perfecto",
-      img: "public/img/YEI04584.jpg",
+      img: "/img/YEI04584.jpg",
       color: "blue"
     },
     {
       title: "Los Antioqueños",
       description: "Lo mejor de nuestra tradición paisa en cada bocado",
-      img: "public/img/YEI04659.jpg",
+      img: "/img/YEI04659.jpg",
       color: "red"
     },
     {
       title: "Mazorcas y Salchipapas",
       description: "Nuestra firma insignia, ahora mejor que nunca",
-      img: "/public/img/DSC06518.jpg",
+      img: "/img/DSC06518.jpg",
       color: "yellow"
     }
   ].map((item, index) => (
