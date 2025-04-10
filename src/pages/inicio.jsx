@@ -5,6 +5,7 @@ import Reseñas from "../components/Reseñas";
 import Galeria from "../components/Galeria";
 import Visitanos from "../components/Visitanos";
 import { motion } from "framer-motion";
+import CombosBanano from "../components/CombosBanano";
 
 const Inicio = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -140,95 +141,99 @@ const Inicio = () => {
         )}
       </div>
 
-      {/* Todo tu contenido original exactamente igual */}
-      <section className="relative h-screen">
-        {/* Mobile */}
-        <div className="md:hidden absolute inset-0 bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500 flex items-center justify-center">
-          <img
-            src="/img/logo_el_banano-removebg-preview.png"
-            alt="El Banano Logo"
-            className="h-[25vh] w-auto"
-          />
-        </div>
-       
-        <div className="hidden md:block absolute inset-0 overflow-hidden">
-  {/* Contenedor padre con fondo amarillo en el área no recortada */}
-  <div className="w-full h-full  bg-white  "> {/* Fondo amarillo en el 7% izquierdo */}
-    {/* Imagen desplazada y recortada (deja visible el 7% izquierdo del padre) */}
+<section className="relative h-screen w-full">
+  {/* Versión Mobile (sin cambios) */}
+  <div className="md:hidden absolute inset-0 bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500 flex flex-col items-center justify-center p-4">
+    <img
+      src="/img/logo_el_banano.png" 
+      alt="El Banano Logo"
+      className="h-[120px] w-auto mb-8"
+    />
+    <h1 className="text-5xl font-black text-center text-blue-900 leading-tight" style={{ WebkitTextStroke: "2px white", textShadow: "3px 3px 0 white" }}>
+      EL BANANO
+    </h1>
+    <p className="text-xl italic font-medium text-red-500 mt-4 text-center">
+      ¡Sabores que enamoran!
+    </p>
+  </div>
+
+  {/* Versión Desktop - Imagen con efecto de salto */}
+  <motion.div 
+    className="hidden md:block absolute inset-0 overflow-hidden"
+    initial={{ opacity: 0, scale: 0.8 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ 
+      delay: 0.5, 
+      type: "spring", 
+      stiffness: 100, 
+      damping: 10 
+    }}
+  >
     <div 
-      className="w-full h-full bg-cover bg-center relative"
+      className="w-full h-full bg-cover "
       style={{ 
-        backgroundImage: "url('/img/YEI04680.jpg')",
-        transform: "translateX(30%)",
-        clipPath: "inset(0 0 0 8%)"
+        backgroundImage: "url('/img/Gemini_Generated_Image_ad4z7iad4z7iad4z.jpeg')"
       }}
     >
-      {/* Capa de opacidad (solo sobre la imagen) */}
-      <div className="absolute inset-0 bg-black bg-opacity-5"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 via-yellow-500/5 to-transparent"></div>
+      <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-black/10 to-transparent"></div>
+    </div>
+  </motion.div>
+
+  {/* Contenido Desktop - Texto animado */}
+  <div className="hidden md:flex relative z-10 h-full items-center">
+    <div className="container mx-auto px-6">
+      <div className="w-full md:w-1/2 lg:w-2/3">
+        {/* Badge (aparece después del texto) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 4.5 }}
+          className="mb-6"
+        >
+          <span className="inline-block px-12 py-2 bg-black text-yellow-400 text-sm font-bold tracking-widest rounded-full border-2 border-yellow-400/50 shadow-lg">
+            DESDE 1986
+          </span>
+        </motion.div>
+
+        {/* Título con letras saltando */}
+        <div className="overflow-hidden">
+          {"EL BANANO".split("").map((letter, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0, y: 70, rotate: -10 }}
+              animate={{ opacity: 1, y: 0, rotate: 0 }}
+              transition={{
+                delay: 3 + index * 0.12, // 3s base + delay progresivo
+                type: "spring",
+                stiffness: 500,
+                damping: 15
+              }}
+              className="inline-block text-6xl md:text-7xl lg:text-9xl font-black text-blue-900"
+              style={{ 
+                WebkitTextStroke: "3px white",
+                textShadow: "4px 9px 0 rgba(0,0,0,0.8)"
+              }}
+            >
+              {letter === " " ? "\u00A0" : letter}
+            </motion.span>
+          ))}
+        </div>
+
+        {/* Subtítulo */}
+        <motion.p
+          className="text-xl md:text-2xl italic font-medium text-red-500 mb-8 mt-4"
+          style={{ textShadow: "1px 1px 0 white" }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 4.2, type: "spring" }}
+        >
+          ¡Sabores que enamoran!
+        </motion.p>
+      </div>
     </div>
   </div>
-
-  {/* Título posicionado sobre el fondo amarillo (7% izquierdo) */}
-  <div className="absolute inset-0 flex items-center z-10">
-  {/* Contenedor izquierdo (30% amarillo) */}
-  <div className="w-[40%] h-full bg-yellow-500/9 flex flex-col items-end justify-center ">
-    <div className="max-w-[80%] mx-auto text-center">
-      {/* Badge "DESDE 1986" */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2 }}
-        className="mb-4"
-      >
-        <span className="inline-block px-4 py-2 bg-black text-yellow-400 text-sm font-semibold tracking-widest rounded-full border-2 border-yellow-400/50 mb-8">
-          DESDE 1986
-        </span>
-      </motion.div>
-
-      {/* Título principal */}
-      <motion.h1 
-        className="text-4xl md:text-5xl lg:text-[5.1rem] 2xl:text-[7.1rem] xl:text-[6.1rem] font-extrabold tracking-tight leading-tight my-4"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6 }}
-      >
-        <img src="/img/Logobanda.png" className="w-[60vh] h-[40%] mt-6" alt="" />
-      </motion.h1>
-
-      {/* Subtítulo en cursiva */}
-      <motion.p
-        className="italic text-red-500 text-lg md:text-xl lg:text-2xl my-4 [text-shadow:_1px_1px_0_white,_-1px_-1px_0_white,_1px_-1px_0_white,_-1px_1px_0_white]"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8 }}
-      >
-       ! Sabores que enamoran !
-       </motion.p>
-
-    {/* Botón "Ver menú" - Versión minimalista roja */}
-<motion.div
-  initial={{ opacity: 0, y: 10 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 1 }}
-  className="mt-6"
->
-  <a 
-    href="/RestaurantLandingPage"
-    className="inline-block px-8 py-3 bg-red-600 text-white font-bold text-lg rounded-md
-             hover:bg-red-700 transition-all duration-200
-             border border-white border-opacity-30
-             shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]
-             hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)]
-             active:translate-y-0.5"
-  >
-    Ver menú
-  </a>
-</motion.div>
-    </div>
-  </div>
-</div>
-</div>
-      </section>
+</section>
 
       <section className="relative bg-gradient-to-b from-yellow-50 to-white py-24 overflow-hidden">
         <div className="absolute top-0 left-0 w-64 h-64 bg-yellow-400 rounded-full filter blur-3xl opacity-10"></div>
@@ -311,6 +316,8 @@ const Inicio = () => {
     </div>
   ))}
 </div>
+
+<CombosBanano/>
           
           <div className="max-w-7xl mx-auto bg-yellow-400 p-5 md:p-14 text-white relative overflow-hidden rounded-lg md:rounded-none mb-16">
             <div className="relative z-10">

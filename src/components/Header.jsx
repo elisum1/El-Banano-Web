@@ -22,7 +22,7 @@ const Header = () => {
       <header className={`w-full h-[12vh] 2xl:h-[13vh] fixed z-50 transition-all duration-300 ${
         isScrolled ? 'bg-blue-800 shadow-md' : 'bg-transparent'
       }`}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between border-b-[2px] border-yellow-600/50">
           {/* Logo Section - Clickable */}
           <a href="/" className="flex items-center">
             <img
@@ -33,7 +33,7 @@ const Header = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className={`hidden md:flex items-center space-x-6 lg:space-x-8 text-xl font-light ${
+          <nav className={`hidden md:flex items-center space-x-6 lg:space-x-8 text-2xl font-light ${
             isScrolled ? 'text-white' : 'text-black'
           }`}>
             <a href="/" className="hover:text-yellow-500 transition-colors">Inicio</a>
