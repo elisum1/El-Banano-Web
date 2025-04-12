@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Reseñas from "../components/Reseñas";
@@ -13,6 +13,12 @@ const Inicio = () => {
   const [chatOpen, setChatOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [conversationContext, setConversationContext] = useState({
+    userName: null,
+    lastIntent: null,
+    rememberedFacts: {},
+    conversationHistory: []
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,39 +35,278 @@ const Inicio = () => {
     });
   };
 
+  // Base de conocimiento completa
+  const knowledgeBase = {
+    greetings: {
+      patterns: [/hola/, /buenos días/, /qué tal/, /hi/, /hello/],
+      responses: [
+        "¡Hola! Soy el asistente de El Banano 🍌. ¿Cómo puedo ayudarte hoy?",
+        "¡Buen día! ¿En qué puedo servirte?",
+        "¡Saludos! Dime en qué necesitas ayuda."
+      ],
+      followUp: {
+        question: "¿Te gustaría saber sobre nuestro menú, ubicaciones o horarios?",
+        options: ["Menú", "Ubicaciones", "Horarios"]
+      }
+    },
+    locations: {
+      patterns: [/ubicacion/, /dónde están/, /sucursal/, /mapa/, /dirección/, /lugar/, /Ubicacion/,/ubicaciones/,/Ubicaciones/],
+      responses: [
+        "Tenemos 2 locales:\n\n📍 CC Buena Vista - Carrera 50 #80-120\n📍 CC Arrecife - Calle 30 #82-65",
+        "Nuestras sucursales están en:\n\n• Buena Vista\n• Arrecife"
+      ],
+      data: {
+        "buena vista": {
+          hours: "10am - 10pm",
+          phone: "604 123 4567",
+          special: "2x1 en postres los martes"
+        },
+        "arrecife": {
+          hours: "11am - 11pm",
+          phone: "604 765 4321",
+          special: "Happy hour 5pm-7pm"
+        }
+      },
+      followUp: {
+        question: "¿Quieres más información sobre alguna sucursal en particular?",
+        options: ["Buena Vista", "Arrecife", "Horarios"]
+      }
+    },
+    menu: {
+      patterns: [/menú/, /comida/, /plato/, /precio/, /carta/, /ordenar/, /qué tienen/],
+      responses: [
+        "Nuestro menú incluye:\n\n🍌 Plátano Maduro - $12.000\n🥩 Lomo Ancho - $25.000\n🌮 Arepas Paisas - $8.000",
+        "Platos destacados:\n\n• Bandeja Paisa - $18.000\n• Sancocho - $15.000\n• Postres tradicionales desde $7.000"
+      ],
+      data: {
+        "plátano": {
+          description: "Plátano maduro frito con queso",
+          price: "$12.000",
+          combo: "+$3.000 con bebida"
+        },
+        "lomo": {
+          description: "Corte premium 250g con guarniciones",
+          price: "$25.000",
+          combo: "Combo +$5.000 con bebida y postre"
+        }
+      },
+      followUp: {
+        question: "¿Quieres detalles sobre algún plato en particular?",
+        options: ["Plátano Maduro", "Lomo Ancho", "Ver fotos"]
+      }
+    },
+    hours: {
+      patterns: [/horario/, /hora/, /abren/, /cierra/, /atienden/],
+      responses: [
+        "⏰ Horarios:\n\nLunes a Viernes: 10:00 AM - 10:00 PM\nSábados y Domingos: 11:00 AM - 11:00 PM",
+        "Nuestros horarios de atención:\n\nDías de semana: 10am-10pm\nFines de semana: 11am-11pm"
+      ],
+      followUp: {
+        question: "¿Necesitas saber sobre horarios de domicilio?",
+        options: ["Sí", "No"]
+      }
+    },
+    delivery: {
+      patterns: [/domicilio/, /envío/, /delivery/, /llevar/],
+      responses: [
+        "🚚 Servicio a domicilio:\n\nHorario: 11:00 AM - 9:30 PM\nCosto: Varía por zona\nPlataformas: Rappi, Didi Food",
+        "Entregamos a domicilio hasta las 9:30pm por Rappi o directamente"
+      ],
+      followUp: {
+        question: "¿Quieres conocer las zonas de cobertura?",
+        options: ["Sí", "No"]
+      }
+    },
+    contact: {
+      patterns: [/whatsapp/, /wsp/, /contacto/, /teléfono/, /telefono/, /celular/, /llamar/],
+      responses: [
+        "📞 Contáctanos:\n\nWhatsApp: +57 123 456 7890\nTeléfono: (604) 444 1234\nRedes: @ElBananoOficial",
+        "Puedes comunicarte por:\n\n• WhatsApp: +57 123 456 7890\n• Teléfono fijo\n• Redes sociales"
+      ],
+      followUp: {
+        question: "¿Prefieres que te contactemos nosotros?",
+        options: ["Sí", "No"]
+      }
+    }
+  };
+
+  // Analizador de lenguaje natural mejorado
+  const analyzeInput = (text) => {
+    text = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    
+    // 1. Detección de intención
+    let matchedIntent = null;
+    for (const [intent, data] of Object.entries(knowledgeBase)) {
+      if (data.patterns.some(pattern => pattern.test(text))) {
+        matchedIntent = intent;
+        break;
+      }
+    }
+
+    // 2. Extracción de entidades
+    const entities = {
+      location: text.match(/(buena vista|arrecife)/)?.[0],
+      time: text.match(/\d{1,2}(:\d{2})?\s?(am|pm)?/)?.[0],
+      dish: text.match(/(plátano|lomo|arepa|bandeja|combo)/)?.[0],
+      people: text.match(/\d+\s?(personas?)?/)?.[0]
+    };
+
+    // 3. Análisis de sentimiento (simple)
+    const sentiment = text.includes('gracias') ? 'positive' : 
+                     text.includes('mal') || text.includes('queja') ? 'negative' : 'neutral';
+
+    return { 
+      intent: matchedIntent || 'unknown', 
+      entities, 
+      sentiment,
+      originalText: text
+    };
+  };
+
+  // Generador de respuestas contextuales
+  const generateResponse = (analysis) => {
+    const { intent, entities, sentiment, originalText } = analysis;
+    
+    // Respuesta para intención desconocida
+    if (intent === 'unknown') {
+      // Intentar adivinar contexto basado en conversación previa
+      if (conversationContext.lastIntent && knowledgeBase[conversationContext.lastIntent]) {
+        return {
+          text: `No estoy seguro de entender "${originalText}". ¿Te refieres a algo sobre ${conversationContext.lastIntent}?`,
+          options: knowledgeBase[conversationContext.lastIntent].followUp?.options || []
+        };
+      }
+      
+      return {
+        text: "¡Hola! Soy el asistente de El Banano 🍌. Puedo ayudarte con:\n\n• Menú y precios\n• Ubicaciones\n• Horarios\n• Reservas\n\n¿Qué necesitas saber?",
+        options: ["Menú", "Ubicaciones", "Horarios", "Contacto"]
+      };
+    }
+
+    const intentData = knowledgeBase[intent];
+    const randomResponse = intentData.responses[
+      Math.floor(Math.random() * intentData.responses.length)
+    ];
+
+    // Personalización basada en entidades
+    let customizedResponse = randomResponse;
+    if (entities.location && intentData.data?.[entities.location]) {
+      const locationData = intentData.data[entities.location];
+      customizedResponse += `\n\n${entities.location.toUpperCase()}:\n` +
+                           `📅 Horario: ${locationData.hours}\n` +
+                           `📞 Teléfono: ${locationData.phone}`;
+      
+      if (locationData.special) {
+        customizedResponse += `\n⭐ Promoción: ${locationData.special}`;
+      }
+    }
+
+    if (entities.dish && intentData.data?.[entities.dish]) {
+      const dishData = intentData.data[entities.dish];
+      customizedResponse += `\n\n${entities.dish.toUpperCase()}:\n` +
+                           `📝 ${dishData.description}\n` +
+                           `💰 Precio: ${dishData.price}`;
+      
+      if (dishData.combo) {
+        customizedResponse += `\n💡 ${dishData.combo}`;
+      }
+    }
+
+    // Manejo de sentimiento
+    if (sentiment === 'positive') {
+      customizedResponse += "\n\n¡Gracias por tus amables palabras! 😊";
+    } else if (sentiment === 'negative') {
+      customizedResponse += "\n\nLamento escuchar eso. ¿Podemos ayudarte a resolver algún problema?";
+      if (!customizedResponse.includes("contacto")) {
+        customizedResponse += "\n\nPuedes comunicarte con nuestro servicio al cliente al (604) 444 1234";
+      }
+    }
+
+    // Manejo de preguntas específicas
+    if (entities.time && intent === 'hours') {
+      customizedResponse += `\n\nPara el horario de las ${entities.time}, `;
+      if (entities.time.includes('pm') && parseInt(entities.time) > 8) {
+        customizedResponse += "esa hora sería para servicio en restaurante, el domicilio cierra a las 9:30pm.";
+      } else {
+        customizedResponse += "estaremos abiertos normalmente.";
+      }
+    }
+
+    return {
+      text: customizedResponse,
+      options: intentData.followUp?.options,
+      remember: entities.dish ? { favoriteDish: entities.dish } : null,
+      intent
+    };
+  };
+
+  // Efecto de escritura realista
+  const simulateTyping = (text, options) => {
+    let i = 0;
+    const speed = 30 + Math.random() * 20; // Velocidad variable
+    
+    const typing = () => {
+      if (i < text.length) {
+        const partialText = text.substring(0, i + 1);
+        setMessages(prev => {
+          const last = prev[prev.length - 1];
+          if (last?.sender === 'bot') {
+            return [...prev.slice(0, -1), { ...last, text: partialText }];
+          }
+          return [...prev, { text: partialText, sender: 'bot' }];
+        });
+        i++;
+        setTimeout(typing, speed);
+      } else if (options) {
+        setMessages(prev => [...prev, { options, sender: 'bot-options' }]);
+      }
+    };
+    
+    typing();
+  };
+
   const handleSendMessage = (e) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
 
-    // Agregar mensaje del usuario
+    // 1. Procesar entrada del usuario
     const userMessage = {
       text: inputValue,
-      sender: 'user'
+      sender: 'user',
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
-    setMessages([...messages, userMessage]);
-    setInputValue("");
+    setMessages(prev => [...prev, userMessage]);
+    setInputValue('');
 
-    // Respuesta del bot
+    // 2. Analizar mensaje
+    const analysis = analyzeInput(inputValue);
+    
+    // 3. Generar respuesta (con retraso simulado)
     setTimeout(() => {
-      let botResponse = {};
-      if (inputValue.toLowerCase().includes("punto") || inputValue.toLowerCase().includes("sucursal")) {
-        botResponse = {
-          text: "Tenemos dos puntos de atención:\n1. CC Buena Vista\n2. CC Arrecife\nHorario: Lunes a Domingo de 10am a 10pm",
-          sender: 'bot'
-        };
-      } else if (inputValue.toLowerCase().includes("whatsapp") || inputValue.toLowerCase().includes("wsp")) {
-        botResponse = {
-          text: "Puedes contactarnos por WhatsApp al +57 123 456 7890",
-          sender: 'bot'
-        };
-      } else {
-        botResponse = {
-          text: "Hola, soy el asistente de El Banano. ¿En qué puedo ayudarte? Puedes preguntar por:\n- Puntos de atención\n- Número de WhatsApp",
-          sender: 'bot'
-        };
-      }
-      setMessages(prev => [...prev, botResponse]);
+      const response = generateResponse(analysis);
+      
+      // 4. Actualizar contexto
+      setConversationContext(prev => ({
+        ...prev,
+        lastIntent: response.intent || analysis.intent,
+        rememberedFacts: response.remember ? 
+          { ...prev.rememberedFacts, ...response.remember } : 
+          prev.rememberedFacts,
+        conversationHistory: [...prev.conversationHistory.slice(-9), analysis.intent]
+      }));
+
+      // 5. Mostrar respuesta con efecto de escritura
+      simulateTyping(response.text, response.options);
     }, 800);
+  };
+
+  const handleQuickReply = (option) => {
+    setInputValue(option);
+    // Simular envío automático después de 300ms
+    setTimeout(() => {
+      const fakeEvent = { preventDefault: () => {} };
+      handleSendMessage(fakeEvent);
+    }, 300);
   };
 
   return (
@@ -159,77 +404,29 @@ const Inicio = () => {
 
   {/* Versión Desktop - Imagen con efecto de salto */}
   <motion.div 
-    className="hidden md:block absolute inset-0 overflow-hidden"
-    initial={{ opacity: 0, scale: 0.8 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ 
-      delay: 0.5, 
-      type: "spring", 
-      stiffness: 100, 
-      damping: 10 
-    }}
-  >
-    <div 
-      className="w-full h-full bg-cover "
-      style={{ 
-        backgroundImage: "url('/img/Gemini_Generated_Image_ad4z7iad4z7iad4z.jpeg')"
-      }}
-    >
-      <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 via-yellow-500/5 to-transparent"></div>
-      <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-black/10 to-transparent"></div>
-    </div>
-  </motion.div>
+  className="hidden md:block absolute inset-0 overflow-hidden "
+  initial={{ opacity: 0, scale: 0.8 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ delay: 0.5, type: "spring" }}
+>
+  <div className="w-full h-full flex items-center justify-center ">
+    <img
+      src="public/img/ChatGPT Image 11 abr 2025, 23_00_03.png"
+      alt="Comida El Banano"
+      className=" bg-cover h-full w-full"
+      style={{ maxHeight: '100vh', maxWidth: '100vw' }}
+    />
+    <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 via-yellow-500/5 to-transparent"></div>
+    <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-black/10 to-transparent"></div>
+  </div>
+</motion.div>
 
   {/* Contenido Desktop - Texto animado */}
   <div className="hidden md:flex relative z-10 h-full items-center">
     <div className="container mx-auto px-6">
       <div className="w-full md:w-1/2 lg:w-2/3">
         {/* Badge (aparece después del texto) */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 4.5 }}
-          className="mb-6"
-        >
-          <span className="inline-block px-12 py-2 bg-black text-yellow-400 text-sm font-bold tracking-widest rounded-full border-2 border-yellow-400/50 shadow-lg">
-            DESDE 1986
-          </span>
-        </motion.div>
-
-        {/* Título con letras saltando */}
-        <div className="overflow-hidden">
-          {"EL BANANO".split("").map((letter, index) => (
-            <motion.span
-              key={index}
-              initial={{ opacity: 0, y: 70, rotate: -10 }}
-              animate={{ opacity: 1, y: 0, rotate: 0 }}
-              transition={{
-                delay: 3 + index * 0.12, // 3s base + delay progresivo
-                type: "spring",
-                stiffness: 500,
-                damping: 15
-              }}
-              className="inline-block text-6xl md:text-7xl lg:text-9xl font-black text-blue-900"
-              style={{ 
-                WebkitTextStroke: "3px white",
-                textShadow: "4px 9px 0 rgba(0,0,0,0.8)"
-              }}
-            >
-              {letter === " " ? "\u00A0" : letter}
-            </motion.span>
-          ))}
-        </div>
-
-        {/* Subtítulo */}
-        <motion.p
-          className="text-xl md:text-2xl italic font-medium text-red-500 mb-8 mt-4"
-          style={{ textShadow: "1px 1px 0 white" }}
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 4.2, type: "spring" }}
-        >
-          ¡Sabores que enamoran!
-        </motion.p>
+      
       </div>
     </div>
   </div>
