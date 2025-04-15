@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const CombosBanano = () => {
   const [activeCombo, setActiveCombo] = useState(null);
   const [fullscreenImage, setFullscreenImage] = useState(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
   
   const combos = [
     { 
@@ -122,6 +124,19 @@ const CombosBanano = () => {
     }
   ];
 
+  // Efecto para auto-avanzar el carrusel
+  useEffect(() => {
+    if (window.innerWidth >= 1024) return;
+    
+    const interval = setInterval(() => {
+      if (!isHovering) {
+        nextSlide();
+      }
+    }, 5000);
+    
+    return () => clearInterval(interval);
+  }, [currentSlide, isHovering]);
+
   const handleClick = (id) => {
     setActiveCombo(id);
   };
@@ -134,15 +149,49 @@ const CombosBanano = () => {
     setFullscreenImage(null);
   };
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === combos.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? combos.length - 1 : prev - 1));
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+    setActiveCombo(combos[index].id);
+  };
+
   const imageVariants = {
     enter: { opacity: 0, y: 20 },
     center: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: -20 }
   };
 
+  const carouselVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0
+    }),
+    center: {
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction) => ({
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0
+    })
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-6">
+    <div className="max-h-screen bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500 p-4 md:p-6 w-[100%] mb-8">
       {/* Modal para imagen en pantalla completa */}
+      <div className='w-full flex justify-center mt-4 mb-8'>
+        <h1 className='text-4xl md:text-6xl font-extrabold text-white'>
+          Ahora Tenemos Combos !!
+        </h1>
+      </div>
+
       <AnimatePresence>
         {fullscreenImage && (
           <motion.div
@@ -170,9 +219,10 @@ const CombosBanano = () => {
         )}
       </AnimatePresence>
 
-      <div className="flex flex-col lg:flex-row gap-6 md:gap-8 max-w-8xl mx-auto border-[1px] border-yellow-400 bg-yellow-400 rounded-2xl ">
-        {/* Panel de selección */}
-        <div className="w-full lg:w-1/3 bg-red-500 rounded-2xl shadow-2xl p-5 md:p-6 border-white border-[1px] ">
+      {/* Versión Desktop (lg y arriba) */}
+      <div className="hidden lg:flex flex-col lg:flex-row gap-6 md:gap-8 max-w-8xl mx-auto border-[1px] border-yellow-400 bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500 rounded-2xl w-[80%]">
+        {/* Panel de selección (rojo) - solo en desktop */}
+        <div className="w-full lg:w-1/3 bg-red-500 rounded-2xl shadow-2xl p-5 md:p-6 border-white border-[1px]">
           <h3 className="text-white text-xl font-light mb-5 text-center">Selecciona tu combo</h3>
           
           <div className="flex flex-col items-center">
@@ -222,7 +272,6 @@ const CombosBanano = () => {
                       transition: 'all 0.5s cubic-bezier(0.68,-0.55,0.265,1.55)',
                       transitionDelay: `${(n - 1) * 0.1}s`
                     }}
-                    group-hover="transform translate-y-0 scale-200"
                   ></span>
                 ))}
               </motion.button>
@@ -250,7 +299,7 @@ const CombosBanano = () => {
               className="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2.5 px-5 rounded-lg transition-all shadow-md hover:shadow-lg"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-6.29-3.03c.545 0 1.033-.488 1.033-1.032 0-.546-.487-1.033-1.033-1.033s-1.033.487-1.033 1.033c0 .544.487 1.032 1.033 1.032m4.128 0c.546 0 1.033-.488 1.033-1.032 0-.546-.487-1.033-1.033-1.033s-1.033.487-1.033 1.033c0 .544.488 1.032 1.033 1.032"/>
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
               </svg>
               Chatea con nosotros
             </motion.a>
@@ -381,6 +430,115 @@ const CombosBanano = () => {
               </motion.div>
             )}
           </AnimatePresence>
+        </div>
+      </div>
+
+      {/* Versión Mobile (carousel) */}
+      <div className="lg:hidden w-full max-w-md mx-auto">
+        {/* Carrusel */}
+        <div 
+          className="relative h-96 w-full overflow-hidden rounded-2xl shadow-xl"
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
+        >
+          <AnimatePresence initial={false}>
+            <motion.div
+              key={currentSlide}
+              custom={1}
+              variants={carouselVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              className="absolute inset-0 flex flex-col"
+            >
+              {/* Imagen del combo */}
+              <div 
+                className="h-2/3 w-full bg-gray-100 flex items-center justify-center cursor-pointer"
+                onClick={() => openFullscreen(combos[currentSlide].image)}
+              >
+                <img 
+                  src={combos[currentSlide].image} 
+                  alt={combos[currentSlide].name}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              
+              {/* Descripción del combo */}
+              <div className="h-1/3 w-full p-4 bg-blue-900 text-white overflow-y-auto">
+                <h2 className="text-xl font-bold text-yellow-400 mb-1">
+                  {combos[currentSlide].name}
+                </h2>
+                <p className="text-sm mb-2">{combos[currentSlide].description}</p>
+                
+                <div className="flex justify-between items-center mt-2">
+                  <span className="text-lg font-bold text-yellow-400">
+                    ${combos[currentSlide].price}
+                  </span>
+                  <a
+                    href={combos[currentSlide].whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-green-500 text-white text-sm py-1 px-3 rounded-full flex items-center"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    Pedir
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Flechas de navegación */}
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              prevSlide();
+            }}
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 text-white p-2 rounded-full z-10"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              nextSlide();
+            }}
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 text-white p-2 rounded-full z-10"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+
+          {/* Indicadores de posición */}
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+            {combos.map((_, index) => (
+              <button
+                key={index}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToSlide(index);
+                }}
+                className={`w-3 h-3 rounded-full transition-all ${currentSlide === index ? 'bg-yellow-400 w-6' : 'bg-white/50'}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Botón para ver todos los combos (en mobile) */}
+        <div className="mt-6 text-center">
+          <button
+            onClick={() => goToSlide(0)}
+            className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full text-sm transition-all shadow-md"
+          >
+            Ver todos los combos
+          </button>
         </div>
       </div>
     </div>

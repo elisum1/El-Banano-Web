@@ -33,20 +33,20 @@ const Header = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className={`hidden md:flex items-center space-x-6 lg:space-x-8 text-2xl font-light ${
+          <nav className={`hidden md:flex items-center space-x-6 lg:space-x-8 text-xl font-semibold text-gray-800 ${
             isScrolled ? 'text-white' : 'text-black'
           }`}>
-            <a href="/" className="hover:text-yellow-500 transition-colors">Inicio</a>
-            <a href="/RestaurantLandingPage" className="hover:text-yellow-500 transition-colors">Menú</a>
-            <a href="/nosotros" className="hover:text-yellow-500 transition-colors">Sobre Nosotros</a>
-            <a href="/contacto" className="hover:text-yellow-500 transition-colors">Contacto</a>
+            <a href="/" className={ ` transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-white'}`}>INICIO</a>
+            <a href="/RestaurantLandingPage" className={ ` transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-white'}`}>MENU</a>
+            <a href="/nosotros" className={ ` transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-white'}`}>SOBRE NOSOTROS</a>
+            <a href="/contacto" className={ ` transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-white'}`}>CONTACTO</a>
           </nav>
 
           {/* Right Section - Phone and Cart */}
           <div className="hidden md:flex items-center space-x-6">
-            <div className={`text-right ${isScrolled ? 'text-white' : 'text-white'}`}>
+            <div className={`text-right ${isScrolled ? 'text-white' : 'text-gray-800'}`}>
               <span className="block text-sm font-light">Llama a la orden</span>
-              <span className="block text-xl font-bold">54 548 779 654</span>
+              <span className="block text-2xl font-bold text-white">304-288-39-23</span>
             </div>
             <a href='/carrito' className={`flex items-center space-x-2 px-4 py-2 rounded-full ${
               isScrolled ? 'bg-red-800 text-white' : 'bg-red-500 text-white'
@@ -82,35 +82,35 @@ const Header = () => {
         <nav className="flex flex-col items-center space-y-6 py-8">
           <a 
             href="/" 
-            className="text-blue-800 text-xl font-semibold hover:text-white transition-colors"
+            className="text-white text-xl font-semibold hover:text-blue-900 transition-colors"
             onClick={() => setIsOpen(false)}
           >
-            Inicio
+            INICIO
           </a>
           <a 
             href="/RestaurantLandingPage" 
-            className="text-blue-800 text-xl font-semibold hover:text-white transition-colors"
+            className="text-white text-xl font-semibold hover:text-blue-900 transition-colors"
             onClick={() => setIsOpen(false)}
           >
-            Menú
+            MENU
           </a>
           <a 
             href="/nosotros" 
-            className="text-blue-800 text-xl font-semibold hover:text-white transition-colors"
+            className="text-white text-xl font-semibold hover:text-blue-900 transition-colors"
             onClick={() => setIsOpen(false)}
           >
-            Sobre Nosotros
+            SSOBRE NOSOTROS
           </a>
           <a 
             href="/contacto" 
-            className="text-blue-800 text-xl font-semibold hover:text-white transition-colors"
+            className="text-white text-xl font-semibold hover:text-blue-900 transition-colors"
             onClick={() => setIsOpen(false)}
           >
-            Contacto
+            CONTACTO
           </a>
           <div className="pt-4 flex flex-col items-center">
-            <span className="text-blue-800 font-semibold">Llama a la orden</span>
-            <span className="text-blue-800 text-xl font-bold">54 548 779 654</span>
+            <span className="text-red-500 font-semibold">Llama a la orden</span>
+            <span className="text-white text-xl font-bold">54 548 779 654</span>
           </div>
         </nav>
       </div>
