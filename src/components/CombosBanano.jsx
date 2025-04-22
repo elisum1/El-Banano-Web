@@ -184,7 +184,7 @@ const CombosBanano = () => {
   };
 
   return (
-    <div className="max-h-screen bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500 p-4 md:p-6 w-[100%] mb-8">
+    <div className="min-h-screen bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500 p-4 md:p-6 w-[100%] mb-8">
       {/* Modal para imagen en pantalla completa */}
       <div className='w-full flex justify-center mt-4 mb-8'>
         <h1 className='text-4xl md:text-6xl font-extrabold text-white'>

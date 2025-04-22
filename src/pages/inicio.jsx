@@ -27,19 +27,17 @@ const Inicio = () => {
   const VisitanosRef = useRef(null);
   const BananoWebBannerRef = useRef(null);
   
-  // Referencias para las secciones
   const sectionRefs = useRef([]);
   const sections = [
     firstSectionRef, 
-     EspecialidadesRef,
+    EspecialidadesRef,
     combosSectionRef, 
     BananoWebBannerRef,
-     LocacionesVideoRef,
-     GaleriaRef,
-     ReseñasRef, 
+    LocacionesVideoRef,
+    GaleriaRef,
+    ReseñasRef, 
   ]
 
-  // Cerrar menú al hacer clic fuera
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dotsMenuRef.current && !dotsMenuRef.current.contains(event.target)) {
@@ -50,7 +48,6 @@ const Inicio = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Controlar header al hacer scroll y actualizar dot activo
   useEffect(() => {
     const handleScroll = () => {
       if (firstSectionRef.current) {
@@ -59,7 +56,6 @@ const Inicio = () => {
       }
       setIsScrolled(window.scrollY > 0);
       
-      // Determinar qué sección está visible
       const scrollPosition = window.scrollY + window.innerHeight / 2;
       sections.forEach((section, index) => {
         if (section.current && scrollPosition > section.current.offsetTop) {
@@ -90,7 +86,6 @@ const Inicio = () => {
   return (
     <section id='home' className="min-h-screen">
       <Header/>
-      {/* Header animado */}
       <AnimatePresence>
         {(headerVisible || showDotsMenu) && (
           <motion.div
@@ -109,9 +104,7 @@ const Inicio = () => {
         )}
       </AnimatePresence>
 
-
-<div className="fixed bottom-12 left-0 right-0 z-40 hidden md:flex justify-between items-center px-8">
-        {/* Redes sociales - ahora en fila */}
+      <div className="fixed bottom-12 left-0 right-0 z-40 hidden md:flex justify-between items-center px-8">
         <div className="flex space-x-6 pl-20">
           <a href="#" className="text-gray-800 hover:text-blue-300 transition-colors">
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -130,7 +123,6 @@ const Inicio = () => {
           </a>
         </div>
 
-        {/* Puntos de navegación - ahora en fila */}
         <div className="flex space-x-4 bg-black bg-opacity-30 px-4 py-2 rounded-full">
           {sections.map((_, index) => (
             <button
@@ -147,28 +139,39 @@ const Inicio = () => {
         </div>
       </div>
 
-        <div className="">
-      <Chatbot/>
+      <div className="">
+        <Chatbot/>
+      </div>
 
-        </div>
-
-      {/* Primera sección - Rediseñada según la imagen */}
       <section className="relative h-screen w-full bg-gray-100" ref={firstSectionRef}>
         {/* Versión Mobile */}
-        <div className="md:hidden absolute inset-0 bg- flex flex-col items-center justify-center p-4 bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500">
+        <div className="md:hidden absolute inset-0 flex flex-col items-center justify-center p-4 bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500">
           <img
             src="/img/logo_el_banano-removebg-preview.png" 
             alt="El Banano Logo"
             className="h-[200px] w-auto mb-8"
           />
-          <h1 className="text-6xl font-extrabold text-center text-blue-900 mb-2">
-            EL BANANO
+          <h1 className="relative text-6xl font-extrabold text-center mb-2 inline-block">
+            <span className="relative z-10 text-blue-900">
+              EL BANANO
+            </span>
+            <span 
+              className="absolute top-1 left-1 w-full h-full text-gray-800 opacity-40"
+              style={{
+                transform: 'skewX(-1deg) translateX(-10px) translateY(15px)',
+                filter: 'blur(2px)',
+                zIndex: 1
+              }}
+            >
+              EL BANANO
+            </span>
           </h1>
+          
           <p className="text-xl font-medium text-red-500 mb-6">
             DESDE 1986
           </p>
-          <h2 className="text-2xl text-gray-800 mb-4 font-semibodl">
-         AHORA TENEMOS COMBOS !!
+          <h2 className="text-2xl text-gray-800 mb-4 font-semibold">
+            AHORA TENEMOS COMBOS !!
           </h2>
           <p className="text-lg text-gray-900 text-center max-w-md">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
@@ -177,39 +180,32 @@ const Inicio = () => {
 
         {/* Versión Desktop */}
         <div className="hidden md:flex relative w-full h-full items-center justify-center bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500">
-          <div className="container mx-auto px-6 flex flex-col  items-center">
-            {/* Columna izquierda - Texto */}
-            <div className="w-full md:w-[100%] flex flex-col items-center md:items-center  h-[50vh] px-6 ">
-             
-            <h1 
-  className="relative text-6xl md:text-7xl lg:text-9xl xl:text-[200px] font-extrabold text-blue-900 mb-8 inline-block"
->
-  {/* Texto principal */}
-  <span className="relative z-10  ">
-    EL BANANO
-  </span>
-  
-  {/* Sombra inclinada */}
-  <span 
-    className="absolute top-1 left-1 w-full h-full text-gray-800 opacity-40 bg-blue-"
-    style={{
-      transform: 'skewX(-1deg) translateX(-20px) translateY(30px)',
-      filter: 'blur(2px)',
-      zIndex: 1
-    }}
-  >
-    EL BANANO
-  </span>
-</h1>            
+          <div className="container mx-auto px-6 flex flex-col items-center">
+            <div className="w-full md:w-[100%] flex flex-col items-center md:items-center h-[50vh] px-6">
+              <h1 className="relative text-6xl md:text-7xl lg:text-9xl xl:text-[200px] font-extrabold text-blue-900 mb-8 inline-block">
+                <span className="relative z-10">
+                  EL BANANO
+                </span>
+                <span 
+                  className="absolute top-1 left-1 w-full h-full text-gray-800 opacity-40"
+                  style={{
+                    transform: 'skewX(-1deg) translateX(-20px) translateY(30px)',
+                    filter: 'blur(2px)',
+                    zIndex: 1
+                  }}
+                >
+                  EL BANANO
+                </span>
+              </h1>
 
-      <div className="w-[20%]  justify-center flex m-0   ">
-
-              <h2 className="py-2 text-white font-extralight text-center w-15 text-2xl bg-red-500 rounded-md p-2 ">DESDE 1986</h2>
-      </div>
+              <div className="w-[20%] justify-center flex m-0">
+                <h2 className="py-2 text-white font-extralight text-center w-15 text-2xl bg-red-500 rounded-md p-2">
+                  DESDE 1986
+                </h2>
+              </div>
             </div>
 
-            {/* Columna derecha - Imagen */}
-            <div className="w-full md:w-full flex justify-center mt-10 md:mt-0 ">
+            <div className="w-full md:w-full flex justify-center mt-10 md:mt-0">
               <img 
                 src="/img/ImagenPrincipal.png"
                 className="max-h-[90vh] object-cover absolute top-[55%] w-[150vh]"
@@ -220,11 +216,8 @@ const Inicio = () => {
         </div>
       </section>
 
-      {/* Asignar refs a las secciones */}
-
       <div ref={EspecialidadesRef}>
-      <Especialidades ref={sections[1]}/>
-
+        <Especialidades ref={sections[1]}/>
       </div>
 
       <div ref={combosSectionRef}>
@@ -232,27 +225,24 @@ const Inicio = () => {
       </div>
 
       <div ref={BananoWebBannerRef}>
-      <BananoWebBanner ref={sections[3]}/>
+        <BananoWebBanner ref={sections[3]}/>
       </div>
 
       <div ref={LocacionesVideoRef}>
-      <LocacionesVideo ref={sections[4]}/>
+        <LocacionesVideo ref={sections[4]}/>
       </div>
 
-    <div ref={GaleriaRef}>
-      <Galeria ref={sections[5]}/>
-    </div>
+      <div ref={GaleriaRef}>
+        <Galeria ref={sections[5]}/>
+      </div>
 
-    <div ref={ReseñasRef}>
+      <div ref={ReseñasRef}>
+        <Reseñas ref={sections[6]}/>
+      </div>
 
-      <Reseñas ref={sections[6]}/>
-    </div>
-
-    <div ref={VisitanosRef}>
-
-      <Visitanos ref={sections[7]}/>
-    </div>
-
+      <div ref={VisitanosRef}>
+        <Visitanos ref={sections[7]}/>
+      </div>
 
       <Footer/>
     </section>

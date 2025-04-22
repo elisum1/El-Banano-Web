@@ -1,17 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Galeria = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [category, setCategory] = useState('all');
+
+  const categories = [
+    { id: 'all', name: 'Todos' },
+    { id: 'carnes', name: 'Carnes' },
+    { id: 'picadas', name: 'Picadas' },
+    { id: 'especiales', name: 'Especiales' }
+  ];
+
+  const dishes = [
+    {
+      id: 1,
+      image: '/img/YEI02214.jpg',
+      category: 'carnes',
+      title: 'Churrasco Premium',
+      description: 'Corte especial a la parrilla',
+      price: '$45.000'
+    },
+    {
+      id: 2,
+      image: '/img/YEI02152.jpg',
+      category: 'picadas',
+      title: 'Picada Especial',
+      description: 'Para compartir',
+      price: '$65.000'
+    },
+    {
+      id: 3,
+      image: '/img/YEI02159.jpg',
+      category: 'especiales',
+      title: 'Plato Especial',
+      description: 'Especialidad de la casa',
+      price: '$55.000'
+    },
+    {
+      id: 4,
+      image: '/img/YEI02161.jpg',
+      category: 'carnes',
+      title: 'Lomo de Res',
+      description: 'Corte premium a la parrilla',
+      price: '$48.000'
+    },
+    {
+      id: 5,
+      image: '/img/YEI02167.jpg',
+      category: 'picadas',
+      title: 'Picada Mixta',
+      description: 'Variedad de carnes y acompañamientos',
+      price: '$70.000'
+    },
+    {
+      id: 6,
+      image: '/img/YEI02170.jpg',
+      category: 'especiales',
+      title: 'Plato Familiar',
+      description: 'Ideal para compartir',
+      price: '$85.000'
+    }
+  ];
+
   return (
-    <section className="relative bg-white py-12 md:py-20 overflow-hidden">
-      {/* Elementos decorativos más sutiles */}
-      <div className="absolute top-0 right-0 w-40 h-40 md:w-60 md:h-60 bg-red-100 rounded-full filter blur-3xl opacity-30"></div>
-      <div className="absolute bottom-0 left-0 w-48 h-48 md:w-72 md:h-72 bg-yellow-100 rounded-full filter blur-3xl opacity-30"></div>
-    
-      <div className="container mx-auto px-4 sm:px-6">
-        {/* Experiencia Banano - Versión compacta */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center mb-16 md:mb-24">
-          {/* Imagen */}
-          <div className="relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl shadow-lg">
+    <section className="relative min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-20">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="container mx-auto px-4 sm:px-6"
+      >
+        {/* ¿Por qué elegir El Banano? */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center mb-20">
+          <motion.div 
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            className="relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl shadow-lg"
+          >
             <img 
               src="/img/YEI04584.jpg" 
               alt="Experiencia Banano"
@@ -21,10 +86,12 @@ const Galeria = () => {
             <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-lg max-w-xs">
               <p className="font-bold text-blue-900 text-sm md:text-base">"Una tradición que se saborea en cada bocado"</p>
             </div>
-          </div>
-    
-          {/* Descripción */}
-          <div>
+          </motion.div>
+
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+          >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               ¿POR QUÉ ELEGIR <span className="text-red-500">EL BANANO</span>?
             </h2>
@@ -44,7 +111,13 @@ const Galeria = () => {
                   description: "Donde cada visita se convierte en una experiencia memorable"
                 }
               ].map((item, index) => (
-                <div key={index} className="flex items-start">
+                <motion.div 
+                  key={index}
+                  initial={{ x: 50, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{ delay: index * 0.2 }}
+                  className="flex items-start"
+                >
                   <div className="bg-yellow-400 p-1.5 rounded-full mr-3 flex-shrink-0 mt-1">
                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
@@ -54,106 +127,142 @@ const Galeria = () => {
                     <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-1">{item.title}</h3>
                     <p className="text-gray-600 text-sm sm:text-base">{item.description}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
-    
-        {/* Separador minimalista */}
+
+        {/* Separador decorativo */}
         <div className="relative h-px bg-gray-200 mb-16 md:mb-20 mx-auto max-w-2xl">
           <div className="absolute left-1/2 transform -translate-x-1/2 -top-2 bg-blue-500 w-4 h-4 rounded-full flex items-center justify-center text-white">
             <span className="text-xs font-bold">✻</span>
           </div>
         </div>
 
-        {/* Galería de platos - Versión compacta y optimizada */}
-        <div className="mb-16 md:mb-24 bg-gray-900 p-6 sm:p-8 rounded-xl">
-          {/* Título */}
-          <div className="text-center mb-10 md:mb-14">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-red-500 mb-3">
-              <span className="text-yellow-500">GALERÍA</span> GASTRONÓMICA
-            </h3>
-            <p className="text-gray-600 max-w-md mx-auto text-sm sm:text-base">
-              Descubre nuestros platos estrella en imágenes
-            </p>
-          </div>
-          
-          {/* Grid de imágenes optimizado */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
-            {[
-              '/img/YEI02214.jpg',
-              '/img/YEI02152.jpg', 
-              '/img/YEI02244.jpg',
-              '/img/YEI04571.jpg',
-              '/img/Pa no quedar picado, pide una picada de la casa! 🍽 con quien la compartirías.jpg',
-              '/img/YEI02219.jpg',
-              '/img/YEI02220.jpg',
-              '/img/YEI02221.jpg'
-            ].map((imgSrc, index) => (
-              <div 
-                key={index}
-                className="relative aspect-square rounded-lg overflow-hidden group shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
-                onClick={() => {
-                  document.getElementById('modalImage').src = imgSrc;
-                  document.getElementById('imageModal').classList.remove('hidden');
-                  document.body.style.overflow = 'hidden';
-                }}
+        {/* Título de la Galería */}
+        <motion.div 
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Nuestra Galería
+          </h2>
+          <p className="text-xl text-gray-600">
+            Explora nuestra variedad de platos especialmente preparados para ti
+          </p>
+        </motion.div>
+
+        {/* Filtros con animación */}
+        <div className="flex justify-center mb-12">
+          <motion.div 
+            className="flex gap-4 p-2 bg-white rounded-full shadow-lg"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+          >
+            {categories.map((cat) => (
+              <motion.button
+                key={cat.id}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`px-6 py-2 rounded-full transition-all ${
+                  category === cat.id 
+                    ? 'bg-yellow-400 text-blue-900 font-bold' 
+                    : 'hover:bg-gray-100'
+                }`}
+                onClick={() => setCategory(cat.id)}
+              >
+                {cat.name}
+              </motion.button>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Grid de platos con animaciones */}
+        <motion.div 
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <AnimatePresence>
+            {dishes
+              .filter(dish => category === 'all' || dish.category === category)
+              .map((dish) => (
+                <motion.div
+                  key={dish.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  whileHover={{ y: -10 }}
+                  className="bg-white rounded-2xl overflow-hidden shadow-xl group cursor-pointer"
+                  onClick={() => setSelectedImage(dish)}
+                >
+                  <div className="relative h-72 overflow-hidden">
+                    <motion.img
+                      src={dish.image}
+                      alt={dish.title}
+                      className="w-full h-full object-cover"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.6 }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                  
+                  <motion.div 
+                    className="p-6"
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                  >
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{dish.title}</h3>
+                    <p className="text-gray-600 mb-4">{dish.description}</p>
+                    <p className="text-yellow-500 font-bold">{dish.price}</p>
+                  </motion.div>
+                </motion.div>
+              ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Modal mejorado */}
+        <AnimatePresence>
+          {selectedImage && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90"
+              onClick={() => setSelectedImage(null)}
+            >
+              <motion.div
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.5, opacity: 0 }}
+                className="relative max-w-4xl w-full bg-white rounded-2xl overflow-hidden"
+                onClick={e => e.stopPropagation()}
               >
                 <img 
-                  src={imgSrc}
-                  alt={`Plato especial ${index + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  onError={(e) => {
-                    e.target.onerror = null; 
-                    e.target.src = '/img/placeholder-comida.jpg'
-                  }}
+                  src={selectedImage.image}
+                  alt={selectedImage.title}
+                  className="w-full h-[70vh] object-cover"
                 />
-                
-                {/* Overlay simplificado */}
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="bg-yellow-400/90 p-2 rounded-full">
-                    <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                  </div>
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8">
+                  <h3 className="text-3xl font-bold text-white mb-2">{selectedImage.title}</h3>
+                  <p className="text-gray-200 mb-4">{selectedImage.description}</p>
+                  <p className="text-yellow-400 text-2xl font-bold">{selectedImage.price}</p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Modal para imagen en grande */}
-        <div id="imageModal" className="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90">
-          <div className="relative max-w-4xl w-full">
-            <img 
-              id="modalImage" 
-              src="" 
-              alt="Imagen ampliada" 
-              className="max-h-[90vh] w-full object-contain rounded"
-            />
-            <button 
-              onClick={() => {
-                document.getElementById('imageModal').classList.add('hidden');
-                document.body.style.overflow = 'auto';
-              }}
-              className="absolute top-2 right-2 bg-white/20 hover:bg-white/30 p-2 rounded-full transition-colors duration-200"
-            >
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Separador final */}
-        <div className="relative h-px bg-gray-200 mt-16 md:mt-20 mx-auto max-w-2xl">
-          <div className="absolute left-1/2 transform -translate-x-1/2 -top-2 bg-red-500 w-4 h-4 rounded-full flex items-center justify-center text-white">
-            <span className="text-xs font-bold">✻</span>
-          </div>
-        </div>
-      </div>
+                <button 
+                  onClick={() => setSelectedImage(null)}
+                  className="absolute top-4 right-4 bg-white/20 hover:bg-white/30 p-2 rounded-full transition-colors"
+                >
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
     </section>
   );
 };
