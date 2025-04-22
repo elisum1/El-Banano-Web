@@ -2,51 +2,43 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
-const Antioquenos = ({ onReturn }) => {
-  const [currentItemIndex, setCurrentItemIndex] = useState(0);
+const ElCompleto = ({ onReturn, onNavigate }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeItem, setActiveItem] = useState(null);
+  const [currentItemIndex, setCurrentItemIndex] = useState(0);
+  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
 
   const menuCategories = [
     {
-      id: 'antioquenos',
-      title: "LOS ANTIOQUEÑOS",
-      subtitle: "Sabores tradicionales de nuestra tierra",
-      description: "Platos típicos preparados con recetas tradicionales",
+      id: 'completo',
+      title: "EL COMPLETO",
+      subtitle: "Armalo como quieras !!",
+      description: "Elije tu proteina con uno o dos acompañantes de tu gusto ",
       items: [
         { 
-          name: "Bandeja Paisa", 
-          price1: "$35.000", 
-          price2: "$45.000",
-          desc1: "Versión tradicional con todos los ingredientes clásicos",
-          desc2: "Versión especial con extras y porciones más grandes",
-          img1: "/img/bandeja-paisa.jpg",
-          img2: "/img/bandeja-paisa-especial.jpg"
+          name: "Carne 230 gr.", 
+          price1: "$37.500", 
+          price2: "$62.500",
+          desc1: "Carne de res premium asada al carbón con guarniciones",
+          desc2: "Doble porción de carne premium con extras especiales",
+          img1: "public/img/YEI02152.jpg",
+          img2: "/img/carne-2x.jpg"
         },
         { 
-          name: "Sancocho", 
-          price1: "$28.000", 
-          price2: "$38.000",
-          desc1: "Sancocho tradicional con carne, plátano y yuca",
-          desc2: "Sancocho premium con más carnes y acompañamientos",
-          img1: "/img/sancocho.jpg",
-          img2: "/img/sancocho-premium.jpg"
-        },
-        { 
-          name: "Mondongo", 
-          price1: "$30.000", 
-          price2: "$40.000",
-          desc1: "Mondongo clásico con panza de res y verduras",
-          desc2: "Mondongo especial con más carnes y especias",
-          img1: "/img/mondongo.jpg",
-          img2: "/img/mondongo-especial.jpg"
+          name: "Junior 140 gr.", 
+          price1: "$37.500", 
+          price2: "$62.500",
+          desc1: "Mezcla especial de carnes con especias tradicionales",
+          desc2: "Doble porción de nuestra mezcla especial",
+          img1: "public/img/YEI02214.jpg",
+          img2: "/img/juntar-2x.jpg"
         },
       ]
-    }
+    },
   ];
 
   const navigateItems = (direction) => {
-    const items = menuCategories[0].items;
+    const items = menuCategories[currentCategoryIndex].items;
     let newIndex;
     
     if (direction === 'next') {
@@ -69,11 +61,11 @@ const Antioquenos = ({ onReturn }) => {
     setActiveItem(null);
   };
 
-  const currentCategory = menuCategories[0];
+  const currentCategory = menuCategories[currentCategoryIndex];
   const currentItems = currentCategory.items;
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row relative bg-gray-50">
+    <div className="min-h-screen flex flex-col md:flex-row relative bg-gray-500">
       {/* Sección amarilla */}
       <div className="w-full md:w-1/2 bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500 flex flex-col items-center justify-center p-12 md:p-8 relative h-[30vh] md:h-auto">
         <motion.div
@@ -108,21 +100,21 @@ const Antioquenos = ({ onReturn }) => {
         </motion.div>
       </div>
 
-      {/* Sección roja */}
-      <div className="w-full md:w-1/2 bg-gradient-to-br from-red-600 to-red-700 p-3 md:p-8 flex flex-col justify-center relative">
+      {/* Sección azul */}
+      <div className="w-full md:w-1/2 bg-gradient-to-br from-blue-900 to-blue-800 p-3 md:p-8 flex flex-col justify-center relative">
         {/* Flechas de navegación entre items */}
         <button 
           onClick={() => navigateItems('prev')}
           className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-2 md:p-3 rounded-full shadow-md z-10 flex items-center"
         >
-          <FaArrowLeft className="text-red-600 text-lg md:text-xl" />
+          <FaArrowLeft className="text-blue-900 text-lg md:text-xl" />
         </button>
         
         <button 
           onClick={() => navigateItems('next')}
           className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-2 md:p-3 rounded-full shadow-md z-10 flex items-center"
         >
-          <FaArrowRight className="text-red-600 text-lg md:text-xl" />
+          <FaArrowRight className="text-blue-900 text-lg md:text-xl" />
         </button>
 
         <motion.div 
@@ -132,7 +124,7 @@ const Antioquenos = ({ onReturn }) => {
           transition={{ delay: 0.3, duration: 0.6 }}
         >
           {/* Encabezado */}
-          <div className="bg-red-600 p-3 md:p-6 text-center">
+          <div className="bg-blue-900 p-3 md:p-6 text-center">
             <h2 className="text-xl md:text-3xl font-bold text-yellow-400 mb-1 md:mb-2">
               {currentCategory.title}
             </h2>
@@ -141,7 +133,7 @@ const Antioquenos = ({ onReturn }) => {
 
           {/* Contenedor de items */}
           <div className="max-h-[50vh] md:max-h-[60vh] overflow-y-auto p-2 md:p-4">
-            {currentItems.map((item, index) => (
+            {currentItems.slice(0, 6).map((item, index) => (
               <motion.div 
                 key={index}
                 className="mb-3 md:mb-6 last:mb-0 border-b border-yellow-100 pb-3 md:pb-6"
@@ -149,7 +141,7 @@ const Antioquenos = ({ onReturn }) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index }}
               >
-                <h3 className="text-base md:text-lg lg:text-xl font-bold text-red-700 mb-2 md:mb-3">{item.name}</h3>
+                <h3 className="text-base md:text-lg lg:text-xl font-bold text-blue-900 mb-2 md:mb-3">{item.name}</h3>
                 
                 <div className="grid grid-cols-2 gap-2 md:gap-4">
                   {/* Versión 1x */}
@@ -192,7 +184,7 @@ const Antioquenos = ({ onReturn }) => {
 
           {/* Nota especial */}
           <div className="bg-yellow-100 p-2 md:p-4 text-center border-t-2 border-yellow-300">
-            <p className="text-red-700 font-bold italic text-xs md:text-sm lg:text-base">¡Auténticos sabores antioqueños!</p>
+            <p className="text-blue-900 font-bold italic text-xs md:text-sm lg:text-base">¡Armalo como quieras!</p>
           </div>
         </motion.div>
 
@@ -204,7 +196,7 @@ const Antioquenos = ({ onReturn }) => {
           transition={{ delay: 0.8 }}
         >
           <motion.button
-            className="bg-yellow-400 hover:bg-yellow-500 text-red-700 px-4 py-2 md:px-6 md:py-3 rounded-full font-bold text-sm md:text-base shadow-lg transition-all flex items-center mx-auto"
+            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-full font-bold text-sm md:text-base shadow-lg transition-all flex items-center mx-auto"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -216,4 +208,4 @@ const Antioquenos = ({ onReturn }) => {
   );
 };
 
-export default Antioquenos;
+export default ElCompleto;

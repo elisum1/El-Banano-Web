@@ -48,7 +48,7 @@ const Header = () => {
               <span className="block text-sm font-light">Llama a la orden</span>
               <span className="block text-2xl font-bold text-white">304-288-39-23</span>
             </div>
-            <a href='/carrito' className={`flex items-center space-x-2 px-4 py-2 rounded-full ${
+            <a href='#' className={`flex items-center space-x-2 px-4 py-2 rounded-full ${
               isScrolled ? 'bg-red-800 text-white' : 'bg-red-500 text-white'
             } hover:bg-red-600 transition-colors`}>
               <FontAwesomeIcon icon={faShoppingCart} />

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaArrowLeft, FaArrowRight, FaHome } from 'react-icons/fa';
+import { FaArrowRight } from 'react-icons/fa';
 
-const Bebidas = ({ onReturn, onNavigate }) => {
+const Bebidas = () => {
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
 
   const items = [
@@ -48,30 +48,6 @@ const Bebidas = ({ onReturn, onNavigate }) => {
     <div className="min-h-screen flex flex-col md:flex-row relative bg-gray-50">
       {/* Mitad roja */}
       <div className="w-full md:w-1/2 bg-gradient-to-br from-red-600 via-red-500 to-red-700 flex flex-col items-center justify-center h-[30vh] sm:h-[100vh] md:p-8 relative">
-        <motion.button 
-          onClick={onReturn}
-          className="absolute top-4 left-4 bg-white bg-opacity-80 hover:bg-opacity-100 p-2 rounded-full shadow-lg transition-all flex items-center"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <FaHome className="text-red-600 text-xl mr-2" />
-          <span className="text-red-600 font-semibold">Volver</span>
-        </motion.button>
-
-        <button 
-          onClick={() => onNavigate('prev')}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-2 rounded-full shadow-md z-10 flex items-center"
-        >
-          <FaArrowLeft className="text-red-600 text-xl" />
-        </button>
-        
-        <button 
-          onClick={() => onNavigate('next')}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-2 rounded-full shadow-md z-10 flex items-center"
-        >
-          <FaArrowRight className="text-red-600 text-xl" />
-        </button>
-
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -110,7 +86,7 @@ const Bebidas = ({ onReturn, onNavigate }) => {
           onClick={() => navigateItems('prev')}
           className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-red-600 bg-opacity-70 hover:bg-opacity-100 p-3 rounded-full shadow-md z-10 flex items-center"
         >
-          <FaArrowLeft className="text-white text-xl" />
+          <FaArrowRight className="text-white text-xl transform rotate-180" />
         </button>
         
         <button 
