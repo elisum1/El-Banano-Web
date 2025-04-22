@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import Header from "./Header";
-import MenuDigital from "./MenuDigital";
-import Antioquenos from "./Antioquenos";
-import MazorcaSalchipapa from "./MazorcaSalchipapa";
+import MenuDigital from "./menuDigital";
+
 
 const RestaurantLandingPage = () => {
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
