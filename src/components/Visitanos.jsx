@@ -79,9 +79,9 @@ const Visitanos = () => {
               </h3>
               <div className="space-y-4">
                 {[
-                  { day: "Lunes - Viernes", time: "11:00 AM - 10:00 PM" },
-                  { day: "Sábado", time: "10:00 AM - 11:00 PM" },
-                  { day: "Domingo", time: "10:00 AM - 9:00 PM" }
+                  { day: "Lunes - Viernes", time: "11:00 AM - 9:00 PM" },
+                  { day: "Sábado", time: "11:00 AM - 9:00 PM" },
+                  { day: "Domingo", time: "11:00 AM - 9:00 PM" }
                 ].map((item, index) => (
                   <motion.div 
                     key={index}

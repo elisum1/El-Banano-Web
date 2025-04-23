@@ -85,7 +85,7 @@ const Reseñas = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-6">
-            Experiencias que Inspiran
+            EXPERIENCIAS
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Descubre lo que nuestra comunidad dice sobre nosotros

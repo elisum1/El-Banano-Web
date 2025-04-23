@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaRobot, FaTimes, FaPaperPlane, FaRegSmile } from 'react-icons/fa';
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,38 +9,75 @@ const Chatbot = () => {
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = React.useRef(null);
 
-  // Base de conocimiento del chatbot
   const knowledgeBase = {
     greetings: {
-      patterns: [/hola/, /buenos días/, /qué tal/, /hi/, /hello/],
+      patterns: [/hola/i, /buenos\s*d[ií]as/i, /buenas/i, /hi/i, /hello/i, /hey/i],
       responses: [
-        "¡Hola! Soy el asistente de El Banano 🍌. ¿En qué puedo ayudarte hoy?",
-        "¡Buen día! ¿Quieres saber sobre nuestro menú, ubicaciones u horarios?"
+        "¡Hola! 👋 Soy BananoBot, tu asistente virtual. ¿En qué puedo ayudarte hoy?",
+        "¡Bienvenido a El Banano! 🍌 ¿Qué te gustaría saber?"
       ],
-      options: ["Menú", "Ubicaciones", "Horarios", "Contacto"]
+      options: ["🍽️ Ver Menú", "📍 Ubicaciones", "⏰ Horarios", "📞 Reservas"]
     },
     menu: {
-      patterns: [/menú/, /comida/, /platos?/, /qué tienen/],
+      patterns: [/men[uú]/i, /comida/i, /platos?/i, /qu[eé]\s*tienen/i, /carta/i, /ver\s*men[uú]/i],
       responses: [
-        "Nuestro menú incluye:\n\n🍌 Plátano Maduro - $12.000\n🥩 Lomo Ancho - $25.000\n🌮 Arepas Paisas - $8.000",
-        "Platos destacados:\n• Bandeja Paisa - $18.000\n• Sancocho - $15.000\n• Postres desde $7.000"
+        "🍽️ Nuestro menú destacado:\n\n🥘 Platos Principales:\n• Bandeja Paisa Premium - $35.000\n• Lomo al Trapo - $42.000\n• Pescado en Salsa - $38.000\n\n🥗 Entradas:\n• Patacones con Hogao - $12.000\n• Empanadas (6 uds) - $15.000\n\n🍺 Bebidas:\n• Jugos Naturales - $8.000\n• Cervezas Artesanales - $12.000"
       ],
-      options: ["Combos", "Bebidas", "Postres", "Volver"]
+      options: ["Ver Especialidades", "🍷 Bebidas", "🍰 Postres", "📞 Reservar"]
     },
     locations: {
-      patterns: [/ubicación/, /dónde están/, /sucursal/, /dirección/],
+      patterns: [/ubicaci[oó]n/i, /d[oó]nde\s*est[aá]n/i, /sucursal/i, /direcci[oó]n/i, /local/i, /sede/i],
       responses: [
-        "📍 CC Buena Vista - Carrera 50 #80-120\n📍 CC Arrecife - Calle 30 #82-65",
-        "Estamos en:\n• Centro Comercial Buena Vista\n• Centro Comercial Arrecife"
+        "📍 Nuestras sedes están ubicadas en:\n\n🏢 Sede Principal:\n• CC Buenavista - Local 301\n• Horario: 12:00 PM - 10:00 PM\n\n🏢 Sede Centro:\n• CC Arrecife - Local 205\n• Horario: 12:00 PM - 9:00 PM\n\n¿Te gustaría hacer una reserva?"
       ],
-      options: ["Horarios", "Cómo llegar", "Volver"]
+      options: ["📞 Reservar", "⏰ Ver Horarios", "🚗 Cómo Llegar", "🔄 Volver"]
+    },
+    schedule: {
+      patterns: [/horarios?/i, /hora/i, /cuando\s*abren/i, /horario\s*de\s*atenci[oó]n/i, /ver\s*horarios?/i],
+      responses: [
+        "⏰ Nuestros horarios de atención:\n\n🏢 Sede Principal:\n• Lunes a Domingo: 12:00 PM - 10:00 PM\n\n🏢 Sede Centro:\n• Lunes a Domingo: 12:00 PM - 9:00 PM\n\n¿Deseas hacer una reserva?"
+      ],
+      options: ["📞 Hacer Reserva", "📍 Ver Ubicaciones", "🔄 Volver al Inicio"]
+    },
+    reservations: {
+      patterns: [/reserva/i, /reservar/i, /reservaci[oó]n/i, /mesa/i, /hacer reserva/i],
+      responses: [
+        "🎉 ¡Excelente elección! Para hacer una reserva necesitamos:\n\n1️⃣ Número de personas\n2️⃣ Fecha y hora\n3️⃣ Sede de preferencia\n\nPuedes llamarnos al:\n📞 +57 300-123-4567\n\n¿O prefieres que te contactemos?"
+      ],
+      options: ["📱 Dejar Contacto", "📍 Ver Ubicaciones", "🔄 Volver al Inicio"]
     }
   };
 
-  // Analizar el mensaje del usuario
   const analyzeMessage = (text) => {
-    text = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    
+    text = text.toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9\s]/g, "")
+      .trim();
+
+    const exactMatches = {
+      "menu": "menu",
+      "ver menu": "menu",
+      "ubicaciones": "locations",
+      "ubicacion": "locations",
+      "horarios": "schedule",
+      "horario": "schedule",
+      "reservar": "reservations",
+      "reserva": "reservations",
+      "volver": "greetings",
+      "inicio": "greetings",
+      "volver al inicio": "greetings"
+    };
+
+    if (exactMatches[text]) {
+      const intent = exactMatches[text];
+      return {
+        intent,
+        response: knowledgeBase[intent].responses[0],
+        options: knowledgeBase[intent].options
+      };
+    }
+
     for (const [intent, data] of Object.entries(knowledgeBase)) {
       if (data.patterns.some(pattern => pattern.test(text))) {
         return {
@@ -52,12 +90,11 @@ const Chatbot = () => {
     
     return {
       intent: 'unknown',
-      response: "No entendí tu pregunta. ¿Quieres información sobre nuestro menú, ubicaciones u horarios?",
-      options: ["Menú", "Ubicaciones", "Horarios"]
+      response: "Lo siento, no entendí tu pregunta. ¿Te gustaría información sobre nuestro menú, ubicaciones u horarios?",
+      options: ["🍽️ Ver Menú", "📍 Ubicaciones", "⏰ Horarios"]
     };
   };
 
-  // Efecto de escritura
   const typeMessage = (text, options) => {
     setIsTyping(true);
     let i = 0;
@@ -82,33 +119,29 @@ const Chatbot = () => {
     }, 30);
   };
 
-  // Enviar mensaje
   const handleSend = (e) => {
     e.preventDefault();
     if (!inputValue.trim() || isTyping) return;
 
-    // Mensaje del usuario
     setMessages(prev => [...prev, { text: inputValue, sender: 'user' }]);
     setInputValue('');
     
-    // Respuesta del bot después de un breve retraso
     setTimeout(() => {
       const { response, options } = analyzeMessage(inputValue);
       typeMessage(response, options);
     }, 800);
   };
 
-  // Respuesta rápida con botones
   const handleQuickReply = (option) => {
-    setMessages(prev => [...prev, { text: option, sender: 'user' }]);
+    const cleanOption = option.replace(/[🍽️📍⏰📞🍷🍰🚗🔄📱]/g, '').trim();
+    setMessages(prev => [...prev, { text: cleanOption, sender: 'user' }]);
     
     setTimeout(() => {
-      const { response, options } = analyzeMessage(option);
+      const { response, options } = analyzeMessage(cleanOption);
       typeMessage(response, options);
     }, 500);
   };
 
-  // Auto-scroll al final de los mensajes
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -117,13 +150,12 @@ const Chatbot = () => {
     scrollToBottom();
   }, [messages]);
 
-  // Mensaje inicial
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       setTimeout(() => {
         typeMessage(
-          "¡Hola! Soy el asistente de El Banano 🍌. ¿En qué puedo ayudarte hoy?",
-          ["Menú", "Ubicaciones", "Horarios"]
+          "¡Hola! 👋 Soy el asistente de El Banano 🍌. ¿En qué puedo ayudarte hoy?",
+          ["🍽️ Ver Menú", "📍 Ubicaciones", "⏰ Horarios", "📞 Reservas"]
         );
       }, 1000);
     }
@@ -131,30 +163,15 @@ const Chatbot = () => {
 
   return (
     <div className="fixed bottom-24 right-6 z-50">
-      {/* Botón flotante */}
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-green-500 text-white p-4 rounded-full shadow-lg"
+        className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-          />
-        </svg>
+        <FaRobot className="h-6 w-6" />
       </motion.button>
 
-      {/* Chatbox */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -162,49 +179,52 @@ const Chatbot = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.5, y: 50 }}
             transition={{ type: 'spring', damping: 25 }}
-            className="absolute bottom-16 right-0 w-80 bg-white rounded-lg shadow-xl overflow-hidden"
+            className="absolute bottom-16 right-0 w-[calc(100vw-2rem)] sm:w-[350px] max-w-[400px] bg-white rounded-2xl shadow-2xl overflow-hidden border border-yellow-200"
           >
-            {/* Header */}
-            <div className="bg-yellow-500 text-white p-3 flex justify-between items-center">
-              <h3 className="font-bold">Asistente El Banano</h3>
-              <button onClick={() => setIsOpen(false)} className="text-white">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                />
-                </svg>
-              </button>
+            <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white p-4 flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <FaRobot className="h-6 w-6" />
+                <h3 className="font-bold text-lg">BananoBot</h3>
+              </div>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setIsOpen(false)}
+                className="text-white hover:bg-white/20 p-2 rounded-full transition-colors"
+              >
+                <FaTimes className="h-5 w-5" />
+              </motion.button>
             </div>
 
-            {/* Mensajes */}
-            <div className="h-64 p-3 overflow-y-auto bg-gray-50">
+            <div className="h-[300px] sm:h-[400px] p-4 overflow-y-auto bg-gray-50 space-y-4">
               {messages.map((msg, i) => (
-                <div key={i} className={`mb-2 ${msg.sender === 'user' ? 'text-right' : 'text-left'}`}>
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
                   {msg.sender === 'options' ? (
-                    <div className="flex flex-wrap gap-2 mt-2">
+                    <div className="flex flex-wrap gap-2 w-full mt-2">
                       {msg.options.map((option, j) => (
-                        <button
+                        <motion.button
                           key={j}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
                           onClick={() => handleQuickReply(option)}
-                          className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm hover:bg-yellow-200 transition"
+                          className="px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full text-sm hover:bg-yellow-200 transition-colors shadow-sm hover:shadow"
                         >
                           {option}
-                        </button>
+                        </motion.button>
                       ))}
                     </div>
                   ) : (
                     <div
-                      className={`inline-block px-3 py-2 rounded-lg max-w-xs ${
+                      className={`max-w-[80%] p-3 rounded-2xl ${
                         msg.sender === 'user'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-gray-200 text-gray-800'
+                          ? 'bg-yellow-500 text-white rounded-br-none'
+                          : 'bg-white text-gray-800 shadow-sm rounded-bl-none'
                       }`}
                     >
                       {msg.text.split('\n').map((line, k) => (
@@ -215,51 +235,51 @@ const Chatbot = () => {
                       ))}
                     </div>
                   )}
-                </div>
+                </motion.div>
               ))}
               {isTyping && (
-                <div className="text-left">
-                  <div className="inline-block px-3 py-2 bg-gray-200 text-gray-800 rounded-lg">
-                    <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-100"></div>
-                      <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-200"></div>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex justify-start"
+                >
+                  <div className="bg-white p-4 rounded-2xl rounded-bl-none shadow-sm">
+                    <div className="flex space-x-2">
+                      <div className="w-2 h-2 bg-yellow-500 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-yellow-500 rounded-full animate-bounce delay-100"></div>
+                      <div className="w-2 h-2 bg-yellow-500 rounded-full animate-bounce delay-200"></div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               )}
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input */}
-            <form onSubmit={handleSend} className="p-3 border-t">
-              <div className="flex">
+            <form onSubmit={handleSend} className="p-4 bg-white border-t border-gray-100">
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  className="text-gray-400 hover:text-yellow-500 transition-colors"
+                >
+                  <FaRegSmile className="h-6 w-6" />
+                </button>
                 <input
                   type="text"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder="Escribe tu mensaje..."
-                  className="flex-1 border rounded-l-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  className="flex-1 py-2 px-4 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:bg-white transition-all"
                   disabled={isTyping}
                 />
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                   type="submit"
-                  className="bg-yellow-500 text-white px-3 py-2 rounded-r-lg hover:bg-yellow-600 disabled:opacity-50"
+                  className="bg-yellow-500 text-white p-2 rounded-full hover:bg-yellow-600 disabled:opacity-50 disabled:hover:bg-yellow-500 transition-colors"
                   disabled={!inputValue.trim() || isTyping}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </button>
+                  <FaPaperPlane className="h-5 w-5" />
+                </motion.button>
               </div>
             </form>
           </motion.div>

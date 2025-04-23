@@ -4,12 +4,11 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Reseñas from "../components/Reseñas";
 import Galeria from "../components/Galeria";
-import Visitanos from "../components/Visitanos";
 import Especialidades from "../components/Especialidades";
 import Chatbot from "../components/Chatbot";
 import LocacionesVideo from "../components/LocacionesVideo";
 import CombosBanano from "../components/CombosBanano";
-import BananoWebBanner from "../components/BananoWebBanner";
+
 
 const Inicio = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,15 +23,13 @@ const Inicio = () => {
   const GaleriaRef = useRef(null);
   const EspecialidadesRef = useRef(null);
   const ReseñasRef = useRef(null);
-  const VisitanosRef = useRef(null);
-  const BananoWebBannerRef = useRef(null);
+
   
   const sectionRefs = useRef([]);
   const sections = [
     firstSectionRef, 
     EspecialidadesRef,
     combosSectionRef, 
-    BananoWebBannerRef,
     LocacionesVideoRef,
     GaleriaRef,
     ReseñasRef, 
@@ -151,21 +148,17 @@ const Inicio = () => {
             alt="El Banano Logo"
             className="h-[200px] w-auto mb-8"
           />
-          <h1 className="relative text-6xl font-extrabold text-center mb-2 inline-block">
-            <span className="relative z-10 text-blue-900">
-              EL BANANO
-            </span>
-            <span 
-              className="absolute top-1 left-1 w-full h-full text-gray-800 opacity-40"
+          <motion.h1 
+              className="text-6xl md:text-9xl font-extrabold text-blue-900 mb-6"
               style={{
-                transform: 'skewX(-1deg) translateX(-10px) translateY(15px)',
-                filter: 'blur(2px)',
-                zIndex: 1
+                textShadow: '4px 4px 0px #FCD34D, 8px 8px 0px rgba(30, 58, 138, 0.5)'
               }}
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8 }}
             >
-              EL BANANO
-            </span>
-          </h1>
+             EL BANANO
+            </motion.h1>
           
           <p className="text-xl font-medium text-red-500 mb-6">
             DESDE 1986
@@ -182,21 +175,17 @@ const Inicio = () => {
         <div className="hidden md:flex relative w-full h-full items-center justify-center bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500">
           <div className="container mx-auto px-6 flex flex-col items-center">
             <div className="w-full md:w-[100%] flex flex-col items-center md:items-center h-[50vh] px-6">
-              <h1 className="relative text-6xl md:text-7xl lg:text-9xl xl:text-[200px] font-extrabold text-blue-900 mb-8 inline-block">
-                <span className="relative z-10">
-                  EL BANANO
-                </span>
-                <span 
-                  className="absolute top-1 left-1 w-full h-full text-gray-800 opacity-40"
-                  style={{
-                    transform: 'skewX(-1deg) translateX(-20px) translateY(30px)',
-                    filter: 'blur(2px)',
-                    zIndex: 1
-                  }}
-                >
-                  EL BANANO
-                </span>
-              </h1>
+            <motion.h1 
+              className="text-6xl md:text-[10rem] font-extrabold text-blue-900 mb-6"
+              style={{
+                textShadow: '4px 4px 0px #FCD34D, 8px 8px 0px rgba(30, 58, 138, 0.5)'
+              }}
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            >
+          EL BANANO
+            </motion.h1>
 
               <div className="w-[20%] justify-center flex m-0">
                 <h2 className="py-2 text-white font-extralight text-center w-15 text-2xl bg-red-500 rounded-md p-2">
@@ -224,10 +213,6 @@ const Inicio = () => {
         <CombosBanano ref={sections[2]}/>
       </div>
 
-      <div ref={BananoWebBannerRef}>
-        <BananoWebBanner ref={sections[3]}/>
-      </div>
-
       <div ref={LocacionesVideoRef}>
         <LocacionesVideo ref={sections[4]}/>
       </div>
@@ -240,9 +225,7 @@ const Inicio = () => {
         <Reseñas ref={sections[6]}/>
       </div>
 
-      <div ref={VisitanosRef}>
-        <Visitanos ref={sections[7]}/>
-      </div>
+  
 
       <Footer/>
     </section>
