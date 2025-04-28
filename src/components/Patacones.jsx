@@ -151,6 +151,7 @@ const Patacones = () => {
                     onClick={() => openImageModal(item.img1, item, 1)}
                   >
                     <motion.img
+                    
                       src={item.img1}
                       alt={`${item.name} 1x`}
                       className="w-full h-24 md:h-32 lg:h-40 object-cover rounded-md mb-1 md:mb-2"

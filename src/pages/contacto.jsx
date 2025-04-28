@@ -40,9 +40,9 @@ const Contacto = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
-      const templateParams = {
+      const templateParamsAdmin = {
         to_email: 'elias.um94@gmail.com',
         from_name: `${formData.nombre} ${formData.apellido}`,
         from_email: formData.email,
@@ -50,12 +50,52 @@ const Contacto = () => {
         message: formData.mensaje,
       };
 
-      await emailjs.send(
-        'Elbanano2428..',
-        'template_z55fmk9',
-        templateParams,
-        '__2oYDNAMCtJgTb8-'
-      );
+      const templateParamsUser = {
+        to_email: formData.email,
+        from_name: `${formData.nombre} ${formData.apellido}`,
+        from_email: formData.email,
+        phone: formData.celular,
+        message: formData.mensaje,
+        html_message: `
+          <div style="font-family: system-ui, sans-serif, Arial; font-size: 16px">
+            <a style="text-decoration: none; outline: none" href="https://el-banano-web.vercel.app/" target="_blank">
+              <img style="height: 32px; vertical-align: middle" height="32" src="https://elbanano.vercel.app/public/img/logo_el_banano-removebg-preview.png" alt="El Banano" />
+            </a>
+        
+            <p style="padding-top: 16px; border-top: 1px solid #eaeaea">Hola ${formData.nombre} ${formData.apellido},</p>
+        
+            <p>¡Gracias por ponerte en contacto con nosotros!</p>
+        
+            <p>Hemos recibido tu mensaje y te responderemos lo antes posible. A continuación un resumen de tu mensaje:</p>
+        
+            <div style="margin-top: 10px; padding: 10px; background-color: #f9f9f9; border-radius: 5px;">
+              <p><strong>Correo:</strong> ${formData.email}</p>
+              <p><strong>Teléfono:</strong> ${formData.celular}</p>
+              <p><strong>Mensaje:</strong><br />${formData.mensaje}</p>
+            </div>
+        
+            <p style="padding-top: 16px; border-top: 1px solid #eaeaea">
+              ¡Saludos!<br />
+              Equipo El Banano
+            </p>
+          </div>
+        `
+      };
+
+      await Promise.all([
+        emailjs.send(
+          'Elbanano2428..',        // ID de servicio
+          'template_z55fmk9',       // plantilla para ADMIN
+          templateParamsAdmin,
+          '__2oYDNAMCtJgTb8-'       // public key
+        ),
+        emailjs.send(
+          'Elbanano2428..',         // ID de servicio
+          'template_v3xmlgf',       // plantilla para USUARIO (debes asegurarte que en emailjs acepte el campo `html_message`)
+          templateParamsUser,
+          '__2oYDNAMCtJgTb8-'
+        )
+      ]);
 
       alert('Mensaje enviado exitosamente!');
       setFormData({
@@ -184,7 +224,7 @@ const Contacto = () => {
       </div>
 
       <Visitanos />
-      <Footer/>
+      <Footer />
     </div>
   );
 };
