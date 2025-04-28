@@ -18,12 +18,12 @@ const Header = () => {
   }, []);
 
   return (
-    <section id='home'>
+    <section id='home' className="overflow-x-hidden">
       <header className={`w-full h-[12vh] 2xl:h-[13vh] fixed z-50 transition-all duration-300 ${
         isScrolled ? 'bg-blue-950 shadow-md' : 'bg-transparent'
       }`}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between border-b-[2px] border-yellow-600/50">
-          {/* Logo Section - Clickable */}
+        <div className="container mx-auto px-4 h-full flex items-center justify-between border-b-[2px] border-yellow-600/50">
+          {/* Logo Section */}
           <a href="/" className="flex items-center">
             <img
               src="/img/logo_el_banano-removebg-preview.png"
@@ -33,16 +33,16 @@ const Header = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className={`hidden md:flex items-center space-x-6 lg:space-x-8 text-xl font-semibold text-gray-800 ${
+          <nav className={`hidden md:flex items-center space-x-6 lg:space-x-8 text-xl font-semibold ${
             isScrolled ? 'text-white' : 'text-black'
           }`}>
-            <a href="/" className={ ` transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-white'}`}>INICIO</a>
-            <a href="/RestaurantLandingPage" className={ ` transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-white'}`}>MENU</a>
-            <a href="/nosotros" className={ ` transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-white'}`}>SOBRE NOSOTROS</a>
-            <a href="/contacto" className={ ` transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-white'}`}>CONTACTO</a>
+            <a href="/" className={`transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-white'}`}>INICIO</a>
+            <a href="/RestaurantLandingPage" className={`transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-white'}`}>MENU</a>
+            <a href="/nosotros" className={`transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-white'}`}>SOBRE NOSOTROS</a>
+            <a href="/contacto" className={`transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-white'}`}>CONTACTO</a>
           </nav>
 
-          {/* Right Section - Phone and Cart */}
+          {/* Right Section */}
           <div className="hidden md:flex items-center space-x-6">
             <div className={`text-right ${isScrolled ? 'text-white' : 'text-gray-800'}`}>
               <span className="block text-sm font-light">Llama a la orden</span>
@@ -58,59 +58,43 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden text-2xl focus:outline-none"
+            className="md:hidden w-8 h-8 flex flex-col justify-center items-center focus:outline-none"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
-            <span className={`block w-6 h-0.5 mb-1.5 transition-all ${
-              isScrolled ? 'bg-blue-800' : 'bg-white'
+            <span className={`w-6 h-0.5 mb-1.5 transition-all ${
+              isScrolled ? 'bg-white' : 'bg-white'
             } ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-            <span className={`block w-6 h-0.5 mb-1.5 transition-all ${
-              isScrolled ? 'bg-blue-800' : 'bg-white'
+            <span className={`w-6 h-0.5 mb-1.5 transition-all ${
+              isScrolled ? 'bg-white' : 'bg-white'
             } ${isOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`block w-6 h-0.5 transition-all ${
-              isScrolled ? 'bg-blue-800' : 'bg-white'
+            <span className={`w-6 h-0.5 transition-all ${
+              isScrolled ? 'bg-white' : 'bg-white'
             } ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
           </button>
         </div>
       </header>
 
       {/* Mobile Navigation */}
-      <div className={`fixed top-[12vh] left-0 w-full bg-yellow-400 z-40 transition-all duration-300 overflow-hidden ${
-        isOpen ? 'max-h-screen' : 'max-h-0'
-      }`}>
-        <nav className="flex flex-col items-center space-y-6 py-8">
-          <a 
-            href="/" 
-            className="text-white text-xl font-semibold hover:text-blue-900 transition-colors"
-            onClick={() => setIsOpen(false)}
-          >
+      <div className={`fixed top-[12vh] left-0 w-full bg-blue-950 z-40 transition-all duration-300 ${
+        isOpen ? 'max-h-[calc(100vh-12vh)]' : 'max-h-0'
+      } overflow-hidden`}>
+        <nav className="flex flex-col items-center py-8 space-y-6">
+          <a href="/" className="text-white text-lg font-semibold hover:text-yellow-500 transition-colors" onClick={() => setIsOpen(false)}>
             INICIO
           </a>
-          <a 
-            href="/RestaurantLandingPage" 
-            className="text-white text-xl font-semibold hover:text-blue-900 transition-colors"
-            onClick={() => setIsOpen(false)}
-          >
+          <a href="/RestaurantLandingPage" className="text-white text-lg font-semibold hover:text-yellow-500 transition-colors" onClick={() => setIsOpen(false)}>
             MENU
           </a>
-          <a 
-            href="/nosotros" 
-            className="text-white text-xl font-semibold hover:text-blue-900 transition-colors"
-            onClick={() => setIsOpen(false)}
-          >
-            SSOBRE NOSOTROS
+          <a href="/nosotros" className="text-white text-lg font-semibold hover:text-yellow-500 transition-colors" onClick={() => setIsOpen(false)}>
+            SOBRE NOSOTROS
           </a>
-          <a 
-            href="/contacto" 
-            className="text-white text-xl font-semibold hover:text-blue-900 transition-colors"
-            onClick={() => setIsOpen(false)}
-          >
+          <a href="/contacto" className="text-white text-lg font-semibold hover:text-yellow-500 transition-colors" onClick={() => setIsOpen(false)}>
             CONTACTO
           </a>
           <div className="pt-4 flex flex-col items-center">
-            <span className="text-red-500 font-semibold">Llama a la orden</span>
-            <span className="text-white text-xl font-bold">54 548 779 654</span>
+            <span className="text-yellow-500 font-semibold">Llama a la orden</span>
+            <span className="text-white text-xl font-bold">304-288-39-23</span>
           </div>
         </nav>
       </div>
