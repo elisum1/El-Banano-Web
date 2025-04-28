@@ -149,9 +149,7 @@ const Inicio = () => {
         </div>
       </div>
 
-      <div className="fixed right-14 z-40 w-auto max-w-[90%] md:max-w-none">
-        <Chatbot/>
-      </div>
+      
 
       <section className="relative h-screen w-full bg-gray-100" ref={firstSectionRef}>
         {/* Versión Mobile */}
