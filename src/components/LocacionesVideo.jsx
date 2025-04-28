@@ -9,37 +9,33 @@ const LocacionesVideo = () => {
   const cookingVideos = [
     {
       title: "EL ARTE DEL ASADO",
-      subtitle: "Churrasco Premium",
+      subtitle: "Churrasco de 330 gr",
       video: "/img/VideoChurrasco.mp4",
-      chef: "Chef Antonio Martínez",
-      time: "20 minutos de preparación",
+      chef: "Parrilleros",
+      time: "10 minutos de preparación",
       description: "Observa cómo nuestros chefs maestros preparan el churrasco perfecto, sellando los jugos y sabores en su punto exacto. Una experiencia culinaria que despierta todos los sentidos.",
       features: [
         { icon: FaUtensils, text: "Término al gusto" },
         { icon: FaStar, text: "Corte premium" },
-        { icon: FaHeart, text: "Marinado especial" }
+        { icon: FaHeart, text: "Marinado especial de El Banano" }
       ],
-      rating: 4.9,
-      price: "$45.000",
-      buttonText: "¡PRUÉBALO AHORA!",
-      buttonColor: "bg-yellow-400 hover:bg-yellow-500"
+      rating: 5,
+      price: "$56.000",
     },
     {
       title: "SABOR Y TRADICIÓN",
-      subtitle: "Especialidades El Banano",
-      video: "/img/sede-rodadero.mp4",
-      chef: "Chef María González",
-      time: "25 minutos de preparación",
+      subtitle: "Antioqueños El Banano",
+      video: "/img/AtioqueñoVideo.mp4",
+      chef: "Cocineros",
+      time: "20 minutos de preparación",
       description: "Descubre los secretos detrás de nuestras recetas más emblemáticas. Cada plato es preparado con pasión y dedicación para brindarte una experiencia gastronómica inolvidable.",
       features: [
-        { icon: FaFire, text: "Receta original" },
-        { icon: FaStar, text: "Ingredientes selectos" },
-        { icon: FaClock, text: "Técnica perfecta" }
+        { icon: FaFire, text: "Receta original de El Bannano" },
+        { icon: FaStar, text: "Ingredientes muy selectos" },
+        { icon: FaClock, text: "De rapida preparacion" }
       ],
-      rating: 4.8,
-      price: "$40.000",
-      buttonText: "DESCUBRE MÁS",
-      buttonColor: "bg-blue-900 hover:bg-blue-800"
+      rating: 4.9,
+      price: "$34.000", 
     }
   ];
 

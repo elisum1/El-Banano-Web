@@ -59,7 +59,7 @@ const Contacto = () => {
         html_message: `
           <div style="font-family: system-ui, sans-serif, Arial; font-size: 16px">
             <a style="text-decoration: none; outline: none" href="https://el-banano-web.vercel.app/" target="_blank">
-              <img style="height: 32px; vertical-align: middle" height="32" src="https://elbanano.vercel.app/public/img/logo_el_banano-removebg-preview.png" alt="El Banano" />
+              <img style="height: 32px; vertical-align: middle" height="32" src="https://el-banano-web.vercel.app/public/img/logo_el_banano-removebg-preview.png" alt="El Banano" />
             </a>
         
             <p style="padding-top: 16px; border-top: 1px solid #eaeaea">Hola ${formData.nombre} ${formData.apellido},</p>

@@ -8,9 +8,11 @@ import Especialidades from "../components/Especialidades";
 import Chatbot from "../components/Chatbot";
 import LocacionesVideo from "../components/LocacionesVideo";
 import CombosBanano from "../components/CombosBanano";
+import Loading from "../components/Loading";
 
 
 const Inicio = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showDotsMenu, setShowDotsMenu] = useState(false);
@@ -24,6 +26,13 @@ const Inicio = () => {
   const EspecialidadesRef = useRef(null);
   const ReseñasRef = useRef(null);
 
+  useEffect(() => {
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 7000);
+
+    return () => clearTimeout(loadingTimer);
+  }, []);
   
   const sectionRefs = useRef([]);
   const sections = [
@@ -33,7 +42,7 @@ const Inicio = () => {
     LocacionesVideoRef,
     GaleriaRef,
     ReseñasRef, 
-  ]
+  ];
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -79,6 +88,10 @@ const Inicio = () => {
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <section id='home' className="min-h-screen">
@@ -136,7 +149,7 @@ const Inicio = () => {
         </div>
       </div>
 
-      <div className="fixed bottom-4 right-4 z-40 w-auto max-w-[90%] md:max-w-none">
+      <div className="fixed right-14 z-40 w-auto max-w-[90%] md:max-w-none">
         <Chatbot/>
       </div>
 
@@ -175,17 +188,17 @@ const Inicio = () => {
         <div className="hidden md:flex relative w-full h-full items-center justify-center bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500">
           <div className="container mx-auto px-6 flex flex-col items-center">
             <div className="w-full md:w-[100%] flex flex-col items-center md:items-center h-[50vh] px-6">
-            <motion.h1 
-              className="text-6xl md:text-7xl  lg:text-9xl xl:text-[10rem] font-extrabold text-blue-900 mb-6"
-              style={{
-                textShadow: '4px 4px 0px #FCD34D, 8px 8px 0px rgba(30, 58, 138, 0.5)'
-              }}
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8 }}
-            >
-          EL BANANO
-            </motion.h1>
+              <motion.h1 
+                className="text-6xl md:text-7xl lg:text-9xl xl:text-[10rem] font-extrabold text-blue-900 mb-6"
+                style={{
+                  textShadow: '4px 4px 0px #FCD34D, 8px 8px 0px rgba(30, 58, 138, 0.5)'
+                }}
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.8 }}
+              >
+                EL BANANO
+              </motion.h1>
 
               <div className="w-[20%] justify-center flex m-0">
                 <h2 className="py-2 text-white font-extralight text-center w-15 text-2xl bg-red-500 rounded-md p-2">
@@ -236,8 +249,6 @@ const Inicio = () => {
       <div ref={ReseñasRef}>
         <Reseñas ref={sections[6]}/>
       </div>
-
-  
 
       <Footer/>
     </section>

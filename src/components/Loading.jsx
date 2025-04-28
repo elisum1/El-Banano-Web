@@ -4,136 +4,134 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Loading = () => {
   const [progress, setProgress] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
+  const [canExit, setCanExit] = useState(false);
 
   useEffect(() => {
-    // Simular progreso de carga
+    const minLoadingTimer = setTimeout(() => {
+      setCanExit(true);
+    }, 7000);
+
     const interval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(interval);
           return 100;
         }
-        return prev + Math.floor(Math.random() * 10) + 1;
+        return prev + Math.floor(Math.random() * 3) + 1;
       });
-    }, 300);
+    }, 200);
 
-    // Mostrar mensaje después de 2 segundos
     const messageTimer = setTimeout(() => {
       setShowMessage(true);
-    }, 2000);
+    }, 1500);
 
     return () => {
       clearInterval(interval);
       clearTimeout(messageTimer);
+      clearTimeout(minLoadingTimer);
     };
   }, []);
 
-  const bananaVariants = {
-    initial: { rotate: 0 },
-    animate: { 
-      rotate: 360,
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        ease: "linear"
-      }
-    }
-  };
-
-  const progressBarVariants = {
-    initial: { width: 0 },
-    animate: { 
-      width: `${progress}%`,
-      transition: { duration: 0.3 }
-    }
-  };
-
-  const messageVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: { delay: 0.5, duration: 0.8 }
-    }
-  };
+  const shouldShow = progress < 100 || !canExit;
 
   return (
     <AnimatePresence>
-      <motion.div 
-        className="fixed inset-0 flex flex-col items-center justify-center bg-yellow-400 z-[9999]"
-        initial={{ opacity: 1 }}
-        exit={{ opacity: 0, transition: { duration: 0.5 } }}
-      >
-        <div className="relative w-40 h-40 mb-8">
-          <motion.img
-            src="/img/logo_el_banano-removebg-preview.png"
-            alt="Restaurante El Banano"
-            className="w-full h-full object-contain"
-            variants={bananaVariants}
-            initial="initial"
-            animate="animate"
-          />
-          
-          <motion.div 
-            className="absolute -inset-4 border-4 border-yellow-300 rounded-full"
-            animate={{
-              rotate: -360,
-              transition: {
-                duration: 3,
+      {shouldShow && (
+        <motion.div 
+          className="fixed inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-blue-950 to-blue-900 z-[9999]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="relative w-40 h-40">
+            <motion.img
+              src="/img/logo_el_banano-removebg-preview.png"
+              alt="Restaurante El Banano"
+              className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ 
+                scale: 1,
+                opacity: 1
+              }}
+              transition={{
+                duration: 1,
+                ease: "easeOut"
+              }}
+            />
+            
+            <motion.div 
+              className="absolute -inset-4 border-2 border-yellow-400/30 rounded-full"
+              animate={{
+                scale: [1, 1.1, 1],
+                opacity: [0.2, 0.5, 0.2]
+              }}
+              transition={{
+                duration: 4,
                 repeat: Infinity,
-                ease: "linear"
-              }
-            }}
-          />
-        </div>
+                ease: "easeInOut"
+              }}
+            />
+          </div>
 
-        <div className="w-64 h-3 bg-yellow-200 rounded-full overflow-hidden mb-4">
+          <div className="mt-12 w-64 relative">
+            <motion.div 
+              className="h-[2px] bg-yellow-400/20"
+              initial={{ width: 0 }}
+              animate={{ width: "100%" }}
+              transition={{ duration: 0.5 }}
+            />
+            <motion.div 
+              className="absolute top-0 left-0 h-[2px] bg-yellow-400"
+              initial={{ width: 0 }}
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 0.3 }}
+            />
+          </div>
+
           <motion.div 
-            className="h-full bg-blue-600"
-            variants={progressBarVariants}
-            initial="initial"
-            animate="animate"
-          />
-        </div>
+            className="mt-6 text-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            <p className="text-yellow-400 text-lg font-light mb-2">
+              {progress}%
+            </p>
+            
+            <AnimatePresence>
+              {showMessage && (
+                <motion.p
+                  className="text-yellow-400/70 text-sm font-light tracking-wider"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  CARGANDO EXPERIENCIAS...
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </motion.div>
 
-        <div className="text-center">
-          <p className="text-white text-xl font-semibold mb-2">
-            {progress}% CARGADO
-          </p>
-          
-          <AnimatePresence>
-            {showMessage && (
-              <motion.p
-                className="text-yellow-100 text-sm"
-                variants={messageVariants}
-                initial="initial"
-                animate="animate"
-              >
-                Preparando una experiencia deliciosa...
-              </motion.p>
-            )}
-          </AnimatePresence>
-        </div>
-
-        <div className="absolute bottom-8 left-0 right-0 flex justify-center">
-          <div className="flex space-x-2">
-            {[...Array(5)].map((_, i) => (
+          <div className="absolute bottom-8 flex space-x-3">
+            {[...Array(3)].map((_, i) => (
               <motion.div
                 key={i}
-                className="w-2 h-2 bg-white rounded-full"
+                className="w-1.5 h-1.5 bg-yellow-400/50 rounded-full"
                 animate={{
-                  y: [0, -10, 0],
-                  transition: {
-                    duration: 1.5,
-                    repeat: Infinity,
-                    delay: i * 0.2
-                  }
+                  scale: [1, 1.5, 1],
+                  opacity: [0.3, 1, 0.3]
+                }}
+                transition={{
+                  duration: 1,
+                  repeat: Infinity,
+                  delay: i * 0.2
                 }}
               />
             ))}
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      )}
     </AnimatePresence>
   );
 };
