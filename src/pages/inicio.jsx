@@ -94,7 +94,7 @@ const Inicio = () => {
   }
 
   return (
-    <section id='home' className="min-h-screen">
+    <section id='home' className="min-h-screen overflow-x-hidden">
       <Header/>
       <AnimatePresence>
         {(headerVisible || showDotsMenu) && (
@@ -103,7 +103,7 @@ const Inicio = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -100, opacity: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed top-0 left-0 w-full z-50"
+            className="fixed top-0 left-0 right-0 w-full z-50"
           >
             <Header 
               isOpen={isOpen} 
@@ -114,8 +114,8 @@ const Inicio = () => {
         )}
       </AnimatePresence>
 
-      <div className="fixed bottom-12 left-0 right-0 z-40 hidden md:flex justify-between items-center px-8">
-        <div className="flex space-x-6 pl-20">
+      <div className="fixed bottom-12 left-0 right-0 z-40 hidden md:flex justify-between items-center px-4 lg:px-8">
+        <div className="flex space-x-4 lg:space-x-6 pl-4 lg:pl-20">
           <a href="#" className="text-gray-800 hover:text-blue-300 transition-colors">
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
@@ -133,12 +133,12 @@ const Inicio = () => {
           </a>
         </div>
 
-        <div className="flex space-x-4 bg-black bg-opacity-30 px-4 py-2 rounded-full">
+        <div className="flex space-x-3 bg-black bg-opacity-30 px-3 py-2 rounded-full">
           {sections.map((_, index) => (
             <button
               key={index}
               onClick={() => scrollToSection(index)}
-              className="w-3 h-3 rounded-full focus:outline-none transition-all duration-300"
+              className="w-2.5 h-2.5 rounded-full focus:outline-none transition-all duration-300"
               style={{
                 backgroundColor: activeDot === index ? '#3b82f6' : 'white',
                 transform: activeDot === index ? 'scale(1.5)' : 'scale(1)',
@@ -149,47 +149,47 @@ const Inicio = () => {
         </div>
       </div>
 
-      <div className="fixed right-6 z-40 w-auto max-w-[100%] md:max-w-none">
+      <div className="fixed right-4 lg:right-14 z-40 w-auto max-w-[90%] md:max-w-none">
         <Chatbot/>
       </div>
 
-      <section className="relative h-screen w-full bg-gray-100" ref={firstSectionRef}>
+      <section className="relative h-screen w-full overflow-hidden bg-gray-100" ref={firstSectionRef}>
         {/* Versión Mobile */}
         <div className="md:hidden absolute inset-0 flex flex-col items-center justify-center p-4 bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500">
           <img
             src="/img/logo_el_banano-removebg-preview.png" 
             alt="El Banano Logo"
-            className="h-[200px] w-auto mb-8"
+            className="h-[150px] w-auto mb-6"
           />
           <motion.h1 
-              className="text-6xl md:text-9xl font-extrabold text-blue-900 mb-6"
-              style={{
-                textShadow: '4px 4px 0px #FCD34D, 8px 8px 0px rgba(30, 58, 138, 0.5)'
-              }}
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8 }}
-            >
-             EL BANANO
-            </motion.h1>
+            className="text-4xl sm:text-5xl font-extrabold text-blue-900 mb-4 text-center px-2"
+            style={{
+              textShadow: '2px 2px 0px #FCD34D, 4px 4px 0px rgba(30, 58, 138, 0.5)'
+            }}
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            EL BANANO
+          </motion.h1>
           
-          <p className="text-xl font-medium text-red-500 mb-6">
+          <p className="text-lg font-medium text-red-500 mb-4">
             DESDE 1986
           </p>
-          <h2 className="text-2xl text-gray-800 mb-4 font-semibold">
+          <h2 className="text-xl text-gray-800 mb-3 font-semibold text-center px-2">
             AHORA TENEMOS COMBOS !!
           </h2>
-          <p className="text-lg text-gray-900 text-center max-w-md">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+          <p className="text-base text-gray-900 text-center max-w-[90%] px-2">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
           </p>
         </div>
 
         {/* Versión Desktop */}
         <div className="hidden md:flex relative w-full h-full items-center justify-center bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500">
-          <div className="container mx-auto px-6 flex flex-col items-center">
-            <div className="w-full md:w-[100%] flex flex-col items-center md:items-center h-[50vh] px-6">
+          <div className="container mx-auto px-4 lg:px-6 flex flex-col items-center">
+            <div className="w-full flex flex-col items-center h-[50vh]">
               <motion.h1 
-                className="text-6xl md:text-7xl lg:text-9xl xl:text-[10rem] font-extrabold text-blue-900 mb-6"
+                className="text-5xl md:text-7xl lg:text-9xl xl:text-[10rem] font-extrabold text-blue-900 mb-6 text-center"
                 style={{
                   textShadow: '4px 4px 0px #FCD34D, 8px 8px 0px rgba(30, 58, 138, 0.5)'
                 }}
@@ -200,21 +200,19 @@ const Inicio = () => {
                 EL BANANO
               </motion.h1>
 
-              <div className="w-[20%] justify-center flex m-0">
-                <h2 className="py-2 text-white font-extralight text-center w-15 text-2xl bg-red-500 rounded-md p-2">
+              <div className="w-full max-w-xs sm:max-w-sm md:max-w-md justify-center flex">
+                <h2 className="py-2 text-white font-extralight text-center text-xl md:text-2xl bg-red-500 rounded-md px-4">
                   DESDE 1986
                 </h2>
               </div>
             </div>
 
-            <div className="w-full md:w-full flex justify-center mt-10 md:mt-0">
+            <div className="w-full flex justify-center mt-10 md:mt-0 relative">
               <motion.img 
                 src="/img/ImagenPrincipal.png"
-                className="max-h-[90vh] object-cover absolute top-[55%] w-[140vh]"
+                className="max-h-[70vh] w-auto object-contain absolute top-[20%]"
                 alt="Plato especial"
-                animate={{ 
-                  rotate: 360
-                }}
+                animate={{ rotate: 360 }}
                 transition={{ 
                   duration: 40,
                   repeat: Infinity,
