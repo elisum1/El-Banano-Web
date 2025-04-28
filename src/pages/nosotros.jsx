@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaLeaf, FaHeart, FaStar, FaMapMarkerAlt, FaPlay, FaClock, FaPhone } from 'react-icons/fa';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import Visitanos from '../components/Visitanos';
 
 const Nosotros = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -826,7 +825,7 @@ const Nosotros = () => {
           </div>
         </div>
       </section>
-            <Visitanos/>
+            
       <Footer />
     </div>
   );

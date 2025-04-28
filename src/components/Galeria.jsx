@@ -155,9 +155,9 @@ const Galeria = () => {
         </motion.div>
 
         {/* Filtros con animación */}
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center mb-12 px-4">
           <motion.div 
-            className="flex gap-4 p-2 bg-white rounded-full shadow-lg"
+            className="flex flex-wrap justify-center gap-2 p-2 bg-white rounded-full shadow-lg max-w-3xl"
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
           >
@@ -166,10 +166,10 @@ const Galeria = () => {
                 key={cat.id}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`px-6 py-2 rounded-full transition-all ${
+                className={`px-4 sm:px-6 py-1.5 sm:py-2 text-sm sm:text-base rounded-full transition-all whitespace-nowrap ${
                   category === cat.id 
                     ? 'bg-yellow-400 text-blue-900 font-bold' 
-                    : 'hover:bg-gray-100'
+                    : 'hover:bg-gray-100 text-gray-700'
                 }`}
                 onClick={() => setCategory(cat.id)}
               >

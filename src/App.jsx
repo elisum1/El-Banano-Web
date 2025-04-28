@@ -9,6 +9,7 @@ import Loading from './components/Loading';  // Importa el componente Loading
 import Carrito from './pages/carrito';  
 import MenuDigital from './components/menuDigital';
 import RestaurantLandingPage from './components/Principal';
+import Contacto from './pages/contacto';
 
 // Crear un componente separado que use useLocation para manejar el loading
 function MainContent() {
@@ -33,6 +34,7 @@ function MainContent() {
         <Route path="/" element={<Inicio />} />
         <Route path="/menuDigital" element={<MenuDigital />} />
         <Route path="/RestaurantLandingPage" element={<RestaurantLandingPage />} />
+        <Route path="/contacto" element={<Contacto />} />
         {/* <Route path="*" element={<NotFound />} /> Agregar una ruta de no encontrado */}
       </Routes>
     </div>

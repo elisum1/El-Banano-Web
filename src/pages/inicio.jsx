@@ -136,7 +136,7 @@ const Inicio = () => {
         </div>
       </div>
 
-      <div className="">
+      <div className="fixed bottom-4 right-4 z-40 w-auto max-w-[90%] md:max-w-none">
         <Chatbot/>
       </div>
 
@@ -176,7 +176,7 @@ const Inicio = () => {
           <div className="container mx-auto px-6 flex flex-col items-center">
             <div className="w-full md:w-[100%] flex flex-col items-center md:items-center h-[50vh] px-6">
             <motion.h1 
-              className="text-6xl md:text-[10rem] font-extrabold text-blue-900 mb-6"
+              className="text-6xl md:text-7xl  lg:text-9xl xl:text-[10rem] font-extrabold text-blue-900 mb-6"
               style={{
                 textShadow: '4px 4px 0px #FCD34D, 8px 8px 0px rgba(30, 58, 138, 0.5)'
               }}
@@ -195,10 +195,22 @@ const Inicio = () => {
             </div>
 
             <div className="w-full md:w-full flex justify-center mt-10 md:mt-0">
-              <img 
+              <motion.img 
                 src="/img/ImagenPrincipal.png"
-                className="max-h-[90vh] object-cover absolute top-[55%] w-[150vh]"
+                className="max-h-[90vh] object-cover absolute top-[55%] w-[140vh]"
                 alt="Plato especial"
+                animate={{ 
+                  rotate: 360
+                }}
+                transition={{ 
+                  duration: 40,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+                style={{
+                  originX: 0.5,
+                  originY: 0.5
+                }}
               />
             </div>
           </div>
