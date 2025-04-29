@@ -22,19 +22,19 @@ const PicadaMixtos = () => {
           desc2: "Picada premium con carnes seleccionadas y acompañamientos especiales",
           ingredients1: "Chorizo, chicharrón, carne de res, arepas, papas criollas, guacamole.",
           ingredients2: "Chorizo premium, chicharrón artesanal, carne de res Angus, arepas de maíz, papas criollas seleccionadas, guacamole fresco, salsas especiales.",
-          img1: "/img/picada-casa.jpg",
+          img1: "/img/YEI04714.jpg",
           img2: "/img/picada-premium.jpg"
         },
         { 
-          name: "Mixto Especial", 
+          name: "Mixto De la Casa", 
           price1: "$38.000", 
           price2: "$58.000",
           desc1: "Combinación de carnes con patacones y guacamole",
           desc2: "Mixto premium con selección especial de carnes y acompañamientos",
           ingredients1: "Carne de res, pollo, chorizo, patacones, guacamole, hogao.",
           ingredients2: "Carne de res premium, pollo orgánico, chorizo artesanal, patacones especiales, guacamole fresco, hogao casero, salsas premium.",
-          img1: "/img/mixto-especial.jpg",
-          img2: "/img/mixto-premium.jpg"
+          img1: "/img/imgMenu/YEI04696.jpg",
+          img2: "/img/.jpg"
         },
       ]
     }

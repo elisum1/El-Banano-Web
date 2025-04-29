@@ -6,6 +6,8 @@ const Patacones = () => {
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeItem, setActiveItem] = useState(null);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+// ... existing code ...
 
   const items = [
     {
@@ -15,25 +17,25 @@ const Patacones = () => {
       description: "Diferentes presentaciones de nuestros patacones",
       items: [
         { 
-          name: "Patacón con Todo", 
+          name: "Patacón Vegetariano", 
           price1: "$22.000", 
           price2: "$32.000",
           desc1: "Patacón con carne, queso, hogao y guacamole",
           desc2: "Patacón especial con carne premium, queso doble crema, hogao artesanal y guacamole fresco",
           ingredients1: "Plátano verde, carne molida, queso, hogao casero, guacamole, salsas.",
           ingredients2: "Plátano verde seleccionado, carne premium, queso doble crema, hogao artesanal, guacamole fresco, salsas especiales.",
-          img1: "/img/patacon-todo.jpg",
+          img1: "public/img/imgMenu/DSC06558.jpg",
           img2: "/img/patacon-todo-premium.jpg"
         },
         { 
-          name: "Patacón Mixto", 
+          name: "Patacón Pollo con Champiñones", 
           price1: "$25.000", 
           price2: "$35.000",
           desc1: "Patacón con chorizo, chicharrón y salsa de ajo",
           desc2: "Patacón especial con chorizo premium, chicharrón artesanal y salsa de ajo casera",
           ingredients1: "Plátano verde, chorizo, chicharrón, salsa de ajo, vegetales frescos.",
           ingredients2: "Plátano verde seleccionado, chorizo premium, chicharrón artesanal, salsa de ajo casera, vegetales orgánicos.",
-          img1: "/img/patacon-mixto.jpg",
+          img1: "public/img/imgMenu/YEI02223.jpg",
           img2: "/img/patacon-mixto-premium.jpg"
         },
       ]
@@ -249,18 +251,83 @@ const Patacones = () => {
                   <p className="text-gray-600">{activeItem.ingredients}</p>
                 </div>
                 
+ 
                 <motion.button
+                  onClick={() => setShowConfirmModal(true)}
                   className="mt-auto bg-yellow-400 hover:bg-yellow-500 text-red-700 px-6 py-3 rounded-lg font-bold shadow-md transition-all"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   Pedir este plato
                 </motion.button>
+
               </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+            {/* Modal de confirmación de WhatsApp */}
+      <AnimatePresence>
+        {showConfirmModal && activeItem && (
+          <motion.div 
+            className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowConfirmModal(false)}
+          >
+            <motion.div 
+              className="bg-white rounded-xl p-6 max-w-md w-full"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="text-center">
+                <h3 className="text-2xl font-bold text-blue-900 mb-4">¿Deseas hacer tu pedido por WhatsApp?</h3>
+                <p className="text-gray-600 mb-6">Te redirigiremos a WhatsApp para completar tu pedido de {activeItem.name}</p>
+                
+                <div className="flex gap-4 justify-center">
+                  <motion.button
+                    onClick={() => {
+                      const version = activeItem.price === activeItem.price2 ? '2x' : '1x';
+                      const mensaje = `¡Hola! 👋 Me gustaría hacer un pedido en El Banano:
+
+🍽️ *${activeItem.name}* 
+   ${version}
+
+💰 *Precio:* ${activeItem.price}
+
+📋 *Ingredientes:*
+${activeItem.ingredients}
+
+¡Ayudame a armarlo! Gracias 🌟`;
+                      const urlWhatsApp = `https://wa.me/573042883923?text=${encodeURIComponent(mensaje)}`;
+                      window.open(urlWhatsApp, '_blank');
+                      setShowConfirmModal(false);
+                    }}
+                    className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-bold shadow-md transition-all flex items-center"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Sí, pedir ahora
+                  </motion.button>
+                  
+                  <motion.button
+                    onClick={() => setShowConfirmModal(false)}
+                    className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-lg font-bold shadow-md transition-all"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Cancelar
+                  </motion.button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+  
     </div>
   );
 };

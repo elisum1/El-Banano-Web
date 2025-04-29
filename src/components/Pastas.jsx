@@ -6,6 +6,7 @@ const Pastas = () => {
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeItem, setActiveItem] = useState(null);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const items = [
     {
@@ -26,14 +27,14 @@ const Pastas = () => {
           img2: "/img/spaghetti-premium.jpg"
         },
         { 
-          name: "Lasagna Casera", 
-          price1: "$35.000", 
+          name: "Pasta al Carbonara", 
+          price1: "$32.000", 
           price2: "$45.000",
           desc1: "Lasagna de carne con capas de queso derretido",
           desc2: "Lasagna gourmet con ingredientes selectos",
           ingredients1: "Láminas de pasta, carne molida, salsa bechamel, queso mozzarella, tomate, especias.",
           ingredients2: "Láminas de pasta fresca, carne de res premium, jamón serrano, salsa bechamel artesanal, queso bufala, tomates cherry.",
-          img1: "/img/lasagna-casera.jpg",
+          img1: "public/img/imgMenu/DSC06532.jpg",
           img2: "/img/lasagna-premium.jpg"
         },
       ]
@@ -261,12 +262,72 @@ const Pastas = () => {
                 </div>
                 
                 <motion.button
+                  onClick={() => setShowConfirmModal(true)}
                   className="mt-auto bg-yellow-400 hover:bg-yellow-500 text-red-700 px-6 py-3 rounded-lg font-bold shadow-md transition-all"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   Pedir este plato
                 </motion.button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
+      {/* Modal de confirmación de WhatsApp */}
+      <AnimatePresence>
+        {showConfirmModal && activeItem && (
+          <motion.div 
+            className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowConfirmModal(false)}
+          >
+            <motion.div 
+              className="bg-white rounded-xl p-6 max-w-md w-full"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="text-center">
+                <h3 className="text-2xl font-bold text-blue-900 mb-4">¿Deseas hacer tu pedido por WhatsApp?</h3>
+                <p className="text-gray-600 mb-6">Te redirigiremos a WhatsApp para completar tu pedido de {activeItem.name}</p>
+                
+                <div className="flex gap-4 justify-center">
+                  <motion.button
+                    onClick={() => {
+                      const version = activeItem.price === activeItem.price2 ? '2x' : '1x';
+                      const mensaje = `¡Hola! 👋 Me gustaría hacer un pedido en El Banano:
+              🍽️ *${activeItem.name}* 
+                   ${version}
+                    💰 *Precio:* ${activeItem.price}
+                      📋 *Ingredientes:*
+                          ${activeItem.ingredients}
+
+                            ¡Ayudame a armarlo! Gracias 🌟`;
+                      const urlWhatsApp = `https://wa.me/573042883923?text=${encodeURIComponent(mensaje)}`;
+                      window.open(urlWhatsApp, '_blank');
+                      setShowConfirmModal(false);
+                    }}
+                    className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-bold shadow-md transition-all flex items-center"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Sí, pedir ahora
+                  </motion.button>
+                  
+                  <motion.button
+                    onClick={() => setShowConfirmModal(false)}
+                    className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-lg font-bold shadow-md transition-all"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Cancelar
+                  </motion.button>
+                </div>
               </div>
             </motion.div>
           </motion.div>
