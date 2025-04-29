@@ -84,14 +84,14 @@ const Contacto = () => {
 
       await Promise.all([
         emailjs.send(
-          'Elbanano2428..',        // ID de servicio
-          'template_z55fmk9',       // plantilla para ADMIN
+          'Elbanano2428..',
+          'template_z55fmk9',
           templateParamsAdmin,
-          '__2oYDNAMCtJgTb8-'       // public key
+          '__2oYDNAMCtJgTb8-'
         ),
         emailjs.send(
-          'Elbanano2428..',         // ID de servicio
-          'template_v3xmlgf',       // plantilla para USUARIO (debes asegurarte que en emailjs acepte el campo `html_message`)
+          'Elbanano2428..',
+          'template_v3xmlgf',
           templateParamsUser,
           '__2oYDNAMCtJgTb8-'
         )

@@ -21,7 +21,6 @@ const Visitanos = () => {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        {/* Título mejorado */}
         <motion.div 
           initial={{ y: -50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -36,32 +35,66 @@ const Visitanos = () => {
           </p>
         </motion.div>
         
-        {/* Grid mejorado */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
-          {/* Mapa mejorado */}
           <motion.div 
             initial={{ x: -50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            className="relative h-[500px] rounded-2xl shadow-2xl overflow-hidden"
+            className="space-y-6"
           >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d-74.0781706847344!3d4.710442396641384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9a3e2e3e3e3e%3A0x1e3f9a3e2e3e3e3e!2sFogo%20de%20Chao!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
-              width="100%"
-              height="100%"
-              className="absolute inset-0"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-            ></iframe>
+            {/* CC Arrecife */}
+            <div className="relative h-[240px] rounded-2xl shadow-2xl overflow-hidden">
+              <iframe
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-74.22743606567384%2C11.19661267067382%2C-74.22419548034668%2C11.198550018670162&amp;layer=mapnik&amp;marker=11.197581346885275%2C-74.22581577301025"
+                width="100%"
+                height="100%"
+                className="absolute inset-0"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+              ></iframe>
+              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-md">
+                <h4 className="font-semibold text-blue-900">CC Arrecife - Rodadero</h4>
+              </div>
+              <a 
+                href="https://www.openstreetmap.org/way/252225212"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-md text-sm font-medium text-blue-600 hover:bg-blue-50"
+              >
+                Ver mapa más grande
+              </a>
+            </div>
+
+            {/* CC Buena Vista */}
+            <div className="relative h-[240px] rounded-2xl shadow-2xl overflow-hidden">
+              <iframe
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-74.17839050292969%2C11.230645665499105%2C-74.17514991760254%2C11.232583195246416&amp;layer=mapnik&amp;marker=11.231614432105947%2C-74.17677021026611"
+                width="100%"
+                height="100%"
+                className="absolute inset-0"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+              ></iframe>
+              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-md">
+                <h4 className="font-semibold text-blue-900">CC Buena Vista - Mamatoco</h4>
+              </div>
+              <a 
+                href="https://www.openstreetmap.org/way/633317509"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-md text-sm font-medium text-blue-600 hover:bg-blue-50"
+              >
+                Ver mapa más grande
+              </a>
+            </div>
           </motion.div>
           
-          {/* Información mejorada */}
           <motion.div 
             initial={{ x: 50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             className="space-y-8"
           >
-            {/* Horarios mejorados */}
             <motion.div 
               whileHover={{ scale: 1.02 }}
               className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border-l-4 border-red-500"
@@ -97,7 +130,6 @@ const Visitanos = () => {
               </div>
             </motion.div>
             
-            {/* Contacto mejorado */}
             <motion.div 
               whileHover={{ scale: 1.02 }}
               className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border-l-4 border-blue-500"
@@ -117,17 +149,17 @@ const Visitanos = () => {
                 {[
                   {
                     icon: "location",
-                    text: "Calle 123 #45-67, Bogotá, Colombia",
+                    text: "CC Arrecife - Rodadero - Santa Marta y en CC Buena Vista Mamatoco - Santa Marta",
                     color: "bg-red-500"
                   },
                   {
                     icon: "phone",
-                    text: "+57 1 123 4567",
+                    text: "Arrecife : 310-334-70-15, CC Buena Vista : 310-336-91-75",
                     color: "bg-green-500"
                   },
                   {
                     icon: "email",
-                    text: "info@elbanano.com",
+                    text: "recursosreb@gmail.com",
                     color: "bg-blue-500"
                   }
                 ].map((item, index) => (

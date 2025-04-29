@@ -207,12 +207,14 @@ const Inicio = () => {
               </div>
             </div>
 
-            <div className="w-full flex justify-center mt-10 md:mt-0 relative">
+            <div className="w-full md:w-full flex justify-center mt-10 md:mt-0">
               <motion.img 
                 src="/img/ImagenPrincipal.png"
-                className="max-h-[70vh] w-auto object-contain absolute top-[20%]"
+                className="max-h-[90vh] object-cover absolute top-[55%] w-[140vh]"
                 alt="Plato especial"
-                animate={{ rotate: 360 }}
+                animate={{ 
+                  rotate: 360
+                }}
                 transition={{ 
                   duration: 40,
                   repeat: Infinity,

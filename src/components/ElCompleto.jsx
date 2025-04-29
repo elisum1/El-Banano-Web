@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaArrowLeft, FaArrowRight, FaTimes } from 'react-icons/fa';
 
 const ElCompleto = ({ onReturn, onNavigate }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeItem, setActiveItem] = useState(null);
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const menuCategories = [
     {
@@ -21,6 +22,8 @@ const ElCompleto = ({ onReturn, onNavigate }) => {
           price2: "$62.500",
           desc1: "Carne de res premium asada al carbón con guarniciones",
           desc2: "Doble porción de carne premium con extras especiales",
+          ingredients1: "Arroz, pollo, zanahoria, arveja, maíz, cebolla, ajo, caldo de pollo, colorante.",
+          ingredients2: "Arroz, pollo en trozos grandes, chorizo, tocino, zanahoria, arveja, maíz, cebolla, ajo, caldo de pollo, especias.",
           img1: "public/img/YEI02152.jpg",
           img2: "/img/carne-2x.jpg"
         },
@@ -30,6 +33,8 @@ const ElCompleto = ({ onReturn, onNavigate }) => {
           price2: "$62.500",
           desc1: "Mezcla especial de carnes con especias tradicionales",
           desc2: "Doble porción de nuestra mezcla especial",
+          ingredients1: "Arroz, pollo, zanahoria, arveja, maíz, cebolla, ajo, caldo de pollo, colorante.",
+          ingredients2: "Arroz, pollo en trozos grandes, chorizo, tocino, zanahoria, arveja, maíz, cebolla, ajo, caldo de pollo, especias.",
           img1: "public/img/YEI02214.jpg",
           img2: "/img/juntar-2x.jpg"
         },
@@ -50,9 +55,14 @@ const ElCompleto = ({ onReturn, onNavigate }) => {
     setCurrentItemIndex(newIndex);
   };
 
-  const openImageModal = (imgUrl, item, index) => {
+  const openImageModal = (imgUrl, item, index, isVersion2 = false) => {
     setSelectedImage(imgUrl);
-    setActiveItem(item);
+    setActiveItem({
+      ...item,
+      price: isVersion2 ? item.price2 : item.price1,
+      desc: isVersion2 ? item.desc2 : item.desc1,
+      ingredients: isVersion2 ? item.ingredients2 : item.ingredients1
+    });
     setCurrentItemIndex(index);
   };
 
@@ -145,10 +155,11 @@ const ElCompleto = ({ onReturn, onNavigate }) => {
                 
                 <div className="grid grid-cols-2 gap-2 md:gap-4">
                   {/* Versión 1x */}
-                  <div 
+                 {/* Versión 1x */}
+                <div 
                     className="bg-yellow-50 p-2 md:p-3 rounded-lg cursor-pointer transition-all hover:shadow-md"
-                    onClick={() => openImageModal(item.img1, { ...item, price: item.price1, desc: item.desc1 }, index)}
-                  >
+                      onClick={() => openImageModal(item.img1, item, index, false)}
+                          >
                     <motion.img
                       src={item.img1}
                       alt={`${item.name} 1x`}
@@ -163,9 +174,9 @@ const ElCompleto = ({ onReturn, onNavigate }) => {
                   
                   {/* Versión 2x */}
                   <div 
-                    className="bg-yellow-50 p-2 md:p-3 rounded-lg cursor-pointer transition-all hover:shadow-md"
-                    onClick={() => openImageModal(item.img2, { ...item, price: item.price2, desc: item.desc2 }, index)}
-                  >
+                       className="bg-yellow-50 p-2 md:p-3 rounded-lg cursor-pointer transition-all hover:shadow-md"
+                        onClick={() => openImageModal(item.img2, item, index, true)}
+                              >
                     <motion.img
                       src={item.img2}
                       alt={`${item.name} 2x`}
@@ -204,6 +215,140 @@ const ElCompleto = ({ onReturn, onNavigate }) => {
           </motion.button>
         </motion.div>
       </div>
+
+       {/* Modal de imagen */}
+       <AnimatePresence>
+        {selectedImage && activeItem && (
+          <motion.div 
+            className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeImageModal}
+          >
+            <motion.div 
+              className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col md:flex-row"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Imagen grande */}
+              <div className="w-full md:w-1/2 h-64 md:h-auto">
+                <img 
+                  src={selectedImage} 
+                  alt={activeItem.name} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              
+              {/* Detalles del plato */}
+              <div className="w-full md:w-1/2 p-4 md:p-6 flex flex-col overflow-y-auto">
+                <button 
+                  onClick={closeImageModal}
+                  className="self-end text-gray-500 hover:text-red-600 mb-2"
+                >
+                  <FaTimes className="text-xl" />
+                </button>
+                
+                <h3 className="text-2xl font-bold text-red-700 mb-2">{activeItem.name}</h3>
+                <p className="text-lg font-semibold text-red-600 mb-4">{activeItem.price}</p>
+                
+                <div className="mb-4">
+                  <h4 className="text-lg font-semibold text-gray-800 mb-2">Descripción</h4>
+                  <p className="text-gray-600">{activeItem.desc}</p>
+                </div>
+                
+                <div className="mb-4">
+                  <h4 className="text-lg font-semibold text-gray-800 mb-2">Ingredientes</h4>
+                  <p className="text-gray-600">{activeItem.ingredients}</p>
+                </div>
+                
+                <motion.button
+                  onClick={() => setShowConfirmModal(true)}
+                  className="mt-auto bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-bold shadow-md transition-all"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Pedir este plato
+                </motion.button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Modal de confirmación de WhatsApp */}
+      <AnimatePresence>
+        {showConfirmModal && activeItem && (
+          <motion.div 
+            className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowConfirmModal(false)}
+          >
+            <motion.div 
+              className="bg-white rounded-xl p-6 max-w-md w-full"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="text-center">
+                <h3 className="text-2xl font-bold text-blue-900 mb-4">¿Deseas hacer tu pedido por WhatsApp?</h3>
+                <p className="text-gray-600 mb-6">Te redirigiremos a WhatsApp para completar tu pedido de {activeItem.name}</p>
+                
+                <div className="flex gap-4 justify-center">
+                  <motion.button
+                    onClick={() => {
+                      const version = activeItem.price === activeItem.price2 ? '2x' : '1x';
+                      const mensaje = `¡Hola! 👋 Me gustaría hacer un pedido en El Banano:
+
+🍽️ *${activeItem.name}* 
+   ${version}
+
+💰 *Precio:* ${activeItem.price}
+
+📋 *Ingredientes:*
+${activeItem.ingredients}
+
+¡Ayudame a armarlo! Gracias 🌟`;
+                      const urlWhatsApp = `https://wa.me/573042883923?text=${encodeURIComponent(mensaje)}`;
+                      window.open(urlWhatsApp, '_blank');
+                      setShowConfirmModal(false);
+                    }}
+                    className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-bold shadow-md transition-all flex items-center"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Sí, pedir ahora
+                  </motion.button>
+                  
+                  <motion.button
+                    onClick={() => setShowConfirmModal(false)}
+                    className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-lg font-bold shadow-md transition-all"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Cancelar
+                  </motion.button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Botón de retorno */}
+      <motion.button
+        onClick={onReturn}
+        className="fixed bottom-4 left-4 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg z-20"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <FaArrowLeft className="text-blue-900 text-xl" />
+      </motion.button>
     </div>
   );
 };
