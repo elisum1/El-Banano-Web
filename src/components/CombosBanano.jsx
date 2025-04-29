@@ -14,7 +14,7 @@ const CombosBanano = () => {
       color: 'from-red-500 to-red-600', 
       activeColor: 'from-red-600 to-red-700',
       image: '/img/Tropezones El Banano-imágenes-0.jpg',
-      whatsappLink: 'https://wa.me/1234567890?text=Quiero%20pedir%20el%20COMBO%201',
+      whatsappLink: 'https://wa.me/573042883923?text=¡Hola! Me gustaría ordenar el COMBO 1',
       description: 'Hamburguesa clásica con carne 100% res, queso americano, lechuga, tomate y salsa especial',
       ingredients: [
         'Carne de res 150g',
@@ -34,7 +34,7 @@ const CombosBanano = () => {
       color: 'from-blue-700 to-blue-800', 
       activeColor: 'from-blue-800 to-blue-900',
       image: '/img/Tropezones El Banano-imágenes-1.jpg',
-      whatsappLink: 'https://wa.me/1234567890?text=Quiero%20pedir%20el%20COMBO%202',
+      whatsappLink: 'https://wa.me/573042883923?text=¡Hola! Me gustaría ordenar el COMBO 2',
       description: 'Hamburguesa doble con tocino crujiente, cebolla caramelizada y salsa BBQ',
       ingredients: [
         'Doble carne de res',
@@ -53,7 +53,7 @@ const CombosBanano = () => {
       color: 'from-cyan-400 to-blue-500', 
       activeColor: 'from-cyan-500 to-blue-600',
       image: '/img/Tropezones El Banano-imágenes-2.jpg',
-      whatsappLink: 'https://wa.me/1234567890?text=Quiero%20pedir%20el%20COMBO%203',
+      whatsappLink: 'https://wa.me/573042883923?text=¡Hola! Me gustaría ordenar el COMBO 3',
       description: 'Hamburguesa vegetariana con portobello, queso de cabra y vegetales frescos',
       ingredients: [
         'Portobello asado',
@@ -72,7 +72,7 @@ const CombosBanano = () => {
       color: 'from-gray-100 to-gray-200', 
       activeColor: 'from-gray-200 to-gray-300',
       image: '/img/Tropezones El Banano-imágenes-3.jpg',
-      whatsappLink: 'https://wa.me/1234567890?text=Quiero%20pedir%20el%20COMBO%204',
+      whatsappLink: 'https://wa.me/573042883923?text=¡Hola! Me gustaría ordenar el COMBO 4',
       description: 'Hamburguesa de pollo crujiente con lechuga, mayonesa de ajo y pan de semillas',
       ingredients: [
         'Pechuga de pollo empanizada',
@@ -90,7 +90,7 @@ const CombosBanano = () => {
       color: 'from-yellow-400 to-yellow-500', 
       activeColor: 'from-yellow-500 to-yellow-600',
       image: '/img/Tropezones El Banano-imágenes-4.jpg',
-      whatsappLink: 'https://wa.me/1234567890?text=Quiero%20pedir%20el%20COMBO%205',
+      whatsappLink: 'https://wa.me/573042883923?text=¡Hola! Me gustaría ordenar el COMBO 5',
       description: 'Hamburguesa BBQ con aros de cebolla, jalapeños y salsa picante',
       ingredients: [
         'Carne de res 180g',
@@ -109,7 +109,7 @@ const CombosBanano = () => {
       color: 'from-pink-500 to-red-500', 
       activeColor: 'from-pink-600 to-red-600',
       image: '/img/Tropezones El Banano-imágenes-5.jpg',
-      whatsappLink: 'https://wa.me/1234567890?text=Quiero%20pedir%20el%20COMBO%206',
+      whatsappLink: 'https://wa.me/573042883923?text=¡Hola! Me gustaría ordenar el COMBO 6',
       description: 'Hamburguesa mega con triple carne, triple queso y todos los toppings',
       ingredients: [
         'Triple carne de res',
