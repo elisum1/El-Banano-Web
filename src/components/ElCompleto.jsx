@@ -304,16 +304,13 @@ const ElCompleto = ({ onReturn, onNavigate }) => {
                     onClick={() => {
                       const version = activeItem.price === activeItem.price2 ? '2x' : '1x';
                       const mensaje = `¡Hola! 👋 Me gustaría hacer un pedido en El Banano:
+              🍽️ *${activeItem.name}* 
+                   ${version}
+                    💰 *Precio:* ${activeItem.price}
+                      📋 *Ingredientes:*
+                          ${activeItem.ingredients}
 
-🍽️ *${activeItem.name}* 
-   ${version}
-
-💰 *Precio:* ${activeItem.price}
-
-📋 *Ingredientes:*
-${activeItem.ingredients}
-
-¡Ayudame a armarlo! Gracias 🌟`;
+                            ¡Ayudame a armarlo! Gracias 🌟`;
                       const urlWhatsApp = `https://wa.me/573042883923?text=${encodeURIComponent(mensaje)}`;
                       window.open(urlWhatsApp, '_blank');
                       setShowConfirmModal(false);

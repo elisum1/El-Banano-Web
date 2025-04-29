@@ -13,8 +13,17 @@ const Contacto = () => {
     apellido: '',
     celular: '',
     email: '',
-    mensaje: ''
+    mensaje: '',
+    tipoMensaje: 'general', // nuevo campo para el tipo de mensaje
+    calificacion: 0 // nuevo campo para la calificación
   });
+
+  const handleStarClick = (rating) => {
+    setFormData({
+      ...formData,
+      calificacion: rating
+    });
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -113,18 +122,10 @@ const Contacto = () => {
 
   return (
     <div className="min-h-screen bg-blue-950">
-      <AnimatePresence>
-        {showHeader && (
-          <motion.div
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            exit={{ y: -100 }}
-            className="fixed top-0 left-0 right-0 z-50 bg-yellow-400"
-          >
-            <Header />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div className='mb-32'>
+      <Header/>
+
+      </div>
 
       <div className="container mx-auto px-4 py-16">
         <motion.div
@@ -197,6 +198,42 @@ const Contacto = () => {
                 />
               </div>
             </div>
+
+            <div>
+              <label className="block text-white mb-2">Tipo de Mensaje</label>
+              <select
+                name="tipoMensaje"
+                value={formData.tipoMensaje}
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/20 text-white focus:outline-none focus:border-yellow-400"
+              >
+                <option value="general">Mensaje General</option>
+                <option value="servicio">Comentario sobre el Servicio</option>
+              </select>
+            </div>
+
+            {formData.tipoMensaje === 'servicio' && (
+              <div>
+                <label className="block text-white mb-2">Califica Nuestro Servicio</label>
+                <div className="flex gap-2">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <motion.button
+                      key={star}
+                      type="button"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={() => handleStarClick(star)}
+                      className="text-3xl focus:outline-none"
+                    >
+                      {star <= formData.calificacion ? '⭐' : '☆'}
+                    </motion.button>
+                  ))}
+                </div>
+                <p className="text-sm text-gray-400 mt-1">
+                  {formData.calificacion > 0 ? `${formData.calificacion} de 5 estrellas` : 'Selecciona tu calificación'}
+                </p>
+              </div>
+            )}
 
             <div>
               <label htmlFor="mensaje" className="block text-white mb-2">Mensaje</label>

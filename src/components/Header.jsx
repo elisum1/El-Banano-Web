@@ -34,7 +34,7 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className={`hidden md:flex items-center space-x-6 lg:space-x-8 text-xl font-semibold ${
-            isScrolled ? 'text-white' : 'text-black'
+            isScrolled ? 'text-white' : 'text-white'
           }`}>
             <a href="/" className={`transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-white'}`}>INICIO</a>
             <a href="/RestaurantLandingPage" className={`transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-white'}`}>MENU</a>
