@@ -49,7 +49,7 @@ const Contacto = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       const templateParamsAdmin = {
         to_email: 'elias.um94@gmail.com',
@@ -57,14 +57,16 @@ const Contacto = () => {
         from_email: formData.email,
         phone: formData.celular,
         message: formData.mensaje,
+        calificacion: formData.calificacion // añadido
       };
-
+  
       const templateParamsUser = {
         to_email: formData.email,
         from_name: `${formData.nombre} ${formData.apellido}`,
         from_email: formData.email,
         phone: formData.celular,
         message: formData.mensaje,
+        calificacion: formData.calificacion, // añadido
         html_message: `
           <div style="font-family: system-ui, sans-serif, Arial; font-size: 16px">
             <a style="text-decoration: none; outline: none" href="https://el-banano-web.vercel.app/" target="_blank">
@@ -75,9 +77,11 @@ const Contacto = () => {
         
             <p>¡Gracias por ponerte en contacto con nosotros!</p>
         
-            <p>Hemos recibido tu mensaje y te responderemos lo antes posible. A continuación un resumen de tu mensaje:</p>
+            <p>Hemos recibido tu ${formData.tipoMensaje === 'servicio' ? 'comentario sobre nuestro servicio' : 'mensaje'} y te responderemos lo antes posible. A continuación un resumen:</p>
         
             <div style="margin-top: 10px; padding: 10px; background-color: #f9f9f9; border-radius: 5px;">
+              ${formData.tipoMensaje === 'servicio' && formData.calificacion > 0 ? 
+                `<p><strong>Calificación:</strong> ${'⭐'.repeat(formData.calificacion)}${'☆'.repeat(5 - formData.calificacion)} (${formData.calificacion}/5)</p>` : ''}
               <p><strong>Correo:</strong> ${formData.email}</p>
               <p><strong>Teléfono:</strong> ${formData.celular}</p>
               <p><strong>Mensaje:</strong><br />${formData.mensaje}</p>
@@ -112,7 +116,9 @@ const Contacto = () => {
         apellido: '',
         celular: '',
         email: '',
-        mensaje: ''
+        mensaje: '',
+        tipoMensaje: 'general', // resetear a valor por defecto
+        calificacion: 0 // resetear a 0
       });
     } catch (error) {
       console.error('Error:', error);
