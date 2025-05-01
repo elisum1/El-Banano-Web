@@ -149,65 +149,44 @@ const Nosotros = () => {
           />
         </div>
 
-        {/* Decorative elements */}
+        {/* Decorative elements - Ajustados para pantallas pequeñas */}
         <div className="absolute inset-0">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5 }}
-            className="absolute top-10 right-10 w-40 h-40 bg-blue-900 rounded-full flex items-center justify-center"
+            className="absolute top-10 right-10 w-20 md:w-40 h-20 md:h-40 bg-blue-900 rounded-full flex items-center justify-center"
           >
-            <span className="text-4xl font-extrabold text-yellow-400">2025</span>
+            <span className="text-2xl md:text-4xl font-extrabold text-yellow-400">2025</span>
           </motion.div>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5, delay: 0.3 }}
-            className="absolute bottom-20 left-20 w-60 h-60 bg-blue-900 rounded-full flex items-center justify-center"
+            className="absolute bottom-20 left-5 md:left-20 w-32 md:w-60 h-32 md:h-60 bg-blue-900 rounded-full flex items-center justify-center"
           >
-            <span className="text-6xl font-extrabold text-yellow-400">1986</span>
+            <span className="text-3xl md:text-6xl font-extrabold text-yellow-400">1986</span>
           </motion.div>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5, delay: 0.3 }}
-            className="absolute bottom-20 left-20 w-60 h-60 border-[6px] border-blue-900 rounded-full"
+            className="absolute bottom-20 left-5 md:left-20 w-32 md:w-60 h-32 md:h-60 border-[6px] border-blue-900 rounded-full"
           />
-          
-          {/* Flame effects */}
-          {[...Array(12)].map((_, i) => (
-            <motion.div
-              key={i}
-              animate={{
-                y: [0, -20, 0],
-                opacity: [0.3, 0.8, 0.3],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: i * 0.2,
-              }}
-              className="absolute w-3 h-3 bg-blue-950 rounded-full"
-              style={{
-                left: `${20 + (i * 5)}%`,
-                bottom: '20%',
-              }}
-            />
-          ))}
         </div>
 
-        {/* Content */}
+        {/* Content - Ajustado para pantallas pequeñas */}
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
           <motion.div
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
-            className="text-center space-y-8 relative z-10"
+            className="text-center space-y-4 md:space-y-8 relative z-10 w-full max-w-4xl mx-auto"
           >
             <motion.h1 
-              className="text-6xl md:text-9xl font-black text-blue-900 mb-6"
+              className="text-4xl sm:text-6xl md:text-9xl font-black text-blue-900 mb-4 md:mb-6"
               style={{
-                textShadow: '4px 4px 0px #FCD34D, 8px 8px 0px rgba(30, 58, 138, 0.5)'
+                textShadow: '2px 2px 0px #FCD34D, 4px 4px 0px rgba(30, 58, 138, 0.5)'
               }}
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -220,14 +199,14 @@ const Nosotros = () => {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex flex-col items-center gap-4"
+              className="flex flex-col items-center gap-2 md:gap-4"
             >
               <img 
                 src="/img/logo_el_banano-removebg-preview.png"
                 alt="Plátano Maduro"
-                className="w-32 h-32 object-contain"
+                className="w-24 h-24 md:w-32 md:h-32 object-contain"
               />
-              <p className="text-2xl md:text-3xl text-white font-semibold">
+              <p className="text-xl md:text-3xl text-white font-semibold px-2">
                 Tradición y sabor desde 1986
               </p>
             </motion.div>
@@ -239,10 +218,10 @@ const Nosotros = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleScrollToHistory}
-              className="bg-red-500 text-white px-10 py-4 rounded-full font-bold text-lg flex items-center gap-3 group shadow-xl hover:shadow-2xl transition-all duration-300"
+              className="bg-red-500 text-white px-6 md:px-10 py-3 md:py-4 rounded-full font-bold text-base md:text-lg flex items-center gap-2 md:gap-3 group shadow-xl hover:shadow-2xl transition-all duration-300 mx-auto"
             >
               <FaPlay className="group-hover:rotate-180 transition-transform duration-500" />
-              Descubre nuestra historia
+              <span className="whitespace-nowrap">Descubre nuestra historia</span>
             </motion.button>
           </motion.div>
         </div>
