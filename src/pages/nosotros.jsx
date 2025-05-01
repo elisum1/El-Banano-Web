@@ -3,10 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaLeaf, FaHeart, FaStar, FaMapMarkerAlt, FaPlay, FaClock, FaPhone } from 'react-icons/fa';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import { useNavigate } from 'react-router-dom';
 
 const Nosotros = () => {
+  const navigate = useNavigate(); // Add this line
   const [selectedImage, setSelectedImage] = useState(null);
-
   const [selectedValue, setSelectedValue] = useState(null);
 
 
@@ -619,10 +620,11 @@ const Nosotros = () => {
                 className="relative h-[500px] md:h-full"
                 initial="closed"
                 whileHover="open"
+                onClick={() => navigate('/visitanos')}
               >
                 {/* Location Name Panel */}
                 <motion.div
-                  className={`absolute inset-0 ${index === 0 ? 'bg-yellow-400' : 'bg-blue-900'} rounded-2xl flex items-center justify-center cursor-pointer overflow-hidden   shadow-lg shadow-black`}
+                  className={`absolute inset-0 ${index === 0 ? 'bg-yellow-400' : 'bg-blue-900'} rounded-2xl flex items-center justify-center cursor-pointer overflow-hidden shadow-lg shadow-black`}
                   variants={{
                     closed: { rotateY: 0 },
                     open: { rotateY: -90 }
@@ -654,7 +656,7 @@ const Nosotros = () => {
                         alt={location.city}
                         className="w-full h-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                      <div className="absolute -inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                       <motion.div
                         initial={{ y: 20, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}

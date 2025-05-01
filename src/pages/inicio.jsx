@@ -16,7 +16,6 @@ const Inicio = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showDotsMenu, setShowDotsMenu] = useState(false);
-  const [headerVisible, setHeaderVisible] = useState(false);
   const [activeDot, setActiveDot] = useState(0);
   const dotsMenuRef = useRef(null);
   const firstSectionRef = useRef(null);
@@ -56,10 +55,6 @@ const Inicio = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (firstSectionRef.current) {
-        const firstSectionHeight = firstSectionRef.current.offsetHeight;
-        setHeaderVisible(window.scrollY > firstSectionHeight * 0.5);
-      }
       setIsScrolled(window.scrollY > 0);
       
       const scrollPosition = window.scrollY + window.innerHeight / 2;
@@ -95,24 +90,7 @@ const Inicio = () => {
 
   return (
     <section id='home' className="min-h-screen overflow-x-hidden">
-      <Header/>
-      <AnimatePresence>
-        {(headerVisible || showDotsMenu) && (
-          <motion.div
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -100, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed top-0 left-0 right-0 w-full z-50"
-          >
-            <Header 
-              isOpen={isOpen} 
-              toggleMenu={() => setIsOpen(!isOpen)} 
-              isScrolled={isScrolled}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Header isOpen={isOpen} toggleMenu={() => setIsOpen(!isOpen)} isScrolled={isScrolled} />
 
       <div className="fixed bottom-12 left-0 right-0 z-40 hidden md:flex justify-between items-center px-4 lg:px-8">
         <div className="flex space-x-4 lg:space-x-6 pl-4 lg:pl-32">

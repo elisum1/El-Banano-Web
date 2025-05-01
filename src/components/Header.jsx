@@ -23,7 +23,7 @@ const Header = () => {
   return (
     <section id='home' className="overflow-x-hidden">
       <header className={`w-full h-[12vh] 2xl:h-[13vh] fixed z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-blue-950 shadow-md' : 'bg-transparent'
+        isScrolled ? 'bg-blue-950 shadow-md' : 'bg-yellow-400'
       }`}>
         <div className="container mx-auto px-7 h-full flex items-center justify-around border-b-[2px] border-yellow-600/50">
           {/* Logo Section */}
@@ -39,10 +39,10 @@ const Header = () => {
           <nav className={`hidden md:flex items-center space-x-6  text-xl font-semibold ${
             isScrolled ? 'text-white' : 'text-white'
           }`}>
-            <a href="/" className={`transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-white'}`}>INICIO</a>
-            <a href="/RestaurantLandingPage" className={`transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-white'}`}>MENU</a>
-            <a href="/nosotros" className={`transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-white'}`}>SOBRE NOSOTROS</a>
-            <a href="/contacto" className={`transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-white'}`}>CONTACTO</a>
+            <a href="/" className={`transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-blue-950'}`}>INICIO</a>
+            <a href="/RestaurantLandingPage" className={`transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-blue-950'}`}>MENU</a>
+            <a href="/nosotros" className={`transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-blue-950'}`}>SOBRE NOSOTROS</a>
+            <a href="/contacto" className={`transition-colors ${isScrolled ? 'hover:text-yellow-500' : 'hover:text-blue-950'}`}>CONTACTO</a>
           </nav>
 
           {/* Right Section */}
@@ -50,8 +50,8 @@ const Header = () => {
             <button 
               onClick={() => setShowCartModal(true)}
               className={`flex items-center space-x-2 px-4 py-2 rounded-full ${
-                isScrolled ? 'bg-red-800 text-white' : 'bg-red-500 text-white'
-              } hover:bg-red-600 transition-colors`}
+                isScrolled ? 'bg-yellow-400 text-blue-950 hover:bg-yellow-200' : 'bg-red-500 text-white'
+              } hover:bg-white transition-colors hover:text-blue-950`}
             >
               <FontAwesomeIcon icon={faShoppingCart} />
               <span className="hidden lg:inline">Tu carrito</span>

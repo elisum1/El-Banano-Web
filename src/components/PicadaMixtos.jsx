@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowLeft, FaArrowRight, FaTimes } from 'react-icons/fa';
 
-const PicadaMixtos = () => {
+const PicadaMixtos = (onReturn) => {
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeItem, setActiveItem] = useState(null);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const items = [
     {
@@ -70,6 +71,10 @@ const PicadaMixtos = () => {
 
   const currentCategory = items[0];
   const currentItems = currentCategory.items;
+
+  const handleOrderClick = () => {
+    setShowConfirmModal(true);
+  };
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row relative bg-gray-50">
@@ -145,36 +150,78 @@ const PicadaMixtos = () => {
               >
                 <h3 className="text-base md:text-lg lg:text-xl font-bold text-blue-900 mb-2 md:mb-3">{item.name}</h3>
                 
-                <div className="grid grid-cols-2 gap-2 md:gap-4">
+                <div className="grid grid-cols-2 gap-4 md:gap-6">
+                  {/* Versión 1x */}
                   <div 
-                    className="bg-white p-2 md:p-3 rounded-lg cursor-pointer transition-all hover:shadow-md"
+                    className="relative shadow-black bg-gray-300 rounded-sm overflow-hidden shadow-lg cursor-pointer transition-all h-[250px] hover:shadow-xl sm:h-[400px] w-full max-w-[300px] mx-auto hover:"
                     onClick={() => openImageModal(item.img1, item, 1)}
                   >
-                    <motion.img
-                      src={item.img1}
-                      alt={`${item.name} 1x`}
-                      className="w-full h-24 md:h-32 lg:h-40 object-cover rounded-md mb-1 md:mb-2"
-                      whileHover={{ scale: 1.02 }}
+                    {/* Logo pequeño */}
+                    <img 
+                      src="/img/Logo.jpg"
+                      alt="Logo"
+                      className="absolute top-2 right-2 w-6 h-6 md:w-8 md:h-8 opacity-50"
                     />
-                    <div className="text-center">
-                      <span className="block text-blue-900 font-bold text-sm md:text-base">{item.price1}</span>
-                      <p className="text-xs md:text-sm text-gray-600 mt-1 line-clamp-2">{item.desc1}</p>
+                    
+                    <div className="p-2 sm:p-4">
+                      <span className="text-blue-950 text-md md:text-xl">
+                        Lleva tu 
+                      </span>
+                      <br />
+                      <span className='text-xl sm:text-3xl text-blue-950 font-semiBold'>{item.name}</span> 
+                      <span className='text-white text-[8px] sm:text-lg'> Tradicional</span>
+                    </div>
+
+                    <div className="relative h-[55%] p-4 sm:mt-2">
+                      <motion.img
+                        src={item.img1}
+                        alt={`${item.name} 1x`}
+                        className="w-full h-full object-cover rounded-lg"
+                        whileHover={{ scale: 1.05 }}
+                      />
+                    </div>
+                    
+                    <div className="bg-red-600 absolute bottom-0 w-full p-3 text-center flex gap-3">
+                      <span className='text-white sm:text-lg text-sm'>Por</span>
+                      <span className="text-white font-bold text-sm md:text-3xl">{item.price1}</span>
+                      <button className='sm:px-4 px-2 text-center bg-yellow-400 rounded-sm sm:text-[.8rem] font-bold text-[0.5rem] text-blue-950'> PIDE YA !</button>
                     </div>
                   </div>
                   
+                  {/* Versión 2x */}
                   <div 
-                    className="bg-white p-2 md:p-3 rounded-lg cursor-pointer transition-all hover:shadow-md"
+                    className="relative shadow-black bg-gray-300 rounded-sm overflow-hidden shadow-lg cursor-pointer transition-all h-[250px] hover:shadow-xl sm:h-[400px] w-full max-w-[300px] mx-auto hover:"
                     onClick={() => openImageModal(item.img2, item, 2)}
                   >
-                    <motion.img
-                      src={item.img2}
-                      alt={`${item.name} 2x`}
-                      className="w-full h-24 md:h-32 lg:h-40 object-cover rounded-md mb-1 md:mb-2"
-                      whileHover={{ scale: 1.02 }}
+                    {/* Logo pequeño */}
+                    <img 
+                      src="/img/Logo.jpg"
+                      alt="Logo"
+                      className="absolute top-2 right-2 w-6 h-6 md:w-8 md:h-8 opacity-50"
                     />
-                    <div className="text-center">
-                      <span className="block text-blue-900 font-bold text-sm md:text-base">{item.price2}</span>
-                      <p className="text-xs md:text-sm text-gray-600 mt-1 line-clamp-2">{item.desc2}</p>
+                    
+                    <div className="p-2 sm:p-4">
+                      <span className="text-blue-950 text-md md:text-xl">
+                        Lleva tu 
+                      </span>
+                      <br />
+                      <span className='text-xl sm:text-3xl text-blue-950 font-semiBold'>{item.name}</span> 
+                      <span className='text-white text-[8px] sm:text-lg'> Premium</span>
+                    </div>
+
+                    <div className="relative h-[55%] p-4 sm:mt-2">
+                      <motion.img
+                        src={item.img2}
+                        alt={`${item.name} 2x`}
+                        className="w-full h-full object-cover rounded-lg"
+                        whileHover={{ scale: 1.05 }}
+                      />
+                    </div>
+                    
+                    <div className="bg-red-600 absolute bottom-0 w-full p-3 text-center flex gap-3">
+                      <span className='text-white sm:text-lg text-sm'>Por</span>
+                      <span className="text-white font-bold text-sm md:text-3xl">{item.price2}</span>
+                      <button className='sm:px-4 px-2 text-center bg-yellow-400 rounded-sm sm:text-[.8rem] font-bold text-[0.5rem] text-blue-950'> PIDE YA !</button>
                     </div>
                   </div>
                 </div>
@@ -194,6 +241,7 @@ const PicadaMixtos = () => {
           transition={{ delay: 0.8 }}
         >
           <motion.button
+            onClick={handleOrderClick}
             className="bg-yellow-400 hover:bg-yellow-500 text-blue-900 px-4 py-2 md:px-6 md:py-3 rounded-full font-bold text-sm md:text-base shadow-lg transition-all flex items-center mx-auto"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -201,9 +249,9 @@ const PicadaMixtos = () => {
             <span>Pedir Ahora</span>
           </motion.button>
         </motion.div>
-      </div>
 
-      <AnimatePresence>
+        {/* Modal de imagen */}
+        <AnimatePresence>
         {selectedImage && activeItem && (
           <motion.div 
             className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
@@ -219,6 +267,7 @@ const PicadaMixtos = () => {
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Imagen grande */}
               <div className="w-full md:w-1/2 h-64 md:h-auto">
                 <img 
                   src={selectedImage} 
@@ -227,20 +276,21 @@ const PicadaMixtos = () => {
                 />
               </div>
               
+              {/* Detalles del plato */}
               <div className="w-full md:w-1/2 p-4 md:p-6 flex flex-col overflow-y-auto">
                 <button 
                   onClick={closeImageModal}
-                  className="self-end text-gray-500 hover:text-blue-600 mb-2"
+                  className="self-end text-gray-500 hover:text-red-600 mb-2"
                 >
                   <FaTimes className="text-xl" />
                 </button>
                 
-                <h3 className="text-2xl font-bold text-blue-900 mb-2">{activeItem.name}</h3>
-                <p className="text-lg font-semibold text-blue-700 mb-4">{activeItem.price}</p>
+                <h3 className="text-2xl font-bold text-red-700 mb-2">{activeItem.name}</h3>
+                <p className="text-lg font-semibold text-red-600 mb-4">{activeItem.price}</p>
                 
                 <div className="mb-4">
                   <h4 className="text-lg font-semibold text-gray-800 mb-2">Descripción</h4>
-                  <p className="text-gray-600">{activeItem.version}</p>
+                  <p className="text-gray-600">{activeItem.desc}</p>
                 </div>
                 
                 <div className="mb-4">
@@ -249,7 +299,8 @@ const PicadaMixtos = () => {
                 </div>
                 
                 <motion.button
-                  className="mt-auto bg-yellow-400 hover:bg-yellow-500 text-blue-900 px-6 py-3 rounded-lg font-bold shadow-md transition-all"
+                  onClick={() => setShowConfirmModal(true)}
+                  className="mt-auto bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-bold shadow-md transition-all"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -260,6 +311,76 @@ const PicadaMixtos = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Modal de confirmación de WhatsApp */}
+      <AnimatePresence>
+        {showConfirmModal && activeItem && (
+          <motion.div 
+            className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowConfirmModal(false)}
+          >
+            <motion.div 
+              className="bg-white rounded-xl p-6 max-w-md w-full"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="text-center">
+                <h3 className="text-2xl font-bold text-blue-900 mb-4">¿Deseas hacer tu pedido por WhatsApp?</h3>
+                <p className="text-gray-600 mb-6">Te redirigiremos a WhatsApp para completar tu pedido de {activeItem.name}</p>
+                
+                <div className="flex gap-4 justify-center">
+                  <motion.button
+                    onClick={() => {
+                      const version = activeItem.price === activeItem.price2 ? '2x' : '1x';
+                      const mensaje = `¡Hola! 👋 Me gustaría hacer un pedido en El Banano:
+              🍽️ *${activeItem.name}* 
+                   ${version}
+                    💰 *Precio:* ${activeItem.price}
+                      📋 *Ingredientes:*
+                          ${activeItem.ingredients}
+
+                            ¡Ayudame a armarlo! Gracias 🌟`;
+                      const urlWhatsApp = `https://wa.me/573042883923?text=${encodeURIComponent(mensaje)}`;
+                      window.open(urlWhatsApp, '_blank');
+                      setShowConfirmModal(false);
+                    }}
+                    className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-bold shadow-md transition-all flex items-center"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Sí, pedir ahora
+                  </motion.button>
+                  
+                  <motion.button
+                    onClick={() => setShowConfirmModal(false)}
+                    className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-lg font-bold shadow-md transition-all"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Cancelar
+                  </motion.button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Botón de retorno */}
+      <motion.button
+        onClick={onReturn}
+        className="fixed bottom-4 left-4 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg z-20"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <FaArrowLeft className="text-blue-900 text-xl" />
+      </motion.button>
+      </div>
     </div>
   );
 };

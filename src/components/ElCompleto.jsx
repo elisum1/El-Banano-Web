@@ -153,39 +153,78 @@ const ElCompleto = ({ onReturn, onNavigate }) => {
               >
                 <h3 className="text-base md:text-lg lg:text-xl font-bold text-blue-900 mb-2 md:mb-3">{item.name}</h3>
                 
-                <div className="grid grid-cols-2 gap-2 md:gap-4">
+                <div className="grid grid-cols-2 gap-4 md:gap-6">
                   {/* Versión 1x */}
-                 {/* Versión 1x */}
-                <div 
-                    className="bg-yellow-50 p-2 md:p-3 rounded-lg cursor-pointer transition-all hover:shadow-md"
-                      onClick={() => openImageModal(item.img1, item, index, false)}
-                          >
-                    <motion.img
-                      src={item.img1}
-                      alt={`${item.name} 1x`}
-                      className="w-full h-24 md:h-32 lg:h-40 object-cover rounded-md mb-1 md:mb-2"
-                      whileHover={{ scale: 1.02 }}
+                  <div 
+                    className="relative shadow-black bg-yellow-300 rounded-sm overflow-hidden shadow-lg cursor-pointer transition-all h-[250px] hover:shadow-xl sm:h-[400px] w-full max-w-[300px] mx-auto hover:"
+                    onClick={() => openImageModal(item.img1, item, index, false)}
+                  >
+                    {/* Logo pequeño */}
+                    <img 
+                      src="/img/Logo.jpg"
+                      alt="Logo"
+                      className="absolute top-2 right-2 w-6 h-6 md:w-8 md:h-8 opacity-50"
                     />
-                    <div className="text-center">
-                      <span className="block text-red-600 font-bold text-sm md:text-base">{item.price1}</span>
-                      <p className="text-xs md:text-sm text-gray-600 mt-1 line-clamp-2">{item.desc1}</p>
+                    
+                    <div className="p-2 sm:p-4 ">
+                      <span className="text-blue-950 text-md md:text-xl">
+                        Lleva tu 
+                      </span>
+                      <br />
+                      <span className='text-xl sm:text-3xl text-blue-950 font-semiBold'>Proteina</span> 
+                      <span className='text-white text-[8px] sm:text-lg'> + 1 acompañante</span>
+                    </div>
+
+                    <div className="relative h-[55%] p-4 sm:mt-2 ">
+                      <motion.img
+                        src={item.img1}
+                        alt={`${item.name} 1x`}
+                        className="w-full h-full object-cover rounded-lg"
+                        whileHover={{ scale: 1.05 }}
+                      />
+                    </div>
+                    
+                    <div className="bg-red-600 absolute bottom-0 w-full p-3 text-center flex gap-3">
+                      <span className='text-white  sm:text-lg text-sm'>Por</span>
+                      <span className="text-white font-bold text-sm md:text-3xl">{item.price1}</span>
+                      <button className='sm:px-4 px-2 text-center bg-yellow-400 rounded-sm sm:text-[.8rem] font-bold text-[0.5rem] text-blue-950  '> PIDE YA !</button>
                     </div>
                   </div>
                   
                   {/* Versión 2x */}
                   <div 
-                       className="bg-yellow-50 p-2 md:p-3 rounded-lg cursor-pointer transition-all hover:shadow-md"
-                        onClick={() => openImageModal(item.img2, item, index, true)}
-                              >
-                    <motion.img
-                      src={item.img2}
-                      alt={`${item.name} 2x`}
-                      className="w-full h-24 md:h-32 lg:h-40 object-cover rounded-md mb-1 md:mb-2"
-                      whileHover={{ scale: 1.02 }}
+                    className="relative shadow-black bg-yellow-300 rounded-sm overflow-hidden shadow-lg cursor-pointer transition-all h-[250px] hover:shadow-xl sm:h-[400px] w-full max-w-[300px] mx-auto hover:"
+                    onClick={() => openImageModal(item.img2, item, index, true)}
+                  >
+                    {/* Logo pequeño */}
+                    <img 
+                      src="/img/Logo.jpg"
+                      alt="Logo"
+                      className="absolute top-2 right-2 w-6 h-6 md:w-8 md:h-8 opacity-50"
                     />
-                    <div className="text-center">
-                      <span className="block text-red-600 font-bold text-sm md:text-base">{item.price2}</span>
-                      <p className="text-xs md:text-sm text-gray-600 mt-1 line-clamp-2">{item.desc2}</p>
+                    
+                    <div className="p-2 sm:p-4 ">
+                      <span className="text-blue-950 text-md md:text-xl">
+                        Lleva tu 
+                      </span>
+                      <br />
+                      <span className='text-xl sm:text-3xl text-blue-950 font-semiBold'>Proteina</span> 
+                      <span className='text-white text-[8px] sm:text-lg'> + 2 acompañantes</span>
+                    </div>
+
+                    <div className="relative h-[55%] p-4 sm:mt-2 ">
+                      <motion.img
+                        src={item.img2}
+                        alt={`${item.name} 2x`}
+                        className="w-full h-full object-cover rounded-lg"
+                        whileHover={{ scale: 1.05 }}
+                      />
+                    </div>
+                    
+                    <div className="bg-red-600 absolute bottom-0 w-full p-3 text-center flex gap-3">
+                      <span className='text-white sm:text-lg text-sm'>Por</span>
+                      <span className="text-white font-bold text-sm md:text-3xl">{item.price2}</span>
+                      <button className='sm:px-4 px-2 text-center bg-yellow-400 rounded-sm sm:text-[.8rem] font-bold text-[0.5rem] text-blue-950'> PIDE YA !</button>
                     </div>
                   </div>
                 </div>
