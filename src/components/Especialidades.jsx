@@ -14,7 +14,7 @@ const Especialidades = () => {
   };
 
   return (
-    <section className="relative bg-gradient-to-b from-yellow-50 to-white py-24 overflow-hidden">
+    <section className="relative bg-gradient-to-b from-yellow-50 to-yellow-400 py-24 overflow-hidden">
       <div className="absolute top-0 left-0 w-64 h-64 bg-yellow-400 rounded-full filter blur-3xl opacity-10"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-600 rounded-full filter blur-3xl opacity-10"></div>
 

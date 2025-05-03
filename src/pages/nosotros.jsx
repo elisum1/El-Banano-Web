@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Nosotros = () => {
   const navigate = useNavigate(); // Add this line
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedValue, setSelectedValue] = useState(null);
 
@@ -228,49 +229,222 @@ const Nosotros = () => {
       </div>
 
       {/* Historia Section */}
-      <section id="historia" className="py-20 bg-gradient-to-r from-blue-900 to-blue-950">
-        <div className="max-w-7xl mx-auto px-4">
-          <motion.h2 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-4xl font-bold text-center text-white mb-16"
+      <section id="historia" className="min-h-screen flex flex-col md:flex-row relative overflow-hidden">
+        {/* Fondo decorativo */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-yellow-400/20 rounded-full filter blur-[100px]" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-400/20 rounded-full filter blur-[100px]" />
+        </div>
+
+        {/* Lado izquierdo - Información */}
+        <div className="w-full md:w-[40%] bg-white p-8 flex flex-col justify-center items-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            className="space-y-10 max-w-xl"
           >
-            Nuestra Historia
-          </motion.h2>
-          <div className="space-y-24">
-            {moments.map((moment, index) => (
+            <div className="text-center">
               <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-16`}
+                initial={{ scale: 0.9, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="bg-blue-950 rounded-full py-3 px-8 inline-block mb-4 shadow-lg"
               >
-                <div className="w-full md:w-1/2 relative">
-                  <div className="absolute -inset-4 bg-yellow-400 rounded-lg transform rotate-2" />
-                  <img
-                    src={moment.image}
-                    alt={moment.title}
-                    className="relative w-full h-[300px] object-cover rounded-lg shadow-xl"
-                  />
-                  <div className="absolute -bottom-6 -right-6 bg-blue-900 text-yellow-400 text-2xl font-bold p-4 rounded-full">
-                    {moment.year}
-                  </div>
-                </div>
-                <div className="w-full md:w-1/2 text-white">
-                  <h3 className="text-3xl font-bold mb-4 text-yellow-400">{moment.title}</h3>
-                  <p className="text-lg leading-relaxed">{moment.description}</p>
-                </div>
+                <h2 className="text-xl font-bold text-white">
+                  Nuestra Historia
+                </h2>
               </motion.div>
-            ))}
+              <div className="w-20 h-1 bg-yellow-400 mx-auto rounded-full mt-4" />
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-2xl leading-relaxed text-center text-blue-950/80"
+            >
+              Desde 1986, El Banano ha sido sinónimo de tradición y excelencia en la gastronomía colombiana. Comenzamos como un pequeño local familiar y hemos crecido hasta convertirnos en un referente de la cocina tradicional.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="bg-gradient-to-r from-yellow-400/10 to-yellow-400/20 p-6 rounded-2xl"
+            >
+              <p className="text-xl text-blue-950/80 text-center italic">
+                "Nuestro compromiso con la calidad y el sabor auténtico nos ha permitido expandirnos y llevar la experiencia El Banano a más personas, manteniendo siempre nuestra esencia y valores originales."
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="text-center"
+            >
+              <span className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 text-transparent bg-clip-text">
+                + de 37 años
+              </span>
+              <p className="text-xl text-blue-950/70 mt-2">de tradición y sabor</p>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Lado derecho - Timeline con Slider */}
+        <div className="w-full md:w-[60%] bg-gradient-to-br from-blue-900 via-blue-950 to-blue-900 p-8 flex items-center">
+          <div className="w-full max-w-4xl mx-auto relative px-12">
+            {/* Video en la parte superior */}
+            <div className="mb-12 relative rounded-2xl overflow-hidden shadow-2xl">
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1 }}
+                className="aspect-video relative"
+              >
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover rounded-2xl"
+                  style={{
+                    filter: 'brightness(0.9) contrast(1.1)'
+                  }}
+                >
+                  <source src="/img/VideoHistoria.mp4" type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-950/50 via-transparent to-transparent" />
+              </motion.div>
+            </div>
+
+            {/* Flechas de navegación */}
+            <motion.button 
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => {
+                const newIndex = (currentIndex - 1 + moments.length) % moments.length;
+                setCurrentIndex(newIndex);
+              }}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-yellow-400 hover:bg-yellow-500 text-blue-950 p-4 rounded-full shadow-lg transition-all duration-300"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+              </svg>
+            </motion.button>
+
+            <motion.button 
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => {
+                const newIndex = (currentIndex + 1) % moments.length;
+                setCurrentIndex(newIndex);
+              }}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-yellow-400 hover:bg-yellow-500 text-blue-950 p-4 rounded-full shadow-lg transition-all duration-300"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+              </svg>
+            </motion.button>
+
+            {/* Contenedor del Slider */}
+            <div className="overflow-hidden touch-pan-x">
+              <motion.div
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.2}
+                onDragEnd={(e, { offset }) => {
+                  const swipe = offset.x;
+                  if (Math.abs(swipe) > 50) {
+                    if (swipe < 0) {
+                      const newIndex = (currentIndex + 1) % moments.length;
+                      setCurrentIndex(newIndex);
+                    } else {
+                      const newIndex = (currentIndex - 1 + moments.length) % moments.length;
+                      setCurrentIndex(newIndex);
+                    }
+                  }
+                }}
+                className="flex transition-transform duration-700 ease-out"
+                style={{
+                  transform: `translateX(-${currentIndex * 100}%)`
+                }}
+              >
+                {moments.map((moment, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 2 }}
+                    className="w-full flex-shrink-0 px-4"
+                  >
+                    <div className="aspect-video relative mx-auto group">
+                      <motion.div
+                        initial={{ rotate: 2 }}
+                        whileHover={{ rotate: 0 }}
+                        className="absolute -inset-3 bg-yellow-400 rounded-2xl transform transition-transform duration-300"
+                      />
+                      <img
+                        src={moment.image}
+                        alt={moment.title}
+                        className="relative w-full h-full object-cover rounded-xl shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]"
+                      />
+                      <motion.div
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        whileInView={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.5 }}
+                        className="absolute -bottom-6 -right-6 bg-blue-950 text-yellow-400 text-3xl font-bold p-6 rounded-full shadow-xl border-4 border-yellow-400"
+                      >
+                        {moment.year}
+                      </motion.div>
+                    </div>
+                    <div className="text-white mt-16 text-center">
+                      <motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                        className="text-3xl font-bold mb-4 text-yellow-400"
+                      >
+                        {moment.title}
+                      </motion.h3>
+                      <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5 }}
+                        className="text-xl leading-relaxed max-w-2xl mx-auto text-white/90"
+                      >
+                        {moment.description}
+                      </motion.p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Indicadores de posición */}
+            <div className="flex justify-center gap-4 mt-12">
+              {moments.map((_, index) => (
+                <motion.button
+                  key={index}
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  whileHover={{ scale: 1.2 }}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`h-3 transition-all duration-300 rounded-full ${
+                    currentIndex === index 
+                      ? 'bg-yellow-400 w-12' 
+                      : 'bg-white/30 w-3 hover:bg-white/50'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
            {/* Valores Section */}
-<section className="py-20 relative overflow-hidden">
-  <div className="absolute inset-0 bg-white" />
-  
+<section className="py-24 relative overflow-hidden bg-gradient-to-br from-white to-yellow-50">
   <motion.div
     initial={{ opacity: 0 }}
     animate={{ opacity: 0.1 }}
@@ -284,41 +458,63 @@ const Nosotros = () => {
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      className="text-center mb-16"
+      className="text-center mb-20"
     >
-      <span className="text-yellow-400 text-lg font-medium mb-4 block">Lo que nos define</span>
-      <h2 className="text-5xl font-bold text-blue-950 mb-6">Nuestros Valores</h2>
-      <div className="w-24 h-2 bg-yellow-400 mx-auto rounded-full mb-8" />
-      <p className="text-xl text-gray-800 max-w-2xl mx-auto">
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="bg-blue-950 rounded-full py-2 px-6 inline-block mb-6"
+      >
+        <span className="text-lg font-medium text-white">Lo que nos define</span>
+      </motion.div>
+      <h2 className="text-6xl font-bold text-blue-950 mb-8 bg-gradient-to-r from-blue-950 to-blue-800 bg-clip-text text-transparent">
+        Nuestros Valores
+      </h2>
+      <div className="w-32 h-2 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto rounded-full mb-8" />
+      <p className="text-2xl text-blue-950/70 max-w-3xl mx-auto">
         Principios que guían cada aspecto de nuestra experiencia gastronómica
       </p>
     </motion.div>
 
-    <div className="grid md:grid-cols-3 gap-8">
+    <div className="grid md:grid-cols-3 gap-12">
       {values.map((valor, index) => (
         <motion.div
           key={index}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.2 }}
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.02 }}
           className="relative group cursor-pointer"
           onClick={() => setSelectedValue(valor)}
         >
-          <div className="relative bg-white/10 backdrop-blur-lg rounded-2xl p-8 h-full  border-[1px] hover:border-blue-950 transition-all duration-300">
-            <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${valor.color} flex items-center justify-center mb-6 group-hover:rotate-12 transition-all duration-300`}>
-              <valor.icon className="text-3xl text-white" />
+          <div className="absolute inset-0 bg-gradient-to-br from-white to-yellow-100 rounded-3xl transform -rotate-1 transition-transform duration-300 group-hover:rotate-0" />
+          <div className="relative bg-white rounded-3xl p-8 h-full border border-blue-950/10 shadow-xl backdrop-blur-sm transform rotate-1 transition-transform duration-300 group-hover:rotate-0">
+            <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${valor.color} flex items-center justify-center mb-8 transform transition-all duration-300 group-hover:scale-110`}>
+              <valor.icon className="text-4xl text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-blue-950 mb-4">{valor.title}</h3>
-            <p className="text-blue-950 leading-relaxed">{valor.text}</p>
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: "100%" }}
-              transition={{ delay: index * 0.3, duration: 0.8 }}
-              className={`h-1 bg-gradient-to-r ${valor.color} mt-6 rounded-full`}
-            />
-            <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span className="text-yellow-400">Ver más →</span>
+            <h3 className="text-3xl font-bold text-blue-950 mb-4">{valor.title}</h3>
+            <p className="text-lg text-blue-950/70 leading-relaxed mb-6">{valor.text}</p>
+            <ul className="space-y-3">
+              {valor.details.map((detail, idx) => (
+                <motion.li
+                  key={idx}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 + idx * 0.1 }}
+                  className="flex items-center gap-3 text-blue-950/60"
+                >
+                  <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${valor.color}`} />
+                  {detail}
+                </motion.li>
+              ))}
+            </ul>
+            <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-300">
+              <div className={`p-3 rounded-full bg-gradient-to-br ${valor.color}`}>
+                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -333,231 +529,167 @@ const Nosotros = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90"
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
         onClick={() => setSelectedValue(null)}
       >
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.5, opacity: 0 }}
-          className="relative max-w-4xl w-full bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl overflow-hidden"
+          className="relative max-w-4xl w-full bg-gradient-to-br from-blue-900 to-blue-950 rounded-3xl overflow-hidden"
           onClick={e => e.stopPropagation()}
         >
-          <div className="relative p-8">
-            <div className="flex items-start gap-6">
-              <div className={`w-20 h-20 rounded-xl bg-gradient-to-br ${selectedValue.color} flex items-center justify-center flex-shrink-0`}>
-                <selectedValue.icon className="text-4xl text-white" />
+          <div className="p-8 md:p-12">
+            <div className="flex items-start justify-between mb-8">
+              <div className="flex items-center gap-6">
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${selectedValue.color} flex items-center justify-center`}>
+                  <selectedValue.icon className="text-3xl text-white" />
+                </div>
+                <h3 className="text-4xl font-bold text-white">{selectedValue.title}</h3>
               </div>
-              <div>
-                <h3 className="text-3xl font-bold text-white mb-2">{selectedValue.title}</h3>
-                <p className="text-xl text-gray-300">{selectedValue.text}</p>
-              </div>
+              <button
+                onClick={() => setSelectedValue(null)}
+                className="text-white/60 hover:text-white transition-colors"
+              >
+                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
             </div>
             
-            <div className="mt-8 grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h4 className="text-xl font-semibold text-yellow-400 mb-4">Características</h4>
-                <ul className="space-y-3">
-                  {selectedValue.details.map((detail, index) => (
+                <p className="text-xl text-white/90 leading-relaxed mb-8">
+                  {selectedValue.text}
+                </p>
+                <ul className="space-y-4">
+                  {selectedValue.details.map((detail, idx) => (
                     <motion.li
-                      key={index}
+                      key={idx}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-center gap-3 text-white"
+                      transition={{ delay: idx * 0.1 }}
+                      className="flex items-center gap-4 text-white/80"
                     >
-                      <span className={`h-2 w-2 rounded-full bg-gradient-to-r ${selectedValue.color}`} />
+                      <div className={`w-3 h-3 rounded-full bg-gradient-to-br ${selectedValue.color}`} />
                       {detail}
                     </motion.li>
                   ))}
                 </ul>
               </div>
-              <div className="relative h-64 rounded-xl overflow-hidden">
+              <div className="relative aspect-video rounded-2xl overflow-hidden">
                 <img
                   src={selectedValue.image}
                   alt={selectedValue.title}
-                  className="w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
-                <div className={`absolute inset-0 bg-gradient-to-t ${selectedValue.color} opacity-30`} />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-950/50 to-transparent" />
               </div>
             </div>
           </div>
-          
-          <button 
-            onClick={() => setSelectedValue(null)}
-            className="absolute top-4 right-4 text-white text-4xl hover:text-yellow-400 transition-colors"
-          >
-            ×
-          </button>
         </motion.div>
       </motion.div>
     )}
   </AnimatePresence>
 </section>
 
-        {/* Momentos Especiales Section */}
-                    <section className="py-20 relative min-h-screen bg-blue-950">
-        {/* Interactive Background Pattern */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(15)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute"
-              style={{
-                top: `${(i * 15) + Math.random() * 10}%`,
-                left: `${(i * 8) + Math.random() * 15}%`,
-                zIndex: 1
-              }}
-            >
-              <motion.img
-                src="/img/PatanoLogo.png"
-                alt="Platano Decorativo"
-                className="w-24 h-24 object-contain opacity-10 hover:opacity-30 cursor-pointer filter brightness-150"
-                whileHover={{
-                  scale: 1.2,
-                  rotate: 360,
-                  filter: "brightness(2)",
-                }}
-                onClick={() => {
-                  const randomImage = specialMoments[Math.floor(Math.random() * specialMoments.length)];
-                  setSelectedImage(randomImage);
-                }}
-                animate={{
-                  y: [0, -20, 0],
-                  rotate: [0, i % 2 === 0 ? 15 : -15, 0],
-                }}
-                transition={{
-                  duration: 3 + i * 0.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-            </motion.div>
-          ))}
-        </div>
+       {/* Momentos Especiales Section */}
+<section className="py-24 relative overflow-hidden bg-gradient-to-br from-blue-950 to-blue-900">
+  {/* Fondo animado premium */}
+  <div className="absolute inset-0">
+    <motion.div
+      animate={{
+        backgroundPosition: ['0% 0%', '100% 100%']
+      }}
+      transition={{
+        duration: 20,
+        repeat: Infinity,
+        repeatType: "reverse"
+      }}
+      className="absolute inset-0 opacity-5"
+      style={{
+        backgroundImage: 'url("/img/pattern-luxury.png")',
+        backgroundSize: '200px 200px'
+      }}
+    />
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,transparent_100%)]" />
+  </div>
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-radial from-blue-950/95 via-blue-950/80 to-blue-950/95 z-2" />
+  <div className="max-w-[1920px] mx-auto px-4 relative z-10">
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      className="text-center mb-20"
+    >
+      <motion.div
+        initial={{ width: 0 }}
+        whileInView={{ width: '100%' }}
+        className="h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent max-w-[200px] mx-auto mb-8"
+      />
+      <h2 className="text-8xl font-black text-white mb-6 relative">
+        Momentos <span className="text-yellow-400">Especiales</span>
+        <span className="absolute -top-8 -right-8 text-[120px] text-yellow-400 opacity-10">M</span>
+      </h2>
+    </motion.div>
 
-        {/* Content Container */}
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          {/* Rest of your existing content */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-center mb-24"
-          >
-            <h2 className="text-6xl font-bold text-white mb-6"
-              style={{
-                textShadow: '4px 4px 0px #FCD34D, 8px 8px 0px rgba(252, 211, 77, 0.3)'
-              }}
-            >
-              Momentos Especiales
-            </h2>
-            <p className="text-xl text-yellow-400">
-              Cada instante cuenta una historia única
-            </p>
-          </motion.div>
-
-          {/* Rest of the existing content */}
-          <div className="relative grid grid-cols-12 gap-6 items-start">
-            {specialMoments.map((moment, index) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {specialMoments.map((moment, index) => (
+        <motion.div
+          key={moment.id}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.1 }}
+          className="group relative"
+        >
+          <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 rounded-[30px] opacity-75 blur group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt" />
+          
+          <div className="relative h-full bg-gradient-to-br from-blue-950 to-blue-900/95 rounded-[28px] p-1 overflow-hidden">
+            <div className="relative h-full bg-gradient-to-br from-blue-900 to-blue-950 rounded-[26px] overflow-hidden backdrop-blur-sm">
               <motion.div
-                key={moment.id}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
-                className={`relative ${
-                  index % 3 === 0 ? 'col-span-12 md:col-span-8' : 
-                  index % 3 === 1 ? 'col-span-12 md:col-span-4' : 
-                  'col-span-12 md:col-span-6'
-                } group cursor-pointer`}
-                onClick={() => setSelectedImage(moment)}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.6 }}
+                className="aspect-[4/3] relative"
               >
-                <div className={`relative overflow-hidden rounded-2xl ${
-                  index % 3 === 0 ? 'h-[600px]' : 
-                  index % 3 === 1 ? 'h-[400px]' : 
-                  'h-[500px]'
-                }`}>
-                  <motion.img
-                    src={moment.image}
-                    alt={moment.title}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
-                  />
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute inset-0 bg-gradient-to-t from-blue-950/90 via-blue-950/50 to-transparent flex flex-col justify-end p-8"
-                  >
-                    <motion.div
-                      initial={{ y: 20 }}
-                      whileHover={{ y: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <span className="inline-block px-4 py-1 bg-yellow-400/20 text-yellow-400 rounded-full mb-4 text-sm">
-                        {moment.category}
-                      </span>
-                      <h3 className="text-3xl font-bold text-white mb-3">
-                        {moment.title}
-                      </h3>
-                      <p className="text-gray-200 line-clamp-2">
-                        {moment.description}
-                      </p>
-                    </motion.div>
-                  </motion.div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Enhanced Modal */}
-        <AnimatePresence>
-          {selectedImage && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-lg bg-blue-950/80"
-              onClick={() => setSelectedImage(null)}
-            >
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0, y: 20 }}
-                animate={{ scale: 1, opacity: 1, y: 0 }}
-                exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                className="relative max-w-6xl w-full bg-blue-900/50 backdrop-blur-sm rounded-2xl overflow-hidden"
-                onClick={e => e.stopPropagation()}
-              >
-                <motion.img 
-                  src={selectedImage.image}
-                  alt={selectedImage.title}
-                  className="w-full h-[80vh] object-cover"
-                  layoutId={`image-${selectedImage.id}`}
+                <img
+                  src={moment.image}
+                  alt={moment.title}
+                  className="w-full h-full object-cover"
                 />
-                <motion.div
-                  initial={{ y: 50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-blue-950/95 via-blue-950/80 to-transparent"
-                >
-                  <h3 className="text-4xl font-bold text-white mb-4">{selectedImage.title}</h3>
-                  <p className="text-xl text-yellow-400">{selectedImage.description}</p>
-                </motion.div>
-                <motion.button 
-                  whileHover={{ scale: 1.1, rotate: 90 }}
-                  onClick={() => setSelectedImage(null)}
-                  className="absolute top-4 right-4 w-10 h-10 bg-yellow-400 text-blue-950 rounded-full flex items-center justify-center text-2xl font-bold"
-                >
-                  ×
-                </motion.button>
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-950 via-blue-950/50 to-transparent" />
               </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </section>
+
+              <div className="p-8">
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="relative z-10"
+                >
+                  <span className="inline-block px-4 py-1 bg-yellow-400/20 backdrop-blur-sm border border-yellow-400/30 text-yellow-400 rounded-full text-sm font-medium mb-4">
+                    {moment.category}
+                  </span>
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors">
+                    {moment.title}
+                  </h3>
+                  <p className="text-white/70 group-hover:text-white/90 transition-colors">
+                    {moment.description}
+                  </p>
+                </motion.div>
+
+                <motion.div 
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  transition={{ delay: 0.4 }}
+                  className="h-0.5 w-full bg-gradient-to-r from-yellow-400/50 to-transparent mt-6"
+                />
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Sedes Section */}
       <section className="py-20 relative min-h-screen overflow-hidden bg-blue-950">
