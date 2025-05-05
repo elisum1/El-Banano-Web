@@ -64,17 +64,17 @@ const Eventos = () => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden min-h-screen flex items-center">
+    <section className="relative overflow-hidden min-h-[80vh] flex items-center">
       {/* Primera mitad - Fondo azul oscuro */}
       <div className="w-full lg:w-1/2 h-full bg-gradient-to-br from-blue-950 to-blue-900 absolute left-0 top-0" />
       
       {/* Segunda mitad - Fondo amarillo suave */}
       <div className="w-full lg:w-1/2 h-full bg-gradient-to-br from-yellow-50 to-yellow-100 absolute right-0 top-0" />
 
-      <div className="max-w-7xl mx-auto px-4 py-16 relative w-full">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-4 py-8 md:py-12 lg:py-16 relative w-full">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
           {/* Columna izquierda - Carrusel de imágenes */}
-          <div className="relative h-[400px] md:h-[500px] lg:h-[600px]">
+          <div className="relative h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px]">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -170,48 +170,48 @@ const Eventos = () => {
           </div>
 
           {/* Columna derecha - Contenido */}
-          <div className="lg:pl-16 py-8">
+          <div className="lg:pl-8 xl:pl-16 py-4 md:py-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="space-y-8"
+              className="space-y-6 md:space-y-8"
             >
               <div className="inline-block">
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: '100%' }}
-                  className="bg-yellow-400 text-blue-950 rounded-full py-2 px-6 text-lg font-semibold"
+                  className="bg-yellow-400 text-blue-950 rounded-full py-1.5 px-4 md:py-2 md:px-6 text-base md:text-lg font-semibold"
                 >
                   Servicios Especiales
                 </motion.div>
               </div>
 
-              <h2 className="text-6xl font-black text-blue-950">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-blue-950">
                 Eventos
                 <span className="text-yellow-400"> Memorables</span>
               </h2>
 
-              <p className="text-xl text-blue-950/70 leading-relaxed">
+              <p className="text-lg md:text-xl text-blue-950/70 leading-relaxed">
                 Hacemos de cada ocasión un momento inolvidable. Nuestro equipo de expertos se encargará de cada detalle para que tu evento sea perfecto.
               </p>
 
-              <div className="grid gap-6">
+              <div className="grid gap-4 md:gap-6">
                 {eventos.map((evento) => (
                   <motion.div
                     key={evento.id}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     whileHover={{ scale: 1.02 }}
-                    className="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-xl"
+                    className="flex items-start gap-3 md:gap-4 p-4 md:p-6 bg-white rounded-xl md:rounded-2xl shadow-lg"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-yellow-400/10 flex items-center justify-center flex-shrink-0">
-                      <evento.icon className="text-2xl text-yellow-400" />
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-yellow-400/10 flex items-center justify-center flex-shrink-0">
+                      <evento.icon className="text-xl md:text-2xl text-yellow-400" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-blue-950 mb-2">
+                      <h3 className="text-lg md:text-xl font-bold text-blue-950 mb-1 md:mb-2">
                         {evento.titulo}
                       </h3>
-                      <p className="text-blue-950/70">
+                      <p className="text-sm md:text-base text-blue-950/70">
                         {evento.descripcion}
                       </p>
                     </div>
@@ -225,9 +225,9 @@ const Eventos = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-3 bg-green-500 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className="inline-flex items-center gap-2 md:gap-3 bg-green-500 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <FaWhatsapp className="text-2xl" />
+                <FaWhatsapp className="text-xl md:text-2xl" />
                 Cotiza tu evento
               </motion.a>
             </motion.div>
