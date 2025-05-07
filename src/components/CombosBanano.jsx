@@ -185,11 +185,26 @@ const CombosBanano = () => {
 
   return (
     <div className="min-h-screen bg-yellow-50 relative overflow-hidden">
-      {/* Efecto de fondo decorativo */}
-      <div className="absolute inset-0 ">
-        <div className="absolute top-0 left-0 w-full h-[70%] bg-gradient-to-b from-blue-950 to-blue-950 transform -skew-y-12 " />
-        <div className="absolute w-96 h-96 bg-blue-950 rounded-full blur-3xl -top-20 -right-20 animate-pulse" />
-        <div className="absolute w-64 h-64 bg-blue-950 rounded-full blur-3xl bottom-20 left-20 animate-pulse" />
+      {/* Elementos decorativos de fondo */}
+      <div className="absolute inset-0">
+        {/* Fondo principal */}
+        <div className="absolute top-0 left-0 w-full h-[70%] bg-gradient-to-b from-blue-950 to-blue-950 transform -skew-y-12" />
+        
+        {/* Líneas decorativas */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Líneas horizontales */}
+          <div className="absolute top-[20%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent transform -rotate-2" />
+          <div className="absolute top-[40%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent transform rotate-1" />
+          <div className="absolute top-[60%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent transform -rotate-1" />
+          
+          {/* Líneas diagonales */}
+          <div className="absolute top-0 left-1/4 w-[1px] h-full bg-gradient-to-b from-transparent via-yellow-400/10 to-transparent transform -rotate-45" />
+          <div className="absolute top-0 right-1/4 w-[1px] h-full bg-gradient-to-b from-transparent via-yellow-400/10 to-transparent transform rotate-45" />
+          
+          {/* Elementos geométricos */}
+          <div className="absolute top-20 left-20 w-40 h-40 border border-yellow-400/10 rounded-full" />
+          <div className="absolute bottom-40 right-20 w-32 h-32 border border-yellow-400/10 rounded-full" />
+        </div>
       </div>
 
       {/* Encabezado con animación */}
@@ -199,28 +214,33 @@ const CombosBanano = () => {
         transition={{ type: "spring", duration: 1 }}
         className="relative z-10 pt-16 pb-8 text-center"
       >
-        <motion.h1 
-          className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-500 mb-4"
-          animate={{ 
-            backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-          }}
-          transition={{ 
-            duration: 5,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        >
-          Nuestros Combos
-        </motion.h1>
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.5 }}
-          className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto rounded-full"
-        />
+        <div className="inline-block relative">
+          <div className="absolute inset-0 bg-blue-950 rounded-2xl transform rotate-1"></div>
+          <div className="relative bg-blue-950 rounded-2xl px-8 py-4 shadow-xl border border-yellow-400/20">
+            <motion.h1 
+              className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-500 mb-4"
+              animate={{ 
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+              }}
+              transition={{ 
+                duration: 5,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+            >
+              Nuestros Combos
+            </motion.h1>
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.5 }}
+              className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto rounded-full"
+            />
+          </div>
+        </div>
       </motion.div>
 
-      {/* Contenedor principal */}
+      {/* Resto del contenido */}
       <div className="max-w-7xl mx-auto px-4 relative z-10 mb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {combos.map((combo, index) => (
