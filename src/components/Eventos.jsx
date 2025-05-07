@@ -10,21 +10,21 @@ const Eventos = () => {
       id: 1,
       titulo: "Bodas",
       descripcion: "Haz de tu día especial un momento inolvidable con nuestra exquisita gastronomía y servicio excepcional.",
-      imagen: "/img/boda.jpg",
+      imagen: "/img/FotoMesaEvento.jpg",
       icon: FaGlassCheers
     },
     {
       id: 2,
       titulo: "Eventos Empresariales",
       descripcion: "Impresiona a tus clientes y colaboradores con un servicio de catering profesional y personalizado.",
-      imagen: "/img/empresarial.jpg",
+      imagen: "/img/FotoGrupalEventos.jpg",
       icon: FaBriefcase
     },
     {
       id: 3,
       titulo: "Fiestas",
       descripcion: "Celebra tus momentos especiales con un menú diseñado especialmente para tu ocasión.",
-      imagen: "/img/fiesta.jpg",
+      imagen: "/img/EventosMilitares.jpg",
       icon: FaCalendarAlt
     }
   ];
@@ -64,14 +64,69 @@ const Eventos = () => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden min-h-[80vh] flex items-center">
-      {/* Primera mitad - Fondo azul oscuro */}
-      <div className="w-full lg:w-1/2 h-full bg-gradient-to-br from-blue-950 to-blue-900 absolute left-0 top-0" />
-      
-      {/* Segunda mitad - Fondo amarillo suave */}
-      <div className="w-full lg:w-1/2 h-full bg-gradient-to-br from-yellow-50 to-yellow-100 absolute right-0 top-0" />
+    <section className="relative overflow-hidden min-h-[80vh] flex items-center bg-gradient-to-b from-yellow-100 via-yellow-50 to-gray-50">
+      {/* Elementos decorativos */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Líneas diagonales */}
+        <div className="absolute top-0 left-0 w-[150%] h-0.5 bg-yellow-400/10 transform -rotate-45 translate-y-20" />
+        <div className="absolute top-0 left-0 w-[150%] h-0.5 bg-yellow-400/20 transform -rotate-45 translate-y-40" />
+        <div className="absolute bottom-0 right-0 w-[150%] h-0.5 bg-blue-400/10 transform -rotate-45 -translate-y-20" />
+        <div className="absolute bottom-0 right-0 w-[150%] h-0.5 bg-blue-400/20 transform -rotate-45 -translate-y-40" />
+        
+        {/* Círculos decorativos */}
+        <div className="absolute top-20 right-20 w-40 h-40 rounded-full border border-yellow-400/20 animate-pulse" />
+        <div className="absolute -bottom-10 left-20 w-32 h-32 rounded-full border border-blue-400/20 animate-pulse" />
+        
+        {/* Líneas onduladas */}
+        <div className="absolute top-1/4 left-0 w-full">
+          <svg className="w-full h-20" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path 
+              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
+              className="fill-yellow-400/5"
+            />
+          </svg>
+        </div>
+        
+        {/* Líneas horizontales con gradiente */}
+        <div className="absolute top-1/3 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-yellow-400/10 to-transparent" />
+        <div className="absolute bottom-1/3 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-blue-400/10 to-transparent" />
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-8 md:py-12 lg:py-16 relative w-full">
+      {/* Fondo inclinado con elementos decorativos */}
+      <div 
+        className="absolute  top-0 left-0 w-full h-[70%] bg-gradient-to-b from-blue-950 via-blue-950 to-blue-950 transform -skew-y-6 origin-top-left overflow-hidden"
+        style={{ zIndex: 0 }}
+      >
+        {/* Elementos decorativos dentro del fondo azul */}
+        <div className="absolute inset-0">
+          {/* Líneas diagonales brillantes */}
+          <div className="absolute top-0 left-0 w-[200%] h-0.5 bg-yellow-400/5 transform -rotate-45 translate-y-32" />
+          <div className="absolute top-0 right-0 w-[200%] h-0.5 bg-blue-400/5 transform rotate-45 translate-y-64" />
+          
+          {/* Círculos decorativos con brillo */}
+          <div className="absolute top-20 right-40 w-48 h-48 rounded-full border border-yellow-400/10 animate-pulse" />
+          <div className="absolute bottom-20 left-20 w-32 h-32 rounded-full border border-blue-400/10 animate-pulse" />
+          
+          {/* Puntos brillantes */}
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-yellow-400/20 rounded-full animate-ping" />
+          <div className="absolute top-3/4 right-1/4 w-2 h-2 bg-blue-400/20 rounded-full animate-ping" />
+          
+          {/* Líneas onduladas */}
+          <div className="absolute bottom-0 left-0 w-full">
+            <svg className="w-full h-24" viewBox="0 0 1200 120" preserveAspectRatio="none">
+              <path 
+                d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" 
+                className="fill-yellow-50"
+              />
+            </svg>
+          </div>
+
+          {/* Gradientes de luz */}
+          <div className="absolute top-1/3 left-1/3 w-64 h-64 bg-yellow-400/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/3 right-1/3 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl" />
+        </div>
+      </div>
+      <div className="max-w-7xl mx-auto px-4 py-8 md:py-12 lg:py-16 relative w-full z-10">
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
           {/* Columna izquierda - Carrusel de imágenes */}
           <div className="relative h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px]">
@@ -164,8 +219,8 @@ const Eventos = () => {
               </div>
 
               {/* Efectos de luz */}
-              <div className="absolute -top-20 -left-20 w-60 h-60 bg-yellow-400 rounded-full opacity-20 blur-[100px] animate-pulse" />
-              <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-blue-400 rounded-full opacity-20 blur-[100px] animate-pulse" />
+              <div className="absolute -top-20 -left-20 w-60 h-60 bg-yellow-400 rounded-full opacity-20 blur-[100px]" />
+              <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-blue-400 rounded-full opacity-20 blur-[100px] " />
             </motion.div>
           </div>
 
@@ -186,14 +241,22 @@ const Eventos = () => {
                 </motion.div>
               </div>
 
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-blue-950">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white">
                 Eventos
                 <span className="text-yellow-400"> Memorables</span>
               </h2>
 
-              <p className="text-lg md:text-xl text-blue-950/70 leading-relaxed">
+              <p className="text-lg md:text-xl text-white/70 leading-relaxed">
                 Hacemos de cada ocasión un momento inolvidable. Nuestro equipo de expertos se encargará de cada detalle para que tu evento sea perfecto.
               </p>
+
+              {/* Efectos de luz estáticos */}
+              <div className="absolute -top-20 -left-20 w-60 h-60 bg-yellow-400 rounded-full opacity-20 " />
+              <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-blue-400 rounded-full opacity-20 " />
+
+              {/* Círculos decorativos estáticos */}
+              <div className="absolute top-20 right-40 w-48 h-48 rounded-full border border-yellow-400/10" />
+              <div className="absolute bottom-20 left-20 w-32 h-32 rounded-full border border-blue-400/10" />
 
               <div className="grid gap-4 md:gap-6">
                 {eventos.map((evento) => (
@@ -220,7 +283,7 @@ const Eventos = () => {
               </div>
 
               <motion.a
-                href="https://wa.me/+573001234567?text=Hola,%20me%20interesa%20información%20sobre%20sus%20servicios%20para%20eventos"
+                href="https://wa.me/573042883923?text=Hola,%20estoy%20interesado%20en%20cotizar%20un%20evento%20con%20ustedes.%20¿Me%20pueden%20brindar%20más%20información?"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}

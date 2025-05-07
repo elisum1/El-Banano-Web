@@ -79,9 +79,9 @@ const Footer = () => {
       {/* Pie de página inferior */}
       <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-blue-800 text-center text-blue-300">
         <ul className="flex flex-wrap justify-center gap-4 md:gap-8">
-          <li><a href="/terminos" className="hover:text-yellow-400 transition-colors">Términos de Servicio</a></li>
+          <li><a href="/TerminosServicio" className="hover:text-yellow-400 transition-colors">Términos de Servicio</a></li>
           <li><a href="/privacidad" className="hover:text-yellow-400 transition-colors">Política de Privacidad</a></li>
-          <li><a href="/preguntas" className="hover:text-yellow-400 transition-colors">Preguntas Frecuentes</a></li>
+          <li><a href="/preguntasFrecuentes" className="hover:text-yellow-400 transition-colors">Preguntas Frecuentes</a></li>
           <li><a href="/TrabajaConNosotros" className="hover:text-yellow-400 transition-colors">Trabaja con Nosotros</a></li>
         </ul>
         <p className="mt-6">&copy; {new Date().getFullYear()} Restaurante El Banano. Todos los derechos reservados.</p>

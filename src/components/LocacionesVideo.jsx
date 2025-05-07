@@ -40,11 +40,36 @@ const LocacionesVideo = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br bg-blue-950">
+    <section className="relative py-20 bg-blue-950 overflow-hidden">
+      {/* Líneas decorativas */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Línea diagonal 1 */}
+        <div className="absolute top-0 left-0 w-[150%] h-1 bg-yellow-400/10 transform -rotate-45 translate-y-20" />
+        <div className="absolute top-0 left-0 w-[150%] h-0.5 bg-yellow-400/20 transform -rotate-45 translate-y-40" />
+        
+        {/* Línea diagonal 2 */}
+        <div className="absolute bottom-0 right-0 w-[150%] h-1 bg-blue-400/10 transform -rotate-45 -translate-y-20" />
+        <div className="absolute bottom-0 right-0 w-[150%] h-0.5 bg-blue-400/20 transform -rotate-45 -translate-y-40" />
+        
+        {/* Líneas horizontales */}
+        <div className="absolute top-1/4 left-0 w-full h-0.5 bg-white/5" />
+        <div className="absolute top-3/4 left-0 w-full h-0.5 bg-white/5" />
+        
+        {/* Círculos decorativos */}
+        <div className="absolute top-10 right-10 w-32 h-32 rounded-full border border-yellow-400/20" />
+        <div className="absolute bottom-10 left-10 w-24 h-24 rounded-full border border-blue-400/20" />
+      </div>
+
+      {/* Fondo inclinado */}
+      <div 
+        className="absolute top-0 left-0 w-full h-[70%] bg-gradient-to-b from-yellow-50 via-slate-50 to-yellow-100 transform -skew-y-6 origin-top-left"
+        style={{ zIndex: 0 }}
+      />
+      
       <motion.div 
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        className="max-w-7xl mx-auto px-4"
+        className="max-w-7xl mx-auto px-4 relative z-10"
       >
         <div className="text-center mb-16">
           <motion.div
@@ -62,14 +87,14 @@ const LocacionesVideo = () => {
           <motion.h2 
             initial={{ y: -20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            className="text-4xl md:text-6xl font-bold text-white mb-4"
+            className="text-4xl md:text-6xl font-bold text-yellow-400 mb-4"
           >
             Experiencia Culinaria
           </motion.h2>
           <motion.p 
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            className="text-2xl text-yellow-600"
+            className="text-2xl text-blue-950"
           >
             El arte de la cocina en cada detalle
           </motion.p>

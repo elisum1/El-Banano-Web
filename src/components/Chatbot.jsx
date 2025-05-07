@@ -169,7 +169,15 @@ const Chatbot = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300"
       >
-        <FaRobot className="h-6 w-6" />
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 24 24" 
+          fill="currentColor" 
+          className="w-6 h-6"
+        >
+          <path d="M4.913 2.658c2.075-.27 4.19-.408 6.337-.408 2.147 0 4.262.139 6.337.408 1.922.25 3.291 1.861 3.405 3.727a4.403 4.403 0 00-1.032-.211 50.89 50.89 0 00-8.42 0c-2.358.196-4.04 2.19-4.04 4.434v4.286a4.47 4.47 0 002.433 3.984L7.28 21.53A.75.75 0 016 21v-4.03a48.527 48.527 0 01-1.087-.128C2.905 16.58 1.5 14.833 1.5 12.862V6.638c0-1.97 1.405-3.718 3.413-3.979z" />
+          <path d="M15.75 7.5c-1.376 0-2.739.057-4.086.169C10.124 7.797 9 9.103 9 10.609v4.285c0 1.507 1.128 2.814 2.67 2.94 1.243.102 2.5.157 3.768.165l2.782 2.781a.75.75 0 001.28-.53v-2.39l.33-.026c1.542-.125 2.67-1.433 2.67-2.94v-4.286c0-1.505-1.125-2.811-2.664-2.94A49.392 49.392 0 0015.75 7.5z" />
+        </svg>
       </motion.button>
 
       <AnimatePresence>
@@ -179,24 +187,32 @@ const Chatbot = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.5, y: 50 }}
             transition={{ type: 'spring', damping: 25 }}
-            className="absolute bottom-16 right-0 w-[calc(100vw-2rem)] sm:w-[350px] max-w-[400px] bg-white rounded-2xl shadow-2xl overflow-hidden border border-yellow-200"
+            className="absolute bottom-16 right-0 w-[280px] bg-white rounded-2xl shadow-2xl overflow-hidden border border-yellow-200"
           >
-            <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white p-4 flex justify-between items-center">
+            <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white p-3 flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <FaRobot className="h-6 w-6" />
-                <h3 className="font-bold text-lg">BananoBot</h3>
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  viewBox="0 0 24 24" 
+                  fill="currentColor" 
+                  className="w-5 h-5"
+                >
+                  <path d="M4.913 2.658c2.075-.27 4.19-.408 6.337-.408 2.147 0 4.262.139 6.337.408 1.922.25 3.291 1.861 3.405 3.727a4.403 4.403 0 00-1.032-.211 50.89 50.89 0 00-8.42 0c-2.358.196-4.04 2.19-4.04 4.434v4.286a4.47 4.47 0 002.433 3.984L7.28 21.53A.75.75 0 016 21v-4.03a48.527 48.527 0 01-1.087-.128C2.905 16.58 1.5 14.833 1.5 12.862V6.638c0-1.97 1.405-3.718 3.413-3.979z" />
+                  <path d="M15.75 7.5c-1.376 0-2.739.057-4.086.169C10.124 7.797 9 9.103 9 10.609v4.285c0 1.507 1.128 2.814 2.67 2.94 1.243.102 2.5.157 3.768.165l2.782 2.781a.75.75 0 001.28-.53v-2.39l.33-.026c1.542-.125 2.67-1.433 2.67-2.94v-4.286c0-1.505-1.125-2.811-2.664-2.94A49.392 49.392 0 0015.75 7.5z" />
+                </svg>
+                <h3 className="font-bold text-sm">BananoBot</h3>
               </div>
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsOpen(false)}
-                className="text-white hover:bg-white/20 p-2 rounded-full transition-colors"
+                className="text-white hover:bg-white/20 p-1.5 rounded-full transition-colors"
               >
-                <FaTimes className="h-5 w-5" />
+                <FaTimes className="h-4 w-4" />
               </motion.button>
             </div>
 
-            <div className="h-[300px] sm:h-[400px] p-4 overflow-y-auto bg-gray-50 space-y-4">
+            <div className="h-[250px] p-3 overflow-y-auto bg-gray-50 space-y-3">
               {messages.map((msg, i) => (
                 <motion.div
                   key={i}
@@ -213,7 +229,7 @@ const Chatbot = () => {
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           onClick={() => handleQuickReply(option)}
-                          className="px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full text-sm hover:bg-yellow-200 transition-colors shadow-sm hover:shadow"
+                          className="px-3 py-1.5 bg-yellow-100 text-yellow-800 rounded-full text-xs hover:bg-yellow-200 transition-colors shadow-sm hover:shadow"
                         >
                           {option}
                         </motion.button>
@@ -221,7 +237,7 @@ const Chatbot = () => {
                     </div>
                   ) : (
                     <div
-                      className={`max-w-[80%] p-3 rounded-2xl ${
+                      className={`max-w-[80%] p-2.5 rounded-xl text-sm ${
                         msg.sender === 'user'
                           ? 'bg-yellow-500 text-white rounded-br-none'
                           : 'bg-white text-gray-800 shadow-sm rounded-bl-none'
@@ -243,45 +259,17 @@ const Chatbot = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className="flex justify-start"
                 >
-                  <div className="bg-white p-4 rounded-2xl rounded-bl-none shadow-sm">
-                    <div className="flex space-x-2">
-                      <div className="w-2 h-2 bg-yellow-500 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-yellow-500 rounded-full animate-bounce delay-100"></div>
-                      <div className="w-2 h-2 bg-yellow-500 rounded-full animate-bounce delay-200"></div>
+                  <div className="bg-white p-3 rounded-xl rounded-bl-none shadow-sm">
+                    <div className="flex space-x-1.5">
+                      <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full animate-bounce"></div>
+                      <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full animate-bounce delay-100"></div>
+                      <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full animate-bounce delay-200"></div>
                     </div>
                   </div>
                 </motion.div>
               )}
               <div ref={messagesEndRef} />
             </div>
-
-            <form onSubmit={handleSend} className="p-4 bg-white border-t border-gray-100">
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  className="text-gray-400 hover:text-yellow-500 transition-colors"
-                >
-                  <FaRegSmile className="h-6 w-6" />
-                </button>
-                <input
-                  type="text"
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  placeholder="Escribe tu mensaje..."
-                  className="flex-1 py-2 px-4 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:bg-white transition-all"
-                  disabled={isTyping}
-                />
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  type="submit"
-                  className="bg-yellow-500 text-white p-2 rounded-full hover:bg-yellow-600 disabled:opacity-50 disabled:hover:bg-yellow-500 transition-colors"
-                  disabled={!inputValue.trim() || isTyping}
-                >
-                  <FaPaperPlane className="h-5 w-5" />
-                </motion.button>
-              </div>
-            </form>
           </motion.div>
         )}
       </AnimatePresence>

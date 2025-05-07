@@ -60,7 +60,7 @@ const Inicio = () => {
     EspecialidadesRef,
     combosSectionRef, 
     LocacionesVideoRef,
-    Eventos,
+    EventosRef,
     GaleriaRef,
     ReseñasRef, 
   ];
@@ -122,12 +122,12 @@ const Inicio = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 bg-blue-950 hover:bg-blue-900 text-yellow-400 p-4 rounded-full shadow-lg z-50 cursor-pointer"
+            className="fixed bottom-8 left-1/2 transform -translate-x-1/2 text-yellow-400 p-3 rounded-full shadow-lg z-50 cursor-pointer bg-blue-950 hover:bg-blue-900"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
             <svg 
-              className="w-6 h-6" 
+              className="w-5 h-5 md:w-6 md:h-6" 
               fill="none" 
               viewBox="0 0 24 24" 
               stroke="currentColor"
@@ -259,7 +259,7 @@ const Inicio = () => {
             </motion.div>
 
             <motion.p 
-              className="text-md text-white leading-relaxed px-4"
+              className="text-md text-white leading-relaxed px-4 italic " 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
@@ -294,14 +294,14 @@ const Inicio = () => {
                 className="flex items-center space-x-3"
                 whileHover={{ scale: 1.05 }}
               >
-                <div className="w-10 h-10 bg-yellow-400/20 rounded-full flex items-center justify-center">
-                  <svg className="w-5 h-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                  <svg className="w-5 h-5 text-blue-950" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
                 <div>
                   <p className="text-xs text-blue-800">Horario</p>
-                  <p className="text-sm text-blue-950 font-medium">Lun - Dom: 11am - 10pm</p>
+                  <p className="text-sm text-blue-950 font-medium">Lun - Dom: 11am - 9pm</p>
                 </div>
               </motion.div>
             </motion.div>
@@ -330,7 +330,7 @@ const Inicio = () => {
             <motion.div className="space-y-8">
               <motion.div className="space-y-4">
                 <motion.p 
-                  className="text-lg font-medium text-blue-950 tracking-wider mt-3"
+                  className="text-sm md:text-base lg:text-lg font-medium text-blue-950 tracking-wider mt-3"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
@@ -344,9 +344,9 @@ const Inicio = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <span className="block text-6xl font-bold italic text-blue-950">La Mejor</span>
-                  <span className="block text-7xl font-extrabold text-white">Opción del día</span>
-                  <span className="block text-6xl font-bold italic text-blue-950">en tu ciudad</span>
+                  <span className="block text-4xl md:text-5xl lg:text-3xl 2xl:text-6xl xl:text-5xl font-bold italic text-blue-950">La Mejor</span>
+                  <span className="block text-5xl md:text-6xl lg:text-4xl 2xl:text-7xl xl:text-6xl font-extrabold text-white">Opción del día</span>
+                  <span className="block text-4xl md:text-5xl lg:text-3xl 2xl:text-6xl xl:text-5xl font-bold italic text-blue-950">en tu ciudad</span>
                 </motion.h1>
 
                 <motion.div 
@@ -355,13 +355,13 @@ const Inicio = () => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
                 >
-                  <span className="text-2xl font-semibold">Desde 1986</span>
+                  <span className="text-lg md:text-xl lg:text-2xl font-semibold">Desde 1986</span>
                   <div className="h-[2px] w-20 bg-red-600"></div>
                 </motion.div>
               </motion.div>
 
               <motion.p 
-                className="text-xl text-white leading-relaxed"
+                className="text-base md:text-lg lg:text-md 2xl:text-xl text-white leading-relaxed"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
@@ -396,14 +396,14 @@ const Inicio = () => {
                   className="flex items-center space-x-4"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <div className="w-12 h-12 bg-yellow-400/20 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-blue-950" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   <div>
                     <p className="text-sm text-blue-800">Horario</p>
-                    <p className="text-blue-950 font-medium">Lun - Dom: 11am - 10pm</p>
+                    <p className="text-blue-950 font-medium">Lun - Dom: 11am - 9pm</p>
                   </div>
                 </motion.div>
               </motion.div>

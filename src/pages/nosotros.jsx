@@ -23,14 +23,14 @@ const Nosotros = () => {
       address: "Carrera 4ª, El Rodadero, Santa Marta",
       phone: "601-234-5678",
       hours: "Lun-Dom: 11:00 AM - 9:00 PM",
-      image: "/img/YEI02214.jpg"
+      image: "/img/Arrecife.jpg"
     },
     {
       city: "CC BUENA VISTA",
       address: "Av. El Libertador #32-172 a 32-296",
       phone: "604-567-8901",
       hours: "Lun-Dom: 11:00 AM - 9:00 PM",
-      image: "/img/YEI02152.jpg"
+      image: "/img/BuenaVista.jpg"
     }
   ];
 
@@ -133,625 +133,560 @@ const Nosotros = () => {
       <Header />
       
       {/* Hero Section */}
-      <div className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500">
-        {/* Divisor de onda SVG */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <svg 
-            viewBox="0 0 1200 120" 
-            preserveAspectRatio="none" 
-            className="relative block w-full h-[100px]"
-            style={{ transform: 'rotate(180deg)' }}
-          >
-            <path 
-              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
-              className="fill-white"
-            />
-          </svg>
-        </div>
+<div className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-blue-950 to-blue-900">
+  {/* Elementos decorativos estáticos */}
+  <div className="absolute inset-0 pointer-events-none">
+    {/* Círculos decorativos */}
+    <div className="absolute top-20 -right-20 w-96 h-96 bg-yellow-400/10 rounded-full blur-[100px]" />
+    <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-yellow-400/10 rounded-full blur-[100px]" />
+    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-800/10 rounded-full blur-[120px]" />
+    
+    {/* Líneas decorativas estáticas */}
+    <div className="absolute inset-0">
+      <div className="absolute top-20 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent" />
+      <div className="absolute bottom-20 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent" />
+      <div className="absolute left-20 top-0 h-full w-[1px] bg-gradient-to-b from-transparent via-yellow-400/20 to-transparent" />
+      <div className="absolute right-20 top-0 h-full w-[1px] bg-gradient-to-b from-transparent via-yellow-400/20 to-transparent" />
+    </div>
+  </div>
 
-        {/* Transición curva animada */}
-        <motion.div 
-          initial={{ scaleY: 0 }}
-          animate={{ scaleY: 1 }}
-          className="absolute -bottom-[2px] left-0 w-full h-32 bg-yellow-400 z-20"
-          style={{
-            clipPath: 'path("M 0 10 Q 50 -20 100 10 L 100 100 L 0 100 Z")',
-            transformOrigin: 'bottom'
-          }}
-        />
-
-        {/* Decorative elements - Ajustados para pantallas pequeñas */}
-        <div className="absolute inset-0">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.5 }}
-            className="absolute top-10 right-10 w-20 md:w-40 h-20 md:h-40 bg-blue-900 rounded-full flex items-center justify-center"
-          >
-            <span className="text-2xl md:text-4xl font-extrabold text-yellow-400">2025</span>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.5, delay: 0.3 }}
-            className="absolute bottom-20 left-5 md:left-20 w-32 md:w-60 h-32 md:h-60 bg-blue-900 rounded-full flex items-center justify-center"
-          >
-            <span className="text-3xl md:text-6xl font-extrabold text-yellow-400">1986</span>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.5, delay: 0.3 }}
-            className="absolute bottom-20 left-5 md:left-20 w-32 md:w-60 h-32 md:h-60 border-[6px] border-blue-900 rounded-full"
+  {/* Contenido principal */}
+  <div className="absolute inset-0 flex flex-col items-center justify-center px-4 mt-24">
+    <motion.div
+      initial={{ y: 50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="text-center space-y-8 relative z-10 w-full max-w-4xl mx-auto"
+    >
+        <span className="absolute -top-4 left-1/2 transform -translate-x-1/2 text-sm font-normal tracking-widest text-yellow-400 uppercase bg-blue-950/80 px-6 py-2 rounded-full backdrop-blur-sm border border-yellow-400/20">
+          Bienvenido a El Banano
+        </span>
+      <motion.h1 
+        className="text-4xl sm:text-6xl md:text-9xl font-black text-white mb-4 md:mb-6 relative"
+        style={{
+          textShadow: '3px 3px 0px #FCD34D, 6px 6px 0px rgba(30, 58, 138, 0.5), 9px 9px 10px rgba(0,0,0,0.2)',
+          fontFamily: "'Poppins', sans-serif",
+          letterSpacing: '-2px'
+        }}
+        initial={{ scale: 0.5, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        Sobre Nosotros
+      </motion.h1>
+      
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="flex flex-col items-center gap-6"
+      >
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full blur-2xl opacity-30 animate-pulse" />
+          <img 
+            src="/img/logo_el_banano-removebg-preview.png"
+            alt="Plátano Maduro"
+            className="w-32 h-32 md:w-40 md:h-40 object-contain relative z-10"
           />
         </div>
+        <p className="text-2xl md:text-4xl text-white font-semibold px-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-yellow-400">
+          Tradición y sabor desde 1986
+        </p>
+      </motion.div>
 
-        {/* Content - Ajustado para pantallas pequeñas */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
-          <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="text-center space-y-4 md:space-y-8 relative z-10 w-full max-w-4xl mx-auto"
-          >
-            <motion.h1 
-              className="text-4xl sm:text-6xl md:text-9xl font-black text-blue-900 mb-4 md:mb-6"
-              style={{
-                textShadow: '2px 2px 0px #FCD34D, 4px 4px 0px rgba(30, 58, 138, 0.5)'
-              }}
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8 }}
-            >
-              Sobre Nosotros
-            </motion.h1>
-            
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex flex-col items-center gap-2 md:gap-4"
-            >
-              <img 
-                src="/img/logo_el_banano-removebg-preview.png"
-                alt="Plátano Maduro"
-                className="w-24 h-24 md:w-32 md:h-32 object-contain"
-              />
-              <p className="text-xl md:text-3xl text-white font-semibold px-2">
-                Tradición y sabor desde 1986
-              </p>
-            </motion.div>
+      <motion.button
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 1 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={handleScrollToHistory}
+        className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-blue-950 px-8 py-4 rounded-full font-bold text-lg 
+          flex items-center gap-3 group hover:shadow-lg hover:shadow-yellow-400/20 transition-all duration-300 mx-auto"
+      >
+        <FaPlay className="group-hover:rotate-90 transition-transform duration-500" />
+        <span>Descubre nuestra historia</span>
+      </motion.button>
+    </motion.div>
+  </div>
 
-            <motion.button
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 1 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleScrollToHistory}
-              className="bg-red-500 text-white px-6 md:px-10 py-3 md:py-4 rounded-full font-bold text-base md:text-lg flex items-center gap-2 md:gap-3 group shadow-xl hover:shadow-2xl transition-all duration-300 mx-auto"
-            >
-              <FaPlay className="group-hover:rotate-180 transition-transform duration-500" />
-              <span className="whitespace-nowrap">Descubre nuestra historia</span>
-            </motion.button>
-          </motion.div>
-        </div>
-      </div>
+  {/* Transición curva animada */}
+  <motion.div 
+    initial={{ scaleY: 0 }}
+    animate={{ scaleY: 1 }}
+    className="absolute -bottom-[2px] left-0 w-full h-32 bg-white z-20"
+    style={{
+      clipPath: 'path("M 0 10 Q 50 -20 100 10 L 100 100 L 0 100 Z")',
+      transformOrigin: 'bottom'
+    }}
+  />
+</div>  
 
-      {/* Historia Section */}
-      <section id="historia" className="max-h-screen flex flex-col lg:flex-row relative overflow-hidden py-16 lg:py-0 bg-gradient-b from-white to-yellow-50" >
-        {/* Divisor de onda superior curvo */}
-        <div className="absolute top-0 left-0 w-full overflow-hidden">
-          <svg 
-            viewBox="0 0 1200 120" 
-            preserveAspectRatio="none" 
-            className="relative block w-full h-[160px]"
-          >
-            <path 
-              d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-              fill="white"
-              className="transition-all duration-300"
-            />
-          </svg>
-        </div>
-
-        {/* Lado izquierdo - Información */}
-        <div className="w-full lg:w-[40%] bg-gradient-to-b from-white to-yellow-50 p-4 sm:p-6 lg:p-8 flex flex-col justify-center items-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            className="space-y-6 sm:space-y-8 lg:space-y-10 max-w-xl"
-          >
-            <div className="text-center">
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                className="bg-blue-950 rounded-full py-2 sm:py-3 px-6 sm:px-8 inline-block mb-3 sm:mb-4 shadow-lg"
-              >
-                <h2 className="text-lg sm:text-xl font-bold text-white">
-                  Nuestra Historia
-                </h2>
-              </motion.div>
-              <div className="w-16 sm:w-20 h-1 bg-yellow-400 mx-auto rounded-full mt-3 sm:mt-4" />
-            </div>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-base sm:text-lg lg:text-xl leading-relaxed text-center text-blue-950/80"
-            >
-              Desde 1986, El Banano ha sido sinónimo de tradición y excelencia en la gastronomía colombiana. Comenzamos como un pequeño local familiar y hemos crecido hasta convertirnos en un referente de la cocina tradicional.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="bg-gradient-to-r from-yellow-400/10 to-yellow-400/20 p-4 sm:p-6 rounded-xl sm:rounded-2xl"
-            >
-              <p className="text-sm sm:text-base lg:text-lg text-blue-950/80 text-center italic">
-                "Nuestro compromiso con la calidad y el sabor auténtico nos ha permitido expandirnos y llevar la experiencia El Banano a más personas, manteniendo siempre nuestra esencia y valores originales."
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              className="text-center"
-            >
-              <span className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 text-transparent bg-clip-text">
-                + de 37 años
-              </span>
-              <p className="text-base sm:text-lg text-blue-950/70 mt-2">de tradición y sabor</p>
-            </motion.div>
-          </motion.div>
-        </div>
-
-        {/* Lado derecho - Video */}
-        <div className="w-full lg:w-[60%] bg-gradient-to-b from-white to-yellow-50  p-4 sm:p-6 lg:p-8 flex items-center justify-center">
-          <div className="w-full max-w-4xl mx-auto">
-            {/* Video */}
-            <div className="relative rounded-xl overflow-hidden shadow-2xl">
-              <motion.div
-                initial={{ scale: 0.95, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1 }}
-                className="relative"
-              >
-                <div className="w-full">
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full rounded-xl"
-                    style={{
-                      filter: 'brightness(0.9) contrast(1.1)'
+           {/* Sección Historia Mejorada */}
+          <section id="historia" className="min-h-screen relative overflow-hidden bg-gradient-to-b from-white to-yellow-50">
+            {/* Elementos decorativos de fondo */}
+            <div className="absolute inset-0 pointer-events-none">
+              {/* Líneas onduladas */}
+              <svg className="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="lineGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#1E3A8A" stopOpacity="0.1"/>
+                    <stop offset="50%" stopColor="#FBBF24" stopOpacity="0.2"/>
+                    <stop offset="100%" stopColor="#1E3A8A" stopOpacity="0.1"/>
+                  </linearGradient>
+                </defs>
+                {/* Líneas curvas animadas */}
+                {[...Array(5)].map((_, i) => (
+                  <motion.path
+                    key={i}
+                    d={`M -100 ${200 + i * 200} Q 400 ${100 + i * 180} 800 ${300 + i * 150} T 1600 ${200 + i * 200}`}
+                    stroke="url(#lineGradient1)"
+                    strokeWidth="2"
+                    fill="none"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ 
+                      pathLength: 1, 
+                      opacity: 0.5,
+                      y: [0, 20, 0],
                     }}
-                  >
-                    <source src="/img/VideoHistoria.mp4" type="video/mp4" />
-                  </video>
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-950/50 via-transparent to-transparent" />
+                    transition={{ 
+                      duration: 3,
+                      y: {
+                        duration: 5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: i * 0.5
+                      }
+                    }}
+                  />
+                ))}
+              </svg>
+              
+              {/* Patrones geométricos */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-0 left-0 w-full h-full grid grid-cols-10 gap-8">
+                  {[...Array(100)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ 
+                        scale: [0, 1, 0],
+                        opacity: [0, 0.5, 0]
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        delay: i * 0.1,
+                        ease: "easeInOut"
+                      }}
+                      className="w-2 h-2 bg-gradient-to-br from-blue-900 to-yellow-400 rounded-full"
+                    />
+                  ))}
+                </div>
+              </div>
+              
+              {/* Círculos de años con efecto mejorado */}
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1.5 }}
+                className="absolute top-10 right-10 w-32 h-32 md:w-40 md:h-40"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-blue-800 rounded-full flex items-center justify-center shadow-2xl">
+                  <div className="absolute inset-2 rounded-full border-4 border-yellow-400/30 animate-pulse" />
+                  <span className="text-3xl md:text-4xl font-extrabold text-yellow-400 drop-shadow-lg">2025</span>
                 </div>
               </motion.div>
+              
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1.5, delay: 0.3 }}
+                className="absolute bottom-20 left-10 w-40 h-40 md:w-60 md:h-60"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-blue-800 rounded-full flex items-center justify-center shadow-2xl">
+                  <div className="absolute inset-2 rounded-full border-4 border-yellow-400/30" />
+                  <span className="text-4xl md:text-6xl font-extrabold text-yellow-400 drop-shadow-lg">1986</span>
+                </div>
+                <div className="absolute inset-0 border-8 border-blue-900/30 rounded-full animate-pulse" />
+              </motion.div>
             </div>
-          </div>
-        </div>
-      </section>
+          
+            <div className="max-w-7xl mx-auto px-4 py-24">
+              <div className="grid lg:grid-cols-2 gap-16 items-center">
+                {/* Contenido izquierdo */}
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  className="relative"
+                >
+                  <div className="absolute -top-10 -left-10 w-40 h-40 bg-yellow-400/20 rounded-full blur-3xl" />
+                  <div className="relative z-10">
+                    <motion.div
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      className="inline-block mb-6"
+                    >
+                      <span className="bg-blue-950 text-yellow-400 text-sm font-semibold px-6 py-2 rounded-full">
+                        Nuestra Historia
+                      </span>
+                    </motion.div>
+                    
+                    <h2 className="text-5xl md:text-6xl font-bold text-blue-950 mb-8 leading-tight">
+                      Más de tres décadas de <br/>
+                      <span className="text-yellow-400">tradición y sabor</span>
+                    </h2>
+                    
+                    <div className="prose prose-lg text-blue-950/70 mb-8">
+                      <p>
+                        Desde 1986, El Banano ha sido sinónimo de tradición y excelencia en la gastronomía colombiana. Lo que comenzó como un pequeño local familiar se ha convertido en un referente de la cocina tradicional.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-8 mb-8">
+                      <div className="bg-white rounded-2xl p-6 shadow-xl">
+                        <div className="text-4xl font-bold text-yellow-400 mb-2">37+</div>
+                        <div className="text-blue-950/70">Años de experiencia</div>
+                      </div>
+                      <div className="bg-white rounded-2xl p-6 shadow-xl">
+                        <div className="text-4xl font-bold text-yellow-400 mb-2">2</div>
+                        <div className="text-blue-950/70">Sedes principales</div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Lado derecho - Video */}
+                <div className="relative">
+                  <motion.div
+                    initial={{ scale: 0.95, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    className="relative rounded-3xl overflow-hidden shadow-2xl"
+                  >
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full rounded-3xl"
+                      style={{ filter: 'brightness(0.9) contrast(1.1)' }}
+                    >
+                      <source src="/img/VideoHistoria.mp4" type="video/mp4" />
+                    </video>
+                    <div className="absolute inset-0 bg-gradient-to-t from-blue-950/50 via-transparent to-transparent" />
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </section>
 
            {/* Valores Section */}
-<section className="py-24 relative overflow-hidden bg-gradient-to-br from-yellow-50 to-white">
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 0.1 }}
-    className="absolute inset-0"
-  >
-    <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-400 rounded-full filter blur-[100px] opacity-20" />
-    <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-400 rounded-full filter blur-[100px] opacity-20" />
-  </motion.div>
-
+<section className="py-24 relative overflow-hidden bg-gradient-to-b from-yellow-50 to-white ">
+  {/* Contenedor principal con diseño hexagonal */}
   <div className="max-w-7xl mx-auto px-4 relative z-10">
+    {/* Encabezado mejorado */}
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       className="text-center mb-20"
     >
-      <motion.div
-        initial={{ scale: 0.9, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="bg-blue-950 rounded-full py-2 px-6 inline-block mb-6"
-      >
-        <span className="text-lg font-medium text-white">Lo que nos define</span>
-      </motion.div>
-      <h2 className="text-6xl font-bold text-blue-950 mb-8 bg-gradient-to-r from-blue-950 to-blue-800 bg-clip-text text-transparent">
-        Nuestros Valores
-      </h2>
-      <div className="w-32 h-2 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto rounded-full mb-8" />
-      <p className="text-2xl text-blue-950/70 max-w-3xl mx-auto">
-        Principios que guían cada aspecto de nuestra experiencia gastronómica
-      </p>
+      <div className="relative inline-block">
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          className="relative"
+        >
+          <div className="absolute -inset-6 bg-gradient-to-r from-yellow-400 to-blue-900 transform rotate-3 rounded-2xl opacity-20"></div>
+          <h2 className="relative text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-950 to-blue-800 py-2">
+            Nuestros Valores
+          </h2>
+        </motion.div>
+        <div className="mt-6 flex items-center justify-center gap-3">
+          <span className="h-1 w-10 bg-yellow-400 rounded-full"></span>
+          <span className="text-blue-950 font-medium">El Banano</span>
+          <span className="h-1 w-10 bg-yellow-400 rounded-full"></span>
+        </div>
+      </div>
     </motion.div>
 
-    <div className="grid md:grid-cols-3 gap-12">
+    {/* Grid de valores mejorado */}
+    <div className="grid lg:grid-cols-3 gap-8 relative">
       {values.map((valor, index) => (
         <motion.div
           key={index}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.2 }}
-          whileHover={{ scale: 1.02 }}
-          className="relative group cursor-pointer"
-          onClick={() => setSelectedValue(valor)}
+          className="group relative"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-white to-yellow-100 rounded-3xl transform -rotate-1 transition-transform duration-300 group-hover:rotate-0" />
-          <div className="relative bg-white rounded-3xl p-8 h-full border border-blue-950/10 shadow-xl backdrop-blur-sm transform rotate-1 transition-transform duration-300 group-hover:rotate-0">
-            <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${valor.color} flex items-center justify-center mb-8 transform transition-all duration-300 group-hover:scale-110`}>
-              <valor.icon className="text-4xl text-white" />
+          {/* Fondo decorativo */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-950 to-blue-800 rounded-[2.5rem] rotate-3 opacity-0 group-hover:opacity-10 transition-all duration-500"></div>
+          
+          {/* Tarjeta principal */}
+          <div className="relative bg-white rounded-[2rem] p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-blue-950/5">
+            {/* Icono mejorado */}
+            <div className="mb-8 relative">
+              <div className={`w-16 h-16 ${valor.color} rounded-2xl rotate-45 transform group-hover:scale-110 transition-transform duration-500`}></div>
+              <valor.icon className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-3xl -rotate-45" />
             </div>
-            <h3 className="text-3xl font-bold text-blue-950 mb-4">{valor.title}</h3>
-            <p className="text-lg text-blue-950/70 leading-relaxed mb-6">{valor.text}</p>
+
+            {/* Contenido */}
+            <h3 className="text-2xl font-bold text-blue-950 mb-4">
+              {valor.title}
+            </h3>
+            
+            <p className="text-blue-950/70 mb-6 leading-relaxed">
+              {valor.text}
+            </p>
+
+            {/* Lista de detalles mejorada */}
             <ul className="space-y-3">
               {valor.details.map((detail, idx) => (
                 <motion.li
                   key={idx}
+                  className="flex items-center gap-3 text-blue-950/60"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 + idx * 0.1 }}
-                  className="flex items-center gap-3 text-blue-950/60"
                 >
-                  <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${valor.color}`} />
-                  {detail}
+                  <div className={`w-2 h-2 ${valor.color} rounded-full transform group-hover:scale-150 transition-all duration-300`}></div>
+                  <span className="group-hover:text-blue-950 transition-colors duration-300">{detail}</span>
                 </motion.li>
               ))}
             </ul>
-            <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-300">
-              <div className={`p-3 rounded-full bg-gradient-to-br ${valor.color}`}>
-                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
-            </div>
+
+            {/* Botón de acción */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`mt-8 w-full py-3 px-6 ${valor.color} text-white rounded-xl font-medium 
+                transform transition-all duration-300 hover:shadow-lg flex items-center justify-center gap-2`}
+            >
+              <span>Conoce más</span>
+              <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </motion.button>
           </div>
         </motion.div>
       ))}
     </div>
   </div>
-
-  {/* Modal para valores */}
-  <AnimatePresence>
-    {selectedValue && (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-        onClick={() => setSelectedValue(null)}
-      >
-        <motion.div
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.5, opacity: 0 }}
-          className="relative max-w-4xl w-full bg-gradient-to-br from-blue-900 to-blue-950 rounded-3xl overflow-hidden"
-          onClick={e => e.stopPropagation()}
-        >
-          <div className="p-8 md:p-12">
-            <div className="flex items-start justify-between mb-8">
-              <div className="flex items-center gap-6">
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${selectedValue.color} flex items-center justify-center`}>
-                  <selectedValue.icon className="text-3xl text-white" />
-                </div>
-                <h3 className="text-4xl font-bold text-white">{selectedValue.title}</h3>
-              </div>
-              <button
-                onClick={() => setSelectedValue(null)}
-                className="text-white/60 hover:text-white transition-colors"
-              >
-                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <p className="text-xl text-white/90 leading-relaxed mb-8">
-                  {selectedValue.text}
-                </p>
-                <ul className="space-y-4">
-                  {selectedValue.details.map((detail, idx) => (
-                    <motion.li
-                      key={idx}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.1 }}
-                      className="flex items-center gap-4 text-white/80"
-                    >
-                      <div className={`w-3 h-3 rounded-full bg-gradient-to-br ${selectedValue.color}`} />
-                      {detail}
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-              <div className="relative aspect-video rounded-2xl overflow-hidden">
-                <img
-                  src={selectedValue.image}
-                  alt={selectedValue.title}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-950/50 to-transparent" />
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </motion.div>
-    )}
-  </AnimatePresence>
 </section>
 
        {/* Momentos Especiales Section */}
-<section className="py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-gradient-to-br from-blue-950 to-blue-900">
-  {/* Divisor de onda superior */}
-  <div className="absolute top-0 left-0 w-full overflow-hidden">
-    <svg 
-      viewBox="0 0 1200 120" 
-      preserveAspectRatio="none" 
-      className="relative block w-full h-[100px]"
-    >
-      <path 
-        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
-        className="fill-white"
-      />
-    </svg>
+{/* Sección de Sedes */}
+<section className="py-24 relative overflow-hidden bg-gradient-to-br from-blue-950 to-blue-900">
+  {/* Elementos decorativos estáticos */}
+  <div className="absolute inset-0 pointer-events-none">
+    {/* Círculos decorativos */}
+    <div className="absolute top-20 -right-20 w-96 h-96 bg-yellow-400/10 rounded-full blur-[100px]" />
+    <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-yellow-400/10 rounded-full blur-[100px]" />
+    
+    {/* Líneas decorativas estáticas */}
+    <div className="absolute inset-0">
+      <div className="absolute top-20 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent" />
+      <div className="absolute bottom-20 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent" />
+      <div className="absolute left-20 top-0 h-full w-[1px] bg-gradient-to-b from-transparent via-yellow-400/20 to-transparent" />
+      <div className="absolute right-20 top-0 h-full w-[1px] bg-gradient-to-b from-transparent via-yellow-400/20 to-transparent" />
+    </div>
   </div>
 
-  {/* Fondo minimalista */}
-  <div className="absolute inset-0">
-    <motion.div
-      animate={{
-        backgroundPosition: ['0% 0%', '100% 100%']
-      }}
-      transition={{
-        duration: 20,
-        repeat: Infinity,
-        repeatType: "reverse"
-      }}
-      className="absolute inset-0 opacity-5"
-      style={{
-        backgroundImage: 'url("/img/pattern-luxury.png")',
-        backgroundSize: '150px 150px'
-      }}
-    />
-    <div className="absolute inset-0 bg-gradient-to-t from-blue-950/50 via-transparent to-transparent" />
-  </div>
-
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <div className="relative z-10 max-w-7xl mx-auto px-4">
+    {/* Encabezado */}
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      className="text-center mb-12 sm:mb-16 lg:mb-20"
+      className="text-center mb-20"
     >
-      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
-        Momentos Especiales
+      <span className="inline-block bg-yellow-400/10 text-yellow-400 text-sm font-semibold px-6 py-2 rounded-full backdrop-blur-sm border border-yellow-400/20 mb-6">
+        Nuestras Ubicaciones
+      </span>
+      <h2 className="text-6xl font-black text-white mb-6">
+        Encuéntranos en <span className="text-yellow-400">Santa Marta</span>
       </h2>
-      <p className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto">
-        Cada momento en El Banano es una experiencia única que queremos compartir contigo
+      <p className="text-xl text-white/70 max-w-2xl mx-auto">
+        Disfruta de la mejor experiencia gastronómica en nuestras dos sedes principales
       </p>
     </motion.div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-      {specialMoments.map((moment, index) => (
+    {/* Primera sede */}
+    <div className="mb-24">
+      <div className="grid md:grid-cols-2 gap-12 items-center">
         <motion.div
-          key={moment.id}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1 }}
-          whileHover={{ y: -5 }}
-          className="group relative"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          className="order-2 md:order-1"
         >
-          <div className="aspect-[4/5] overflow-hidden rounded-lg bg-white/5 backdrop-blur-sm">
-            <div className="relative h-full w-full">
-              <img
-                src={moment.image}
-                alt={moment.title}
-                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-              <div className="transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                <span className="text-xs font-medium text-yellow-400 mb-2 block">
-                  {moment.category}
-                </span>
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
-                  {moment.title}
-                </h3>
-                <p className="text-sm text-white/80">
-                  {moment.description}
-                </p>
+          <div className="bg-white/5 backdrop-blur-lg rounded-3xl p-8 hover:bg-white/10 transition-all duration-300">
+            <h3 className="text-3xl font-bold text-white mb-4">{locations[0].city}</h3>
+            <div className="space-y-4 text-white/70">
+              <div className="flex items-center gap-3">
+                <FaMapMarkerAlt className="text-yellow-400" />
+                <span>{locations[0].address}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <FaPhone className="text-yellow-400" />
+                <span>{locations[0].phone}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <FaClock className="text-yellow-400" />
+                <span>{locations[0].hours}</span>
               </div>
             </div>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => navigate('/contacto')}
+              className="mt-8 w-full py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-blue-950 rounded-xl font-semibold 
+                flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-yellow-400/20 transition-all duration-300"
+            >
+              <span>¿Cómo llegar?</span>
+              <FaMapMarkerAlt />
+            </motion.button>
           </div>
         </motion.div>
-      ))}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          className="order-1 md:order-2"
+        >
+          <div className="relative h-80 rounded-3xl overflow-hidden">
+            <img
+              src={locations[0].image}
+              alt={locations[0].city}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-blue-950/50 via-transparent to-transparent" />
+          </div>
+        </motion.div>
+      </div>
+    </div>
+
+    {/* Segunda sede */}
+    <div>
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+        >
+          <div className="relative h-80 rounded-3xl overflow-hidden">
+            <img
+              src={locations[1].image}
+              alt={locations[1].city}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-blue-950/50 via-transparent to-transparent" />
+          </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+        >
+          <div className="bg-white/5 backdrop-blur-lg rounded-3xl p-8 hover:bg-white/10 transition-all duration-300">
+            <h3 className="text-3xl font-bold text-white mb-4">{locations[1].city}</h3>
+            <div className="space-y-4 text-white/70">
+              <div className="flex items-center gap-3">
+                <FaMapMarkerAlt className="text-yellow-400" />
+                <span>{locations[1].address}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <FaPhone className="text-yellow-400" />
+                <span>{locations[1].phone}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <FaClock className="text-yellow-400" />
+                <span>{locations[1].hours}</span>
+              </div>
+            </div>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => navigate('/contacto')}
+              className="mt-8 w-full py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-blue-950 rounded-xl font-semibold 
+                flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-yellow-400/20 transition-all duration-300"
+            >
+              <span>¿Cómo llegar?</span>
+              <FaMapMarkerAlt />
+            </motion.button>
+          </div>
+        </motion.div>
+      </div>
     </div>
   </div>
 </section>
 
-      {/* Sedes Section */}
-      <section className="py-20 relative min-h-screen overflow-hidden bg-blue-950">
-        <div className="absolute inset-0 flex flex-col md:flex-row">
-          <motion.div className="h-1/2 md:h-full md:w-1/2 bg-white" 
-            initial={{ x: "-100%" }}
-            animate={{ x: 0 }}
-            transition={{ duration: 1 }}
-          />
-          <motion.div className="h-1/2 md:h-full md:w-1/2 bg-white"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            transition={{ duration: 1 }}
-          />
-        </div>
+      {/* Sección Experiencia Única */}
+<section className="relative h-[90vh] overflow-hidden">
+  <motion.div
+    initial={{ scale: 1.1 }}
+    whileInView={{ scale: 1 }}
+    transition={{ duration: 1.5 }}
+    className="absolute inset-0"
+  >
+    <img
+      src="/img/FOTO.png"
+      alt="El Banano Experience"
+      className="w-full h-full object-cover"
+    />
+    <div className="absolute inset-0 bg-gradient-to-br from-blue-950/90 via-blue-950/70 to-transparent" />
+    
+    {/* Elementos decorativos */}
+    <div className="absolute inset-0 pointer-events-none">
+      {/* Círculos decorativos */}
+      <div className="absolute top-20 right-20 w-64 h-64 bg-yellow-400/10 rounded-full blur-[100px]" />
+      <div className="absolute bottom-20 left-20 w-96 h-96 bg-yellow-400/10 rounded-full blur-[100px]" />
+      
+      {/* Líneas decorativas */}
+      <div className="absolute top-1/4 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent transform -rotate-2" />
+      <div className="absolute bottom-1/4 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent transform rotate-2" />
+    </div>
+  </motion.div>
 
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-6xl font-bold text-white mb-6"
-              style={{
-                textShadow: '4px 4px 0px #3F48CC, 8px 8px 0px rgba(252, 211, 77, 0.5)'
-              }}
-            >
-              Nuestras Sedes
-            </h2>
-            <p className="text-2xl text-blue-950">
-              Encuentra El Banano más cercano
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:h-[600px]">
-            {locations.map((location, index) => (
-              <motion.div
-                key={index}
-                className="relative h-[500px] md:h-full"
-                initial="closed"
-                whileHover="open"
-                onClick={() => navigate('/visitanos')}
-              >
-                {/* Location Name Panel */}
-                <motion.div
-                  className={`absolute inset-0 ${index === 0 ? 'bg-yellow-400' : 'bg-blue-900'} rounded-2xl flex items-center justify-center cursor-pointer overflow-hidden shadow-lg shadow-black`}
-                  variants={{
-                    closed: { rotateY: 0 },
-                    open: { rotateY: -90 }
-                  }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                >
-                  <h3 className={`text-2xl md:text-4xl font-bold ${index === 0 ? 'text-blue-900' : 'text-yellow-400'} text-center p-4 md:p-8 transform-gpu`}>
-                    {location.city}
-                    <span className="block text-lg md:text-xl mt-2 font-normal opacity-80">
-                      {location.address}
-                    </span>
-                  </h3>
-                </motion.div>
-
-                {/* Location Details Panel */}
-                <motion.div
-                  className="absolute inset-0 rounded-2xl overflow-hidden shadow-lg shadow-black"
-                  variants={{
-                    closed: { rotateY: 90, opacity: 0 },
-                    open: { rotateY: 0, opacity: 1 }
-                  }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                  style={{ transformStyle: 'preserve-3d' }}
-                >
-                  <div className="relative h-full bg-white rounded-2xl shadow-2xl">
-                    <div className="h-1/2 relative">
-                      <img
-                        src={location.image}
-                        alt={location.city}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute -inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                      <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        className="absolute bottom-0 left-0 p-4 md:p-6"
-                      >
-                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                          {location.city}
-                        </h3>
-                        <p className="text-lg md:text-xl text-yellow-400">
-                          {location.address}
-                        </p>
-                      </motion.div>
-                    </div>
-                    
-                    <div className="p-4 md:p-8 space-y-4 md:space-y-6">
-                      <motion.div
-                        initial={{ x: -20, opacity: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
-                        className="flex items-center gap-3 md:gap-4 text-base md:text-xl"
-                      >
-                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-yellow-400 flex items-center justify-center">
-                          <FaPhone className="text-blue-900 text-lg md:text-xl" />
-                        </div>
-                        <span className="text-blue-900">{location.phone}</span>
-                      </motion.div>
-
-                      <motion.div
-                        initial={{ x: -20, opacity: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
-                        transition={{ delay: 0.1 }}
-                        className="flex items-center gap-3 md:gap-4 text-base md:text-xl"
-                      >
-                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-900 flex items-center justify-center">
-                          <FaClock className="text-yellow-400 text-lg md:text-xl" />
-                        </div>
-                        <span className="text-blue-900">{location.hours}</span>
-                      </motion.div>
-
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="w-full bg-blue-900 text-white py-3 md:py-4 rounded-xl font-bold text-lg md:text-xl hover:bg-blue-800 transition-all duration-300 flex items-center justify-center gap-3"
-                      >
-                        <FaMapMarkerAlt />
-                        Ver ubicación
-                      </motion.button>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="relative h-[90vh] overflow-hidden">
-        <motion.div
-          initial={{ scale: 1.1 }}
-          whileInView={{ scale: 1 }}
-          transition={{ duration: 1.5 }}
-          className="absolute inset-0"
+  <div className="absolute inset-0 flex items-center">
+    <div className="container mx-auto px-4">
+      <motion.div
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        className="max-w-2xl space-y-8"
+      >
+        <span className="inline-block bg-yellow-400/10 text-yellow-400 text-sm font-semibold px-6 py-2 rounded-full backdrop-blur-sm border border-yellow-400/20">
+          Descubre El Banano
+        </span>
+        
+        <h2 className="text-6xl font-black text-white leading-tight">
+          Una Experiencia
+          <span className="block text-yellow-400">Única e Inolvidable</span>
+        </h2>
+        
+        <p className="text-xl text-white/80 leading-relaxed">
+          Donde cada plato cuenta una historia, cada sabor despierta un recuerdo y cada visita se convierte en un momento especial para compartir.
+        </p>
+        
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="bg-yellow-400 text-blue-950 px-8 py-4 rounded-full font-bold text-lg 
+            flex items-center gap-3 group hover:shadow-lg hover:shadow-yellow-400/20 transition-all duration-300"
         >
-          <img
-            src="/img/FOTO.png"
-            alt="El Banano Experience"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-transparent" />
-        </motion.div>
-        <div className="absolute inset-0 flex items-center">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
-              className="max-w-2xl"
-            >
-              <h2 className="text-5xl font-bold text-white mb-6">Una Experiencia Única</h2>
-              <p className="text-xl text-yellow-400 mb-8">Donde cada plato cuenta una historia y cada visita se convierte en un recuerdo inolvidable.</p>
-             
-            </motion.div>
-          </div>
-        </div>
-      </section>
+          <span>Reserva tu mesa</span>
+          <FaPlay className="group-hover:rotate-90 transition-transform duration-500" />
+        </motion.button>
+      </motion.div>
+    </div>
+  </div>
+</section>
 
       {/* Políticas y Privacidad */}
-      <section className="py-20 bg-gradient-to-br from-blue-900 to-blue-800">
+      <section className="py-20 bg-gradient-to-b from-yellow-400 via-yellow-300 to-yellow-400">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-yellow-400 mb-4">Políticas y Privacidad</h2>
+            <h2 className="text-5xl text-blue-950 mb-4 leading-tight font-black">Políticas y Privacidad</h2>
             <p className="text-xl text-white">Nuestro compromiso con tu confianza</p>
           </motion.div>
 
@@ -760,7 +695,7 @@ const Nosotros = () => {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-white/10 backdrop-blur-lg rounded-xl p-8 text-white"
+              className="bg-blue-950 backdrop-blur-lg rounded-xl p-8 text-white"
             >
               <h3 className="text-2xl font-bold text-yellow-400 mb-6">Políticas de Servicio</h3>
               <ul className="space-y-4">
@@ -783,7 +718,7 @@ const Nosotros = () => {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-white/10 backdrop-blur-lg rounded-xl p-8 text-white"
+              className="bg-blue-950 backdrop-blur-lg rounded-xl p-8 text-white"
             >
               <h3 className="text-2xl font-bold text-yellow-400 mb-6">Política de Privacidad</h3>
               <ul className="space-y-4">
@@ -806,7 +741,7 @@ const Nosotros = () => {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="md:col-span-2 bg-white/10 backdrop-blur-lg rounded-xl p-8 text-white mt-8"
+              className="md:col-span-2 bg-blue-950 backdrop-blur-lg rounded-xl p-8 text-white mt-8"
             >
               <h3 className="text-2xl font-bold text-yellow-400 mb-6">Términos y Condiciones</h3>
               <div className="grid md:grid-cols-2 gap-8">
@@ -832,6 +767,7 @@ const Nosotros = () => {
             
       <Footer />
     </div>
+
   );
 };
 
